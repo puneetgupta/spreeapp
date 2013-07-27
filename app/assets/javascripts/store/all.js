@@ -11,3 +11,5 @@
 
 //= require_tree .
 //= require store/spree_auctions
+//= require jquery1.9.1
+//= require jquery_ui
