@@ -1,0 +1,11 @@
+common: &common
+  paypal:
+    id: "dummy_paypal_id"
+
+development:
+  <<: *common
+
+test:
+  <<: *common
+production:
+  <<: *common

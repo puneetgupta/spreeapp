@@ -14,6 +14,7 @@ Spree.config do |config|
    config.currency = 'PLN'
    country = Spree::Country.find_by_name('Poland')
    config.default_country_id = country.id if country.present?
+   config.allow_ssl_in_production = false
 end
 
 Spree.user_class = "Spree::User"
