@@ -8,7 +8,7 @@
 Spree.config do |config|
   # Example:
   # Uncomment to override the default site name.
-   config.site_name = "Spree Auction"
+   config.site_name = "Auction House"
    config.override_actionmailer_config = false
    config.mails_from = "support@spreeauctions.com"
    config.currency = 'PLN'
