@@ -1,8 +1,15 @@
 GIT
-  remote: git://github.com/enbake/spree_auctions_enbake.git
-  revision: 46c978c2de01b3aaafb8732ef51eaad2b6167314
+  remote: git://github.com/enbake/spree-pp-website-standard.git
+  revision: 885644bb800ce404a4e03944ee33ec5df3e21e37
   specs:
-    spree_auctions (2.0.3)
+    spree_paypal_website_standard (1.1.2)
+      spree_core (~> 2.0.3)
+
+GIT
+  remote: git://github.com/enbake/spree_auctions_enbake.git
+  revision: 1e7af6a569f8771ab75b6402f07170a83b1f135b
+  specs:
+    spree_auctions (2.0.9)
       spree_core (~> 2.0.3)
 
 GIT
@@ -295,5 +302,6 @@ DEPENDENCIES
   spree_auctions!
   spree_auth_devise!
   spree_fancy!
+  spree_paypal_website_standard!
   therubyracer
   uglifier (>= 1.0.3)

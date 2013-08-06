@@ -1,6 +1,10 @@
 common: &common
   paypal:
-    id: "dummy_paypal_id"
+    id: "pgupta@enbake.com"
+    sandbox_url : "https://www.sandbox.paypal.com/cgi-bin/webscr"
+    paypal_url : "https://www.sandbox.paypal.com/cgi-bin/webscr"
+    account : "pgupta@enbake.com"
+    success_url : "/"
 
 development:
   <<: *common
