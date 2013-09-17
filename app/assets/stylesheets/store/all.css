@@ -9,5 +9,11 @@
  *= require_self
  *= require_tree .
  *= require store/spree_auctions
+ *= require store/bootstrap-overrides
+ *= require store/bootstrap
+ *= require store/bootstrap-responsive
+ *= require store/theme
+ *= require store/index
+ *= require store/animate
  *= require jquery_ui
 */
