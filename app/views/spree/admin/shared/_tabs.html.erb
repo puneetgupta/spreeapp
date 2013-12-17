@@ -15,5 +15,5 @@
 
 
   <% if can? :admin, Spree::Admin::StaticPagesController %>
-  <%= tab(:faq, :url => static_pages_create_path, :icon => 'icon-file') %>
+  <%= tab(:faq, :url => new_admin_static_page_path, :icon => 'icon-file') %>
   <% end %>
