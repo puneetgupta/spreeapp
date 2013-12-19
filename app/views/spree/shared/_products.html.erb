@@ -20,7 +20,9 @@
           <li class="span3 feature" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
             <div class="img_box">
               <a href="<%= url_for product %>">
-                <%= image_tag(product.images.first.attachment.url) %>
+              	<% unless product.images.empty? %>
+                	<%= image_tag(product.images.first.attachment.url) %>
+				<% end %>
                 <span class="circle"> 
                     <span class="plus">+</span>
                 </span>

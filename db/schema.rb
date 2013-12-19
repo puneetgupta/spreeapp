@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725095356) do
+ActiveRecord::Schema.define(:version => 20131219072104) do
+
+  create_table "products_categories", :id => false, :force => true do |t|
+    t.integer "product_id"
+    t.integer "category_id"
+  end
 
   create_table "spree_activators", :force => true do |t|
     t.string   "description"
@@ -90,6 +95,12 @@ ActiveRecord::Schema.define(:version => 20130725095356) do
     t.string   "calculable_type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "spree_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "spree_configurations", :force => true do |t|
@@ -674,6 +685,13 @@ ActiveRecord::Schema.define(:version => 20130725095356) do
     t.integer  "zone_members_count", :default => 0
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
+  end
+
+  create_table "static_pages", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end

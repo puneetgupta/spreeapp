@@ -14,6 +14,11 @@
    
 
 
-  <% if can? :admin, Spree::Admin::StaticPagesController %>
-  <%= tab(:faq, :url => new_admin_static_page_path, :icon => 'icon-file') %>
-  <% end %>
+<% if can? :admin, Spree::Admin::StaticPagesController %>
+	<%= tab(:faq, :url => new_admin_static_page_path, :icon => 'icon-file') %>
+<% end %>
+
+<% if can? :admin, Spree::Admin::CategoriesController %>
+  <%= tab(:Category, :url => new_admin_category_path, :icon => 'icon-file') %>
+<% end %>
+
