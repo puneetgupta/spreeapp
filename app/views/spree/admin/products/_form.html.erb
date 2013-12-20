@@ -103,7 +103,7 @@
 	<%= f.field_container :categories do %>
       <%= f.label :categories_id, Spree.t(:categories) %>
       <%#= f.hidden_field :categories_id, :value => @product.categories.join(',') %>
-	  <%= select_tag :categories_id, options_from_collection_for_select(Spree::Category.all, "id", "name", @product.categories), { :multiple => true, :size =>10 }%>
+	  <%= select_tag :categories_id, options_from_collection_for_select(Spree::Category.all, "id", "name", @product.categories.map(&:id)), { :multiple => true, :size =>10 }%>
     <% end %>
 
   </div>
