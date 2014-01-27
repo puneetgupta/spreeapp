@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: git://github.com/enbake/spree_auctions_enbake.git
-  revision: 1e7af6a569f8771ab75b6402f07170a83b1f135b
+  revision: 8dc040915e564de4a883b8ae73453ab66fa693cc
   specs:
-    spree_auctions (2.0.9)
+    spree_auctions (2.0.16)
       spree_core (~> 2.0.3)
 
 GIT
@@ -84,6 +84,15 @@ GIT
       spree_frontend (~> 2.0.0)
 
 GIT
+  remote: git://github.com/spree/spree_editor.git
+  revision: 479453239fcdd472d1346ba11a48b90063831bac
+  specs:
+    spree_editor (2.0.0)
+      ckeditor
+      spree_backend (>= 2.0.0)
+      tinymce-rails (~> 3.5.8.3)
+
+GIT
   remote: git://github.com/spree/spree_fancy.git
   revision: 700c596a0516d1252281f1ec4a210264d6f9eccc
   branch: 2-0-stable
@@ -150,6 +159,9 @@ GEM
     canonical-rails (0.0.3)
       rails (>= 3.1, < 5.0)
     chunky_png (1.2.8)
+    ckeditor (4.0.8)
+      mime-types
+      orm_adapter
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -273,6 +285,8 @@ GEM
       ref
     thor (0.18.1)
     tilt (1.4.1)
+    tinymce-rails (3.5.8.3)
+      railties (>= 3.1.1)
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
@@ -301,6 +315,7 @@ DEPENDENCIES
   spree!
   spree_auctions!
   spree_auth_devise!
+  spree_editor!
   spree_fancy!
   spree_paypal_website_standard!
   therubyracer
