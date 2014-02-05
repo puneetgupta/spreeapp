@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131219072104) do
+ActiveRecord::Schema.define(:version => 20140205132819) do
 
   create_table "products_categories", :id => false, :force => true do |t|
     t.integer "product_id"
@@ -261,6 +261,15 @@ ActiveRecord::Schema.define(:version => 20131219072104) do
     t.string   "display_on"
   end
 
+  create_table "spree_payment_notifications", :force => true do |t|
+    t.text     "params"
+    t.string   "status"
+    t.string   "transaction_id"
+    t.integer  "order_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "spree_payments", :force => true do |t|
     t.decimal  "amount",               :precision => 10, :scale => 2, :default => 0.0, :null => false
     t.integer  "order_id"
@@ -278,6 +287,18 @@ ActiveRecord::Schema.define(:version => 20131219072104) do
   end
 
   add_index "spree_payments", ["order_id"], :name => "index_spree_payments_on_order_id"
+
+  create_table "spree_photos", :force => true do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "product_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "spree_photos", ["product_id"], :name => "index_spree_photos_on_product_id"
 
   create_table "spree_preferences", :force => true do |t|
     t.text     "value"
