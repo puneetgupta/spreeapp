@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140205132819) do
+ActiveRecord::Schema.define(:version => 20140207135812) do
 
   create_table "products_categories", :id => false, :force => true do |t|
     t.integer "product_id"
@@ -88,6 +88,13 @@ ActiveRecord::Schema.define(:version => 20140205132819) do
 
   add_index "spree_assets", ["viewable_id"], :name => "index_assets_on_viewable_id"
   add_index "spree_assets", ["viewable_type", "type"], :name => "index_assets_on_viewable_type_and_type"
+
+  create_table "spree_author_bios", :force => true do |t|
+    t.string   "name"
+    t.text     "biography"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "spree_calculators", :force => true do |t|
     t.string   "type"
@@ -293,12 +300,11 @@ ActiveRecord::Schema.define(:version => 20140205132819) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-    t.integer  "product_id"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
-
-  add_index "spree_photos", ["product_id"], :name => "index_spree_photos_on_product_id"
 
   create_table "spree_preferences", :force => true do |t|
     t.text     "value"
@@ -347,6 +353,16 @@ ActiveRecord::Schema.define(:version => 20140205132819) do
     t.integer  "shipping_category_id"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
+    t.datetime "auction_end"
+    t.decimal  "minimal_price"
+    t.datetime "created_date"
+    t.string   "art_topics"
+    t.string   "techniques"
+    t.string   "signature"
+    t.string   "art_width"
+    t.string   "art_height"
+    t.string   "art_depth"
+    t.integer  "author_bio_id"
   end
 
   add_index "spree_products", ["available_on"], :name => "index_spree_products_on_available_on"

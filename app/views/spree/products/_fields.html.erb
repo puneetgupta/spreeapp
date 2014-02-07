@@ -1,0 +1,66 @@
+<div class="add-on hero-unit">
+<h3>Details</h3>
+<table>
+	<% if @product.author_bio%>
+		<tr>
+			<td>Author Name</td>
+			<td style="padding: 0 10px 0 10px;">:</td>
+			<td><%= @product.author_bio.name%></td>
+		</tr>
+		<tr>
+			<td>Bio</td>
+			<td style="padding: 0 10px 0 10px;">:</td>
+			<td><%= @product.author_bio.biography.html_safe%></td>
+		</tr>
+	<% end %>
+	<% if @product.created_date.present?%>
+		<tr>
+			<td>Date of art created</td>
+			<td style="padding: 0 10px 0 10px;">:</td>
+			<td><%= @product.created_date%></td>
+		</tr>
+	<% end %>
+	<% if @product.art_topics.present?%>
+		<tr>
+			<td>Art Topics</td>
+			<td style="padding: 0 10px 0 10px;">:</td>
+			<td><%= @product.art_topics%></td>
+		</tr>
+	<% end %>
+	<% if @product.techniques.present?%>
+		<tr>
+			<td>Techniques</td>
+			<td style="padding: 0 10px 0 10px;">:</td>
+			<td><%= @product.techniques%></td>
+		</tr>
+	<% end %>
+	<% if @product.signature.present?%>
+		<tr>
+			<td>Signature</td>
+			<td style="padding: 0 10px 0 10px;">:</td>
+			<td><%= @product.signature%></td>
+		</tr>
+	<% end %>
+	<% if @product.art_width.present?%>
+		<tr>
+			<td>Width</td>
+			<td style="padding: 0 10px 0 10px;">:</td>
+			<td><%= @product.art_width%></td>
+		</tr>
+	<% end %>
+	<% if @product.art_height.present?%>
+		<tr>
+			<td>Height</td>
+			<td style="padding: 0 10px 0 10px;">:</td>
+			<td><%= @product.art_height%></td>
+		</tr>
+	<% end %>
+	<% if @product.art_depth.present?%>
+		<tr>
+			<td>Depth</td>
+			<td style="padding: 0 10px 0 10px;">:</td>
+			<td><%= @product.art_depth%></td>
+		</tr>
+	<% end %>
+</table>
+</div>
