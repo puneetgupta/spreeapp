@@ -41,3 +41,5 @@ gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-0-stable'
 gem 'spree_fancy', :github => 'spree/spree_fancy', :branch => '2-0-stable'
 gem 'spree_paypal_website_standard', github: 'enbake/spree-pp-website-standard'
 gem 'spree_auctions', github: 'enbake/spree_auctions_enbake'
+gem 'spree_editor', :github => 'spree/spree_editor'
+
