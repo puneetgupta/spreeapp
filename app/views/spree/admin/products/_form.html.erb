@@ -120,7 +120,7 @@
   	
   	<%= f.field_container :author do %>
       <%= f.label :author_bio_id, Spree.t(:author) %>
-      <%= f.select :author_bio_id, Spree::AuthorBio.all.collect{|p| [p.name, p.id]} %>
+      <%= f.select :author_bio_id, Spree::AuthorBio.all.collect{|p| [p.name, p.id]}, include_blank: "None" %>
     <% end %>
   	
     <%= f.field_container :categories do %>
