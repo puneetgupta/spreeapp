@@ -11,12 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140207135812) do
+ActiveRecord::Schema.define(:version => 20140211113761) do
 
   create_table "products_categories", :id => false, :force => true do |t|
     t.integer "product_id"
     t.integer "category_id"
   end
+
+  create_table "spree_activator_translations", :force => true do |t|
+    t.integer  "spree_activator_id"
+    t.string   "locale",             :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "name"
+    t.string   "description"
+    t.string   "code"
+    t.string   "path"
+  end
+
+  add_index "spree_activator_translations", ["locale"], :name => "index_spree_activator_translations_on_locale"
+  add_index "spree_activator_translations", ["spree_activator_id"], :name => "index_spree_activator_translations_on_spree_activator_id"
 
   create_table "spree_activators", :force => true do |t|
     t.string   "description"
@@ -71,6 +85,17 @@ ActiveRecord::Schema.define(:version => 20140207135812) do
   end
 
   add_index "spree_adjustments", ["adjustable_id"], :name => "index_adjustments_on_order_id"
+
+  create_table "spree_asset_translations", :force => true do |t|
+    t.integer  "spree_asset_id"
+    t.string   "locale",         :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "alt"
+  end
+
+  add_index "spree_asset_translations", ["locale"], :name => "index_spree_asset_translations_on_locale"
+  add_index "spree_asset_translations", ["spree_asset_id"], :name => "index_spree_asset_translations_on_spree_asset_id"
 
   create_table "spree_assets", :force => true do |t|
     t.integer  "viewable_id"
@@ -202,6 +227,17 @@ ActiveRecord::Schema.define(:version => 20140207135812) do
     t.datetime "updated_at",                    :null => false
   end
 
+  create_table "spree_option_type_translations", :force => true do |t|
+    t.integer  "spree_option_type_id"
+    t.string   "locale",               :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "presentation"
+  end
+
+  add_index "spree_option_type_translations", ["locale"], :name => "index_spree_option_type_translations_on_locale"
+  add_index "spree_option_type_translations", ["spree_option_type_id"], :name => "index_spree_option_type_translations_on_spree_option_type_id"
+
   create_table "spree_option_types", :force => true do |t|
     t.string   "name",         :limit => 100
     t.string   "presentation", :limit => 100
@@ -214,6 +250,17 @@ ActiveRecord::Schema.define(:version => 20140207135812) do
     t.integer "prototype_id"
     t.integer "option_type_id"
   end
+
+  create_table "spree_option_value_translations", :force => true do |t|
+    t.integer  "spree_option_value_id"
+    t.string   "locale",                :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "presentation"
+  end
+
+  add_index "spree_option_value_translations", ["locale"], :name => "index_spree_option_value_translations_on_locale"
+  add_index "spree_option_value_translations", ["spree_option_value_id"], :name => "index_spree_option_value_translations_on_spree_option_value_id"
 
   create_table "spree_option_values", :force => true do |t|
     t.integer  "position"
@@ -252,6 +299,7 @@ ActiveRecord::Schema.define(:version => 20140207135812) do
     t.datetime "updated_at",                                                                         :null => false
     t.string   "currency"
     t.string   "last_ip_address"
+    t.string   "locale"
   end
 
   add_index "spree_orders", ["number"], :name => "index_spree_orders_on_number"
@@ -340,6 +388,29 @@ ActiveRecord::Schema.define(:version => 20140207135812) do
   end
 
   add_index "spree_product_properties", ["product_id"], :name => "index_product_properties_on_product_id"
+
+  create_table "spree_product_property_translations", :force => true do |t|
+    t.integer  "spree_product_property_id"
+    t.string   "locale",                    :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "value"
+  end
+
+  add_index "spree_product_property_translations", ["locale"], :name => "index_spree_product_property_translations_on_locale"
+  add_index "spree_product_property_translations", ["spree_product_property_id"], :name => "index_0968f57fbd8fb9f31050820cbb66109a266c516a"
+
+  create_table "spree_product_translations", :force => true do |t|
+    t.integer  "spree_product_id"
+    t.string   "locale",           :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.text     "description"
+    t.string   "permalink"
+  end
+
+  add_index "spree_product_translations", ["locale"], :name => "index_spree_product_translations_on_locale"
+  add_index "spree_product_translations", ["spree_product_id"], :name => "index_spree_product_translations_on_spree_product_id"
 
   create_table "spree_products", :force => true do |t|
     t.string   "name",                 :default => "", :null => false
@@ -431,6 +502,17 @@ ActiveRecord::Schema.define(:version => 20140207135812) do
     t.integer "property_id"
   end
 
+  create_table "spree_property_translations", :force => true do |t|
+    t.integer  "spree_property_id"
+    t.string   "locale",            :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "presentation"
+  end
+
+  add_index "spree_property_translations", ["locale"], :name => "index_spree_property_translations_on_locale"
+  add_index "spree_property_translations", ["spree_property_id"], :name => "index_spree_property_translations_on_spree_property_id"
+
   create_table "spree_prototypes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -492,6 +574,18 @@ ActiveRecord::Schema.define(:version => 20140207135812) do
   add_index "spree_shipping_method_categories", ["shipping_category_id"], :name => "index_spree_shipping_method_categories_on_shipping_category_id"
   add_index "spree_shipping_method_categories", ["shipping_method_id"], :name => "index_spree_shipping_method_categories_on_shipping_method_id"
 
+  create_table "spree_shipping_method_translations", :force => true do |t|
+    t.integer  "spree_shipping_method_id"
+    t.string   "locale",                   :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "name"
+    t.text     "description"
+  end
+
+  add_index "spree_shipping_method_translations", ["locale"], :name => "index_spree_shipping_method_translations_on_locale"
+  add_index "spree_shipping_method_translations", ["spree_shipping_method_id"], :name => "index_c713dce023452222dbb97ceedfc9eddb4f02a87f"
+
   create_table "spree_shipping_methods", :force => true do |t|
     t.string   "name"
     t.string   "display_on"
@@ -499,6 +593,7 @@ ActiveRecord::Schema.define(:version => 20140207135812) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "tracking_url"
+    t.text     "description"
   end
 
   create_table "spree_shipping_methods_zones", :id => false, :force => true do |t|
@@ -598,6 +693,28 @@ ActiveRecord::Schema.define(:version => 20140207135812) do
     t.datetime "updated_at",                     :null => false
   end
 
+  create_table "spree_tax_category_translations", :force => true do |t|
+    t.integer  "spree_tax_category_id"
+    t.string   "locale",                :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "name"
+  end
+
+  add_index "spree_tax_category_translations", ["locale"], :name => "index_spree_tax_category_translations_on_locale"
+  add_index "spree_tax_category_translations", ["spree_tax_category_id"], :name => "index_spree_tax_category_translations_on_spree_tax_category_id"
+
+  create_table "spree_tax_rate_translations", :force => true do |t|
+    t.integer  "spree_tax_rate_id"
+    t.string   "locale",            :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "name"
+  end
+
+  add_index "spree_tax_rate_translations", ["locale"], :name => "index_spree_tax_rate_translations_on_locale"
+  add_index "spree_tax_rate_translations", ["spree_tax_rate_id"], :name => "index_spree_tax_rate_translations_on_spree_tax_rate_id"
+
   create_table "spree_tax_rates", :force => true do |t|
     t.decimal  "amount",             :precision => 8, :scale => 5
     t.integer  "zone_id"
@@ -610,12 +727,36 @@ ActiveRecord::Schema.define(:version => 20140207135812) do
     t.datetime "deleted_at"
   end
 
+  create_table "spree_taxon_translations", :force => true do |t|
+    t.integer  "spree_taxon_id"
+    t.string   "locale",         :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "name"
+    t.string   "permalink"
+    t.text     "description"
+  end
+
+  add_index "spree_taxon_translations", ["locale"], :name => "index_spree_taxon_translations_on_locale"
+  add_index "spree_taxon_translations", ["spree_taxon_id"], :name => "index_spree_taxon_translations_on_spree_taxon_id"
+
   create_table "spree_taxonomies", :force => true do |t|
     t.string   "name",                      :null => false
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.integer  "position",   :default => 0
   end
+
+  create_table "spree_taxonomy_translations", :force => true do |t|
+    t.integer  "spree_taxonomy_id"
+    t.string   "locale",            :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "name"
+  end
+
+  add_index "spree_taxonomy_translations", ["locale"], :name => "index_spree_taxonomy_translations_on_locale"
+  add_index "spree_taxonomy_translations", ["spree_taxonomy_id"], :name => "index_spree_taxonomy_translations_on_spree_taxonomy_id"
 
   create_table "spree_taxons", :force => true do |t|
     t.integer  "parent_id"

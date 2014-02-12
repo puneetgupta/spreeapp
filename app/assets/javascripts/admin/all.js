@@ -12,3 +12,5 @@
 //= require_tree .
 //= require admin/spree_auctions
 //= require admin/spree_editor
+//= require admin/spree_multi_lingual
+//= require admin/spree_multi_lingual_class

@@ -42,4 +42,8 @@ gem 'spree_fancy', :github => 'spree/spree_fancy', :branch => '2-0-stable'
 gem 'spree_paypal_website_standard', github: 'enbake/spree-pp-website-standard'
 gem 'spree_auctions', github: 'enbake/spree_auctions_enbake'
 gem 'spree_editor', :github => 'spree/spree_editor'
+gem 'tinymce-rails-langs'
+
+gem 'spree_multi_lingual', :github => 'puneetgupta/spree_multi_lingual'
+gem 'globalize', '3.0.4'
 
