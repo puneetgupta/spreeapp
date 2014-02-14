@@ -14,11 +14,10 @@ GIT
 
 GIT
   remote: git://github.com/puneetgupta/spree_multi_lingual.git
-  revision: 450b4cd86f4330dcb5a0561e36d969cdecf194d6
+  revision: 968d05cede8bbd6e20845451bbb7a0241d4afa3b
   specs:
     spree_multi_lingual (1.0.0)
       coffee-rails
-      easy_globalize3_accessors
       globalize3 (= 0.2.0)
       i18n
       rack-contrib
@@ -27,6 +26,13 @@ GIT
       spree_backend (~> 2.0)
       spree_core (~> 2.0)
       spree_frontend (~> 2.0)
+
+GIT
+  remote: git://github.com/reinkcar/easy_globalize3_accessors.git
+  revision: f044a3b596fd708f288906e9d3e222a76f9fc66f
+  specs:
+    easy_globalize3_accessors (1.2.0)
+      globalize3 (~> 0.2.0.beta1)
 
 GIT
   remote: git://github.com/spree/spree.git
@@ -205,8 +211,6 @@ GEM
       warden (~> 1.2.1)
     devise-encryptable (0.1.2)
       devise (>= 2.1.0)
-    easy_globalize3_accessors (1.2.0)
-      globalize3 (~> 0.2.0.beta1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -342,6 +346,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  easy_globalize3_accessors!
   globalize (= 3.0.4)
   jquery-rails
   pg
