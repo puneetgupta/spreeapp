@@ -2,7 +2,7 @@
   
   <div class="left eight columns alpha" data-hook="admin_product_form_left">    
     <%= f.field_container :name do %>
-      <%= f.label :name, raw(Spree.t(:name) + content_tag(:span, ' *', :class => 'required')) %>
+      <%= f.label :name, raw(Spree.t(:auction_title) + content_tag(:span, ' *', :class => 'required')) %>
       <%= f.text_field :name, :class => 'fullwidth title' %>
       <%= f.error_message_on :name %>
     <% end %>
@@ -15,16 +15,22 @@
 
     <%= f.field_container :description do %>
       <%= f.label :description, Spree.t(:description) %>
-      <%= f.text_area :description, {:rows => "#{unless @product.has_variants? then '20' else '13' end}", :class => 'fullwidth'} %>
+      <%= f.text_area :description, {:rows => "20", :class => 'fullwidth'} %>
       <%= f.error_message_on :description %>
     <% end %>
   </div>
 
   <div class="right four columns omega" data-hook="admin_product_form_right">
     <%= f.field_container :price do %>
-      <%= f.label :price, raw(Spree.t(:master_price) + content_tag(:span, ' *', :class => "required")) %>
+      <%= f.label :price, raw(Spree.t(:starting_price) + content_tag(:span, ' *', :class => "required")) %>
       <%= f.text_field :price, :value => number_to_currency(@product.price, :unit => '') %>
       <%= f.error_message_on :price %>
+    <% end %>
+
+    <%= f.field_container :minimal_price do %>
+      <%= f.label :minimal_price, raw(Spree.t(:minimal_price) + content_tag(:span, ' *', :class => "required")) %>
+      <%= f.text_field :minimal_price, :value => number_to_currency(@product.minimal_price, :unit => '') %>
+      <%= f.error_message_on :minimal_price %>
     <% end %>
 
     <div class="alpha two columns">
@@ -44,80 +50,98 @@
 
     <div class="clear"></div>
 
-    <%= f.field_container :available_on do %>
+    <!-- <%= f.field_container :available_on do %>
       <%= f.label :available_on, Spree.t(:available_on) %>
       <%= f.error_message_on :available_on %>
       <%= f.text_field :available_on, :value => datepicker_field_value(@product.available_on), :class => 'datepicker' %>
-    <% end %>
+    <% end %> -->
+
+    <div class="alpha two columns">
+        <div class="date-range-filter field">
+          <%= f.label :available_on, Spree.t(:auction_start) %>
+          <div class="date-range-fields">
+            <%= f.text_field :available_on, :value => datepicker_field_value(@product.available_on), :class => 'datepicker datepicker-from fullwidth' %>
+          </div>
+          <%= f.error_message_on :available_on %>
+        </div>
+      </div>
+
+      <div class="omega two columns">
+        <div class="date-range-filter field">
+          <%= f.label :auction_end, Spree.t(:auction_finish) %>
+          <div class="date-range-fields">
+            <%= f.text_field :auction_end, :value => datepicker_field_value(@product.auction_end), :class => 'datepicker datepicker-to fullwidth' %>
+          </div>
+          <%= f.error_message_on :auction_end %>
+        </div>
+      </div>
+
+    <div class="omega four">
+      <%= f.field_container :created_date do %>
+        <%= f.label :created_date, Spree.t(:art_created_at) %>
+        <%= f.text_field :created_date, :value => datepicker_field_value(@product.created_date), :class => 'datepicker' %>
+        <%= f.error_message_on :created_date %>
+      <% end %>
+    </div>
 
     <% unless @product.has_variants? %>
       <%= f.field_container :sku do %>
         <%= f.label :sku, Spree.t(:sku) %>
         <%= f.text_field :sku, :size => 16 %>
       <% end %>
-
-      <ul id="shipping_specs">
-        <li id="shipping_specs_weight_field" class="field alpha two columns">
-          <%= f.label :weight, Spree.t(:weight) %>
-          <%= f.text_field :weight, :size => 4 %>
-        </li>
-        <li id="shipping_specs_height_field" class="field omega two columns">
-          <%= f.label :height, Spree.t(:height) %>
-          <%= f.text_field :height, :size => 4 %>
-        </li>
-        <li id="shipping_specs_width_field" class="field alpha two columns">
-          <%= f.label :width, Spree.t(:width) %>
-          <%= f.text_field :width, :size => 4 %>
-        </li>
-        <li id="shipping_specs_depth_field" class="field omega two columns">
-          <%= f.label :depth, Spree.t(:depth) %>
-          <%= f.text_field :depth, :size => 4 %>
-        </li>
-      </ul>
-    <% end %>
-
-    <%= f.field_container :shipping_categories do %>
-      <%= f.label :shipping_category_id, Spree.t(:shipping_categories) %>
-      <%= f.collection_select(:shipping_category_id, @shipping_categories, :id, :name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2' }) %>
-      <%= f.error_message_on :shipping_category %>
-    <% end %>
-
-    <%= f.field_container :tax_category do %>
-      <%= f.label :tax_category_id, Spree.t(:tax_category) %>
-      <%= f.collection_select(:tax_category_id, @tax_categories, :id, :name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2' }) %>
-      <%= f.error_message_on :tax_category %>
     <% end %>
   </div>
 
-  <div class="twelve columns alpha omega">
-    <%= f.field_container :taxons do %>
-      <%= f.label :taxon_ids, Spree.t(:taxons) %><br />
-      <%= f.hidden_field :taxon_ids, :value => @product.taxon_ids.join(',') %>
-    <% end %>
+    <div class="omega two columns">
+      <%= f.field_container :art_width do %>
+        <%= f.label :art_width, Spree.t(:art_width) %>
+        <%= f.text_field :art_width, :value => @product.art_width %>
+        <%= f.error_message_on :art_width %>
+      <% end %>
+    </div>
 
-    <%= f.field_container :option_types do %>
-      <%= f.label :option_type_ids, Spree.t(:option_types) %>
-      <%= f.hidden_field :option_type_ids, :value => @product.option_type_ids.join(',') %>
-    <% end %>
+    <div class="omega two columns">
+      <%= f.field_container :art_height do %>
+        <%= f.label :art_height, Spree.t(:art_height) %>
+        <%= f.text_field :art_height, :value => @product.art_height %>
+        <%= f.error_message_on :art_height %>
+      <% end %>
+    </div>
 
-	<%= f.field_container :categories do %>
+    <div class="omega two columns">
+      <%= f.field_container :art_depth do %>
+        <%= f.label :art_depth, Spree.t(:art_depth) %>
+        <%= f.text_field :art_depth, :value => @product.art_depth %>
+        <%= f.error_message_on :art_depth %>
+      <% end %>
+    </div>
+
+  <div class="alpha omega twelve columns">
+  	
+  	<%= f.field_container :author do %>
+      <%= f.label :author_bio_id, Spree.t(:author) %>
+      <%= f.select :author_bio_id, Spree::AuthorBio.all.collect{|p| [p.name, p.id]}, include_blank: "None" %>
+    <% end %>
+  	
+    <%= f.field_container :categories do %>
       <%= f.label :categories_id, Spree.t(:categories) %>
       <%#= f.hidden_field :categories_id, :value => @product.categories.join(',') %>
-	  <%= select_tag :categories_id, options_from_collection_for_select(Spree::Category.all, "id", "name", @product.categories.map(&:id)), { :multiple => true, :size =>10 }%>
+      <%= select_tag :categories_id, options_from_collection_for_select(Spree::Category.all, "id", "name", @product.categories.map(&:id)), { :multiple => true, :size =>10 }%>
     <% end %>
 
-  </div>
-
-  <!-- <h2><%= Spree.t(:metadata) %></h2> -->
-  <div data-hook="admin_product_form_meta" class="alpha omega twelve columns">
-    <%= f.field_container :meta_keywords do %>
-      <%= f.label :meta_keywords, Spree.t(:meta_keywords) %>
-      <%= f.text_field :meta_keywords, :class => 'fullwidth' %>
+    <%= f.field_container :art_topics do %>
+      <%= f.label :art_topics, Spree.t(:art_topics) %>
+      <%= f.text_field :art_topics, :class => 'fullwidth', :value => @product.art_topics %>
     <% end %>
 
-    <%= f.field_container :meta_description do %>
-      <%= f.label :meta_description, Spree.t(:meta_description) %>
-      <%= f.text_field :meta_description, :class => 'fullwidth' %>
+    <%= f.field_container :techniques do %>
+      <%= f.label :techniques, Spree.t(:techniques) %>
+      <%= f.text_field :techniques, :class => 'fullwidth', :value => @product.techniques %>
+    <% end %>
+    
+    <%= f.field_container :signature do %>
+      <%= f.label :signature, Spree.t(:signature) %>
+      <%= f.text_field :signature, :class => 'fullwidth', :value => @product.signature %>
     <% end %>
   </div>
 

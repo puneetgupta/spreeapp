@@ -12,4 +12,5 @@
  *= require jquery_ui
  *= require store/index
  *= require store/blogpost
+ *= require store/spree_multi_lingual
 */

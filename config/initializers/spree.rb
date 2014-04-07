@@ -18,3 +18,7 @@ Spree.config do |config|
 end
 
 Spree.user_class = "Spree::User"
+
+SpreeEditor::Config.tap do |config|
+  config.ids = "product_description page_body bio_description static_page_description promotion_description"
+end

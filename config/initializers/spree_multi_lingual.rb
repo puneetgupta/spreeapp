@@ -1,0 +1,1 @@
+SpreeMultiLingual.languages = ["en", "pl"]

@@ -22,3 +22,7 @@
   <%= tab(:Category, :url => new_admin_category_path, :icon => 'icon-file') %>
 <% end %>
 
+<% if can? :admin, Spree::Admin::CategoriesController %>
+  <%= tab(:Bio, :url => admin_author_bios_path, :icon => 'icon-file') %>
+<% end %>
+
