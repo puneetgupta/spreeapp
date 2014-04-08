@@ -1,0 +1,50 @@
+/* ---------- Zoomer ---------- */
+.zoomer {
+	margin-bottom: 60px;
+}
+.zoomer .holder {
+	border: 1px solid #e6e6e6;
+	background: #ffffff;
+}
+.zoomer .holder .image {
+	overflow: hidden;
+}
+
+.zoomer .holder .image img {
+	max-width: 999999999999999px;
+}
+
+/* console */
+.zoomer .holder .console {
+	height: 35px;
+	padding-top: 7px;
+	background-color:#ffffff;
+}
+.zoomer .holder .console .left {
+	margin: 0;
+	float: left;
+	padding-left: 6px;
+}
+.zoomer .holder .console .right {
+	margin: 0;
+	float: right;
+	padding-right: 2px;
+}
+.zoomer .holder .console li {
+	list-style-type: none;
+	float: left;
+	margin-right: 6px;
+}
+.zoomer .holder .console li span {
+	float: left;
+	cursor: pointer;
+}
+
+/* thumbnails */
+.zoomer .thumbs img {
+	border: 1px solid #e6e6e6;
+	float: left;
+	margin-right: 4px;
+	margin-top: 4px;
+	cursor: pointer;
+}

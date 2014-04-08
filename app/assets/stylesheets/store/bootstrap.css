@@ -288,7 +288,8 @@ a:focus {
 .container,
 .navbar-static-top .container,
 .navbar-fixed-top .container,
-.navbar-fixed-bottom .container {
+.navbar-fixed-bottom .container,
+.page-wrapper {
   width: 940px;
 }
 
@@ -614,20 +615,24 @@ a:focus {
   float: right;
 }
 
-.container {
+.container,
+.page-wrapper {
   margin-right: auto;
   margin-left: auto;
   *zoom: 1;
 }
 
 .container:before,
-.container:after {
+.container:after,
+.page-wrapper:before,
+.page-wrapper:after {
   display: table;
   line-height: 0;
   content: "";
 }
 
-.container:after {
+.container:after,
+.page-wrapper:after {
   clear: both;
 }
 

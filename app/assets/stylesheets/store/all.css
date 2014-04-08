@@ -13,4 +13,7 @@
  *= require store/index
  *= require store/blogpost
  *= require store/spree_multi_lingual
+ *= require store/gallery
+ *= require store/pretty-photo
+ *= require store/pretty-loader
 */
