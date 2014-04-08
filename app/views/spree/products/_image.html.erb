@@ -1,5 +1,63 @@
-<% if image %> 
-  <%= image_tag image.attachment.url(:product), :itemprop => "image", :class => "post_pic" %>
-<% else %>
-  <%= product_image(@product, :itemprop => "image", :class => "post_pic") %>
-<% end %>
+<div class="zoomer">
+	
+	<!-- HOLDER -->
+	<div class="holder">
+		
+		<!-- IMAGE -->
+		<div class="image"><img src="http://lorempixel.com/1200/600/sports/1/" class="target"></div>
+
+	
+		<!-- CONSOLE -->
+		<div class="console">
+				
+				<ul class="left">					
+					<li>
+						<span id="zoomerUp"></span>
+						<span id="zoomerDown"></span>
+						<span id="zoomerLeft"></span>
+						<span id="zoomerRight"></span>		
+					</li>
+					<li>
+						<span id="zoomerIn"></span>
+						<span id="zoomerOut"></span>
+					</li>
+				</ul>
+				
+				<ul class="right">
+					<li>
+						<span id="zoomerView"></span>
+					</li>
+					<li>
+						<span id="zoomerReset"></span>
+					</li>
+				</ul>
+			
+		</div>	<!-- end console -->
+	
+	</div>	<!-- end holder -->
+	
+	
+	<!-- THUMBNAILS -->
+	<!-- Can be placed on unlimited number of lines - Refer to zoomer config parameters for setting up the size -->
+	<div class="thumbs">
+			<img id="http://lorempixel.com/1200/600/sports/1/" src="http://lorempixel.com/40/40/sports/1/">
+			<img id="http://lorempixel.com/1200/600/sports/2/" src="http://lorempixel.com/40/40/sports/2/">
+			<img id="http://lorempixel.com/1200/600/sports/3/" src="http://lorempixel.com/40/40/sports/3/">
+			<img id="http://lorempixel.com/1200/600/sports/4/" src="http://lorempixel.com/40/40/sports/4/">
+			<img id="http://lorempixel.com/1200/600/sports/5/" src="http://lorempixel.com/40/40/sports/5/">
+			<img id="http://lorempixel.com/1200/600/sports/6/" src="http://lorempixel.com/40/40/sports/6/">
+			
+	</div>
+
+	
+	<!-- LIGHTBOX - PRETTYPHOTO STUFF -->
+	<div class="hidden lightbox">
+		<a href="http://lorempixel.com/1200/600/sports/1/" rel="prettyPhoto[gallery]"></a>
+		<a href="http://lorempixel.com/1200/600/sports/2/" rel="prettyPhoto[gallery]"></a>
+		<a href="http://lorempixel.com/1200/600/sports/3/" rel="prettyPhoto[gallery]"></a>
+		<a href="http://lorempixel.com/1200/600/sports/4/" rel="prettyPhoto[gallery]"></a>
+		<a href="http://lorempixel.com/1200/600/sports/5/" rel="prettyPhoto[gallery]"></a>
+		<a href="http://lorempixel.com/1200/600/sports/6/" rel="prettyPhoto[gallery]"></a>
+	</div>
+	
+</div>	<!-- end zoomer -->

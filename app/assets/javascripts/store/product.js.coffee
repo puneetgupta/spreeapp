@@ -46,3 +46,25 @@ $ ->
   radios.click (event) ->
     Spree.showVariantImages @value
     Spree.updateVariantPrice ($ this)
+
+
+$(document).ready ->
+  # pan/zoom product gallery setup
+  $.zoomer
+    defaultWidthValue: 668
+    defaultHeightValue: 402
+    maxWidthValue: 9999
+    maxHeightValue: 1000
+    moveValue: 50
+    zoomValue: 1.4
+    thumbnailsWidthValue: 40
+    thumbnailsHeightValue: 40
+    thumbnailsBoxWidthValue: 410
+    zoomerTheme: 'light'
+
+  $("a[rel^='prettyPhoto']").prettyPhoto
+    theme: 'pp_default'
+    opacity: 0.90
+    overlay_gallery: true
+    autoplay_slideshow: false
+    slideshow: 5000
