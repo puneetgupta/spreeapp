@@ -93,18 +93,34 @@
   </div>
 
     <div class="omega two columns">
+      <%= f.field_container :art_height do %>
+        <%= f.label :art_height, "Height(Framed)" %>
+        <%= f.text_field :art_height, :value => @product.art_height %>
+        <%= f.error_message_on :art_height %>
+      <% end %>
+    </div>
+
+    <div class="omega two columns">
+      <%= f.field_container :unframed_height do %>
+        <%= f.label :unframed_height, "Height(Unframed)" %>
+        <%= f.text_field :unframed_height, :value => @product.unframed_height %>
+        <%= f.error_message_on :unframed_height %>
+      <% end %>
+    </div>
+
+    <div class="omega two columns">
       <%= f.field_container :art_width do %>
-        <%= f.label :art_width, Spree.t(:art_width) %>
+        <%= f.label :art_width, "Width(Framed)" %>
         <%= f.text_field :art_width, :value => @product.art_width %>
         <%= f.error_message_on :art_width %>
       <% end %>
     </div>
 
     <div class="omega two columns">
-      <%= f.field_container :art_height do %>
-        <%= f.label :art_height, Spree.t(:art_height) %>
-        <%= f.text_field :art_height, :value => @product.art_height %>
-        <%= f.error_message_on :art_height %>
+      <%= f.field_container :unframed_width do %>
+        <%= f.label :unframed_width, "Width(Unframed)" %>
+        <%= f.text_field :unframed_width, :value => @product.unframed_width %>
+        <%= f.error_message_on :unframed_width %>
       <% end %>
     </div>
 
@@ -115,6 +131,7 @@
         <%= f.error_message_on :art_depth %>
       <% end %>
     </div>
+
 
   <div class="alpha omega twelve columns">
   	

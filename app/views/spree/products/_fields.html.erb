@@ -41,18 +41,18 @@
 			<td><%= @product.signature%></td>
 		</tr>
 	<% end %>
-	<% if @product.art_width.present?%>
-		<tr>
-			<td>Width</td>
-			<td style="padding: 0 10px 0 10px;">:</td>
-			<td><%= @product.art_width%></td>
-		</tr>
-	<% end %>
 	<% if @product.art_height.present?%>
 		<tr>
 			<td>Height</td>
 			<td style="padding: 0 10px 0 10px;">:</td>
 			<td><%= @product.art_height%></td>
+		</tr>
+	<% end %>
+	<% if @product.art_width.present?%>
+		<tr>
+			<td>Width</td>
+			<td style="padding: 0 10px 0 10px;">:</td>
+			<td><%= @product.art_width%></td>
 		</tr>
 	<% end %>
 	<% if @product.art_depth.present?%>

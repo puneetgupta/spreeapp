@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140211113761) do
+ActiveRecord::Schema.define(:version => 20140414065353) do
 
   create_table "products_categories", :id => false, :force => true do |t|
     t.integer "product_id"
@@ -434,6 +434,8 @@ ActiveRecord::Schema.define(:version => 20140211113761) do
     t.string   "art_height"
     t.string   "art_depth"
     t.integer  "author_bio_id"
+    t.string   "unframed_width"
+    t.string   "unframed_height"
   end
 
   add_index "spree_products", ["available_on"], :name => "index_spree_products_on_available_on"
