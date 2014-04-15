@@ -4,7 +4,7 @@
 	<div class="holder">
 		
 		<!-- IMAGE -->
-		<div class="image"><img src="http://lorempixel.com/1200/600/sports/1/" class="target"></div>
+		<div class="image"><img src="<%= @product.images.first.attachment.url(:large)%>" class="target"></div>
 
 	
 		<!-- CONSOLE -->
@@ -40,24 +40,17 @@
 	<!-- THUMBNAILS -->
 	<!-- Can be placed on unlimited number of lines - Refer to zoomer config parameters for setting up the size -->
 	<div class="thumbs">
-			<img id="http://lorempixel.com/1200/600/sports/1/" src="http://lorempixel.com/40/40/sports/1/">
-			<img id="http://lorempixel.com/1200/600/sports/2/" src="http://lorempixel.com/40/40/sports/2/">
-			<img id="http://lorempixel.com/1200/600/sports/3/" src="http://lorempixel.com/40/40/sports/3/">
-			<img id="http://lorempixel.com/1200/600/sports/4/" src="http://lorempixel.com/40/40/sports/4/">
-			<img id="http://lorempixel.com/1200/600/sports/5/" src="http://lorempixel.com/40/40/sports/5/">
-			<img id="http://lorempixel.com/1200/600/sports/6/" src="http://lorempixel.com/40/40/sports/6/">
-			
+		<% @product.images.each do |image| %>
+			<img id="<%= image.attachment.url(:large)%>" src="<%= image.attachment.url(:mini)%>">
+		<%end%>
 	</div>
 
 	
 	<!-- LIGHTBOX - PRETTYPHOTO STUFF -->
 	<div class="hidden lightbox">
-		<a href="http://lorempixel.com/1200/600/sports/1/" rel="prettyPhoto[gallery]"></a>
-		<a href="http://lorempixel.com/1200/600/sports/2/" rel="prettyPhoto[gallery]"></a>
-		<a href="http://lorempixel.com/1200/600/sports/3/" rel="prettyPhoto[gallery]"></a>
-		<a href="http://lorempixel.com/1200/600/sports/4/" rel="prettyPhoto[gallery]"></a>
-		<a href="http://lorempixel.com/1200/600/sports/5/" rel="prettyPhoto[gallery]"></a>
-		<a href="http://lorempixel.com/1200/600/sports/6/" rel="prettyPhoto[gallery]"></a>
+		<% @product.images.each do |image| %>
+			<a href="<%= image.attachment.url(:large)%>" rel="prettyPhoto[gallery]"></a>
+		<%end%>
 	</div>
 	
 </div>	<!-- end zoomer -->
