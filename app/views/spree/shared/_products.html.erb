@@ -30,6 +30,8 @@
             </div>
             <div class="text">
               <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
+              <% bidder_count = bidder_count(product) %>
+              <%= bidder_count.to_i > 1 ? "( #{bidder_count} Bidders)" : "( #{bidder_count} Bidder)"%>
               <div class="price selling" itemprop="price"><%= display_price(product) %></div>
             </div>
           </li>
