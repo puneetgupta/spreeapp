@@ -1,3 +1,6 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
 html {
 	margin: 0;
 }
@@ -6,7 +9,7 @@ body {
 	background: #DDDCE2 url(../body_bg.jpg) repeat left top;
 	-webkit-font-smoothing: antialiased;
 	font-family: 'Lato', sans-serif !important;
-	padding-top: 107px;
+	padding-top: 80px;
 }
 @media (max-width: 979px) {
 	body { padding-top: 0 !important; }
@@ -19,6 +22,25 @@ input[type="password"],
 input[type="submit"],
 textarea {
 	font-family: 'Lato', Helvetica;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+	line-height: 30px;
+	height: 30px;
 }
 
 /* Navbar
@@ -93,7 +115,7 @@ header {
 
 .section_header {
 	width: 100%;
-	margin-bottom: 60px;
+	margin-bottom: 30px;
 }
 .section_header h3 {
 	color: rgb(100, 100, 100);

@@ -130,7 +130,8 @@
   .container,
   .navbar-static-top .container,
   .navbar-fixed-top .container,
-  .navbar-fixed-bottom .container {
+  .navbar-fixed-bottom .container,
+  .page-wrapper {
     width: 1170px;
   }
   .span12 {
@@ -480,7 +481,8 @@
   .container,
   .navbar-static-top .container,
   .navbar-fixed-top .container,
-  .navbar-fixed-bottom .container {
+  .navbar-fixed-bottom .container,
+  .page-wrapper {
     width: 724px;
   }
   .span12 {
@@ -822,7 +824,8 @@
   .dl-horizontal dd {
     margin-left: 0;
   }
-  .container {
+  .container,
+  .page-wrapper {
     width: auto;
   }
   .row-fluid {
