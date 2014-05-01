@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140424115549) do
+ActiveRecord::Schema.define(:version => 20140428090614) do
 
   create_table "products_categories", :id => false, :force => true do |t|
     t.integer "product_id"
@@ -802,6 +802,25 @@ ActiveRecord::Schema.define(:version => 20140424115549) do
     t.datetime "updated_at",                     :null => false
   end
 
+  create_table "spree_user_addresses", :force => true do |t|
+    t.string   "street"
+    t.string   "street_no"
+    t.string   "house_no"
+    t.string   "apartment_no"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.integer  "country"
+    t.boolean  "company"
+    t.string   "company_name"
+    t.string   "nip"
+    t.string   "land_line_no"
+    t.string   "mobile_no"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "spree_users", :force => true do |t|
     t.string   "encrypted_password",     :limit => 128
     t.string   "password_salt",          :limit => 128
@@ -832,6 +851,8 @@ ActiveRecord::Schema.define(:version => 20140424115549) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "spree_users", ["confirmation_token"], :name => "index_spree_users_on_confirmation_token", :unique => true
