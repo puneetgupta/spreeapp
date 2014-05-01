@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140414065353) do
+ActiveRecord::Schema.define(:version => 20140424115549) do
 
   create_table "products_categories", :id => false, :force => true do |t|
     t.integer "product_id"
@@ -828,8 +828,13 @@ ActiveRecord::Schema.define(:version => 20140414065353) do
     t.datetime "updated_at",                                           :null => false
     t.string   "spree_api_key",          :limit => 48
     t.datetime "remember_created_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
+  add_index "spree_users", ["confirmation_token"], :name => "index_spree_users_on_confirmation_token", :unique => true
   add_index "spree_users", ["email"], :name => "email_idx_unique", :unique => true
 
   create_table "spree_variants", :force => true do |t|
