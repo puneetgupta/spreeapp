@@ -5,6 +5,8 @@ common: &common
     paypal_url : "https://www.sandbox.paypal.com/cgi-bin/webscr"
     account : "pgupta@enbake.com"
     success_url : "/"
+  mailchimp:
+    merchant_id: "14b2beddd47e086d798ea9276beef9df-us8"
 
 development:
   <<: *common
