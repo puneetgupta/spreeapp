@@ -7,6 +7,12 @@
 		<thead>
 			<tr class="dang">
 				<th align="center">
+					Name
+				</th>
+				<th align="center">
+				    Image
+				</th>
+				<th align="center">
 					Order Id
 				</th>
 				<th align="center">
@@ -22,7 +28,16 @@
 		</thead>
 		<body>
 			<% @orders.each do |order| %>
+				<% product = order_product(order) %>
 				<tr>
+					<td>
+					<%= product.name %>
+					</td>
+					<td>
+						<%if product.images.first %>
+							<%= image_tag(product.images.first.try(:attachment).url(:mini)) %>
+						<%end%>
+					</td>
 					<td align="center">
 						<%= link_to order.number, order_url(order) %>
 					</td>

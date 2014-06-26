@@ -33,20 +33,20 @@
       <%= f.error_message_on :minimal_price %>
     <% end %>
 
-    <div class="alpha two columns">
+<!--    <div class="alpha two columns">
       <%= f.field_container :cost_price do %>
         <%= f.label :cost_price, Spree.t(:cost_price) %>
         <%= f.text_field :cost_price, :value => number_to_currency(@product.cost_price, :unit => '') %>
         <%= f.error_message_on :cost_price %>
-      <% end %>
-    </div>
-    <div class="omega two columns">
+      <% end %> 
+</div> -->
+<!--    <div class="omega two columns">
       <%= f.field_container :cost_currency do %>
         <%= f.label :cost_currency, Spree.t(:cost_currency) %>
         <%= f.text_field :cost_currency %>
         <%= f.error_message_on :cost_currency %>
       <% end %>
-    </div>
+</div> -->
 
     <div class="clear"></div>
 
@@ -84,13 +84,14 @@
       <% end %>
     </div>
 
-    <% unless @product.has_variants? %>
+<!--    <% unless @product.has_variants? %>
       <%= f.field_container :sku do %>
         <%= f.label :sku, Spree.t(:sku) %>
         <%= f.text_field :sku, :size => 16 %>
       <% end %>
     <% end %>
-  </div>
+</div> -->
+
 
     <div class="omega two columns">
       <%= f.field_container :art_height do %>

@@ -8,4 +8,7 @@ module ApplicationHelper
   "#{user.id.to_s.rjust(6, "0")}"
   end
 
+  def order_product(order)
+    product = order.line_items.first.try(:variant).try(:product)
+  end
 end
