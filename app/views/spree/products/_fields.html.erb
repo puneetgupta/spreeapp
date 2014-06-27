@@ -17,7 +17,7 @@
 		<tr>
 			<td>Date of art created</td>
 			<td style="padding: 0 10px 0 10px;">:</td>
-			<td><%= @product.created_date%></td>
+			<td><%= @product.created_date.strftime("%m/%d/%Y")%></td>
 		</tr>
 	<% end %>
 	<% if @product.art_topics.present?%>
@@ -34,6 +34,13 @@
 			<td><%= @product.techniques%></td>
 		</tr>
 	<% end %>
+	<% if @product.auction_end.present?%>
+	    <tr>
+	    	<td>Auction Ending Date</td>
+	    	<td style="padding: 0 10px 0 10px;"></td>
+	    	<td><%= @product.auction_end.strftime("%m/%d/%Y")  %></td>
+	    </tr>
+	<%end%>
 	<% if @product.signature.present?%>
 		<tr>
 			<td>Signature</td>
