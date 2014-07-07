@@ -28,6 +28,20 @@
 				<%= f.text_field :password_confirmation, :class => 'fullwidth title', :type => "password", :placeholder => "Retype Password" %>
 				<%= f.error_message_on :password_confirmation %>
 			<% end %>
+			<%= f.field_container :frequency do %>
+				<%= f.label :frequency, "Email frequency for followed products" %>
+				<%= f.select:frequency, options_for_select([["Daily", 0],["Weekly", 1],["Monthly", 2]], [@user.frequency]), :id =>"mail_frequency"%>
+			<% end %>
+			<%= f.field_container :day_of_week do %>
+				<%= f.label :frequency, "Day of week" %>
+				<%= f.select :day_of_week, options_for_select([["Monday", 1],["Tuesday", 2],["Wednesday", 3], ["Thursday", 4], ["Friday", 5], ["Saturday", 6], ["Sunday", 7]],[@user.day_of_week])%>
+			<% end %>
+			<%= f.field_container :day_of_month do %>
+				<%= f.label :day_of_month, "Day of month" %>
+				
+				<%= f.select :day_of_month, options_for_select((1..31).each{|i| [i]}, [@user.day_of_month])%>
+			<% end %>
+			
 		</fieldset>
 	</div>
 	<div class="columns alpha six" data-hook="">
@@ -101,6 +115,39 @@
 	<!--<div>
 		<%#= render :partial => 'spree/checkout/payment/gateway', :locals => { :payment_method => Spree::PaymentMethod.first } %>
 	</div> -->
+<legend align="center"><h3><%= Spree.t(:followed_products) %></h3></legend>
+<% if @products_followed.any? %>
+  <div id="showcase">
+    <div class="features_op1_row">
+      <ul class="thumbnails">
+        <% @products_followed.each do |product| %>
+          <li class="span3 feature" itemscope itemtype="http://schema.org/Product">
+            <div class="img_box">
+              <a href="<%= url_for product %>">
+              	<% unless product.images.empty? %>
+                	<%= image_tag(product.images.first.attachment.url) %>
+				        <% end %>
+                <span class="circle"> 
+                    <span class="plus">+</span>
+                </span>
+              </a>
+            </div>
+            <div class="text">
+              <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
+              <% bidder_count = bidder_count(product) %>
+              <%= bidder_count.to_i > 1 ? "( #{bidder_count} Bidders)" : "( #{bidder_count} Bidder)"%>
+              <div class="price selling" itemprop="price"><%= display_price(product) %></div>
+              <%= link_to "UnFollow", follow_product_follows_path(id: product.id)%>
+            </div>
+          </li>
+        <% end %>
+        <% reset_cycle("classes") %>
+      </ul>
+    </div>
+  </div>
+  <%else%>
+  No product followed yet
+  <% end %>
 <% end %>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -114,5 +161,56 @@
 			$(".company_name").prop("disabled", true);
 			$(".nip").prop("disabled", true);
 		}
-	})
+		var frequency = $("#user_frequency").val();
+		if(frequency == 1)
+		{
+			$("#user_day_of_week_field").show();
+			$("#user_day_of_week_field").prop("disabled", false);
+			$("#user_day_of_month_field").hide();
+				$("#user_day_of_month_field").prop("disabled", true);
+		}
+		else{
+			if(frequency == 2)
+			{
+				$("#user_day_of_week_field").hide();
+				$("#user_day_of_week_field").prop("disabled", true);
+				$("#user_day_of_month_field").show();
+				$("#user_day_of_month_field").prop("disabled", false);
+			}
+			else{
+				$("#user_day_of_month_field").hide();
+				$("#user_day_of_month_field").prop("disabled", true);
+				$("#user_day_of_week_field").hide();
+				$("#user_day_of_week_field").prop("disabled", true);
+			}
+		} 
+	});
+
+	$(document).on("click", "#user_frequency", function(){
+		
+		var frequency = $(this).val();
+		if(frequency == 1)
+		{
+			$("#user_day_of_week_field").show();
+			$("#user_day_of_week_field").prop("disabled", false);
+			$("#user_day_of_month_field").hide();
+				$("#user_day_of_month_field").prop("disabled", true);
+		}
+		else{
+			if(frequency == 2)
+			{
+				$("#user_day_of_week_field").hide();
+				$("#user_day_of_week_field").prop("disabled", true);
+				$("#user_day_of_month_field").show();
+				$("#user_day_of_month_field").prop("disabled", false);
+			}
+			else{
+				$("#user_day_of_month_field").hide();
+				$("#user_day_of_month_field").prop("disabled", true);
+				$("#user_day_of_week_field").hide();
+				$("#user_day_of_week_field").prop("disabled", true);
+			}
+		} 
+	});
+	
 </script>

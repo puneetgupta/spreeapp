@@ -44,6 +44,9 @@
               <% bidder_count = bidder_count(product) %>
               <%= bidder_count.to_i > 1 ? "( #{bidder_count} Bidders)" : "( #{bidder_count} Bidder)"%>
               <div class="price selling" itemprop="price"><%= display_price(product) %></div>
+              <% if spree_current_user %>
+                <%= link_to "#{ product.followers.where(:user_id => spree_current_user.id).first ? 'UnFollow' : 'Follow'}", follow_product_follows_path(id: product.id)%>
+              <% end %>
             </div>
           </li>
         <% end %>
