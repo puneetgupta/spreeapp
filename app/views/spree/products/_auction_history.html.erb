@@ -35,5 +35,5 @@
 	</table>
 <%end%>
 </div>
-<div class="hide" id="max-bid-price" value=<%= @orders.last.line_items.first.bid_price%>></div>
-<div class="hide" id="min-bid-hike" value=<%= min_bid_hike(@orders.last.line_items.first.bid_price)%>></div>
+<div class="hide" id="max-bid-price" value=<%= @orders.blank? ? 0 : @orders.last.line_items.first.bid_price%>></div>
+<div class="hide" id="min-bid-hike" value=<%= @orders.blank? ? 0 : min_bid_hike(@orders.last.line_items.first.bid_price)%>></div>
