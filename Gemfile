@@ -48,4 +48,4 @@ gem 'spree_multi_lingual', :github => 'puneetgupta/spree_multi_lingual'
 gem 'easy_globalize3_accessors', :git => "git://github.com/reinkcar/easy_globalize3_accessors.git"
 gem 'globalize', '3.0.4'
 gem 'gibbon'
-
+gem 'paypal-sdk-rest'

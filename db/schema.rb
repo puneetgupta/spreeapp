@@ -167,6 +167,9 @@ ActiveRecord::Schema.define(:version => 20140705114316) do
     t.string   "gateway_payment_profile_id"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+    t.integer  "user_id"
+    t.string   "paypal_card_id"
+    t.string   "paypal_payer_id"
   end
 
   create_table "spree_followers", :force => true do |t|
@@ -843,8 +846,8 @@ ActiveRecord::Schema.define(:version => 20140705114316) do
     t.string   "persistence_token"
     t.string   "reset_password_token"
     t.string   "perishable_token"
-    t.integer  "sign_in_count",                         :default => 0, :null => false
-    t.integer  "failed_attempts",                       :default => 0, :null => false
+    t.integer  "sign_in_count",                         :default => 0,     :null => false
+    t.integer  "failed_attempts",                       :default => 0,     :null => false
     t.datetime "last_request_at"
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
@@ -857,8 +860,8 @@ ActiveRecord::Schema.define(:version => 20140705114316) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "reset_password_sent_at"
-    t.datetime "created_at",                                           :null => false
-    t.datetime "updated_at",                                           :null => false
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
     t.string   "spree_api_key",          :limit => 48
     t.datetime "remember_created_at"
     t.string   "confirmation_token"
@@ -870,6 +873,7 @@ ActiveRecord::Schema.define(:version => 20140705114316) do
     t.integer  "frequency",                             :default => 0
     t.integer  "day_of_week",                           :default => 1
     t.integer  "day_of_month",                          :default => 1
+    t.boolean  "can_bid",                               :default => false
   end
 
   add_index "spree_users", ["confirmation_token"], :name => "index_spree_users_on_confirmation_token", :unique => true

@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: git://github.com/enbake/spree_auctions_enbake.git
-  revision: cd8fa67ae38bbe8b83a22a3e35213e68958deb34
+  revision: c10dbfdfb48dd5bf7732115d14ba44f50473c23f
   specs:
-    spree_auctions (2.0.21)
+    spree_auctions (2.0.22)
       spree_core (~> 2.0.3)
 
 GIT
@@ -262,6 +262,12 @@ GEM
       mime-types
     paranoia (1.3.1)
       activerecord (~> 3.2)
+    paypal-sdk-core (0.3.0)
+      multi_json (~> 1.0)
+      xml-simple
+    paypal-sdk-rest (0.7.0)
+      paypal-sdk-core (~> 0.3.0)
+      uuidtools (~> 2.1)
     pg (0.16.0)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
@@ -340,6 +346,7 @@ GEM
       railties (>= 3.0)
     warden (1.2.3)
       rack (>= 1.0)
+    xml-simple (1.1.4)
 
 PLATFORMS
   ruby
@@ -349,11 +356,12 @@ DEPENDENCIES
   easy_globalize3_accessors!
   globalize (= 3.0.4)
   jquery-rails
+  paypal-sdk-rest
   pg
   rails (= 3.2.14)
   sass-rails (~> 3.2.3)
   spree!
-  spree_auctions (= 2.0.21)!
+  spree_auctions (= 2.0.22)!
   spree_auth_devise!
   spree_editor!
   spree_fancy!

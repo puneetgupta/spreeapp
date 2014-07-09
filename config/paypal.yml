@@ -1,0 +1,29 @@
+test: &default
+
+  # Credentials for REST APIs
+  client_id: Aap8VRCGz6RIW4NPy2xJ2L-4qQ13BpPdwnIdT8dsDtfKUDoguFSDMvGr2BCz
+  client_secret: EOg4HxC4hgaQxxqDRQml5BMwuZf81hc-UxJsIHDTvzyyP-jDGTP5JJDAQ1X6
+
+  # Mode can be 'live' or 'sandbox'
+  mode: sandbox
+
+  # Credentials for Classic APIs
+  app_id: APP-80W284485P519543T
+  username: pgupta_api1.enbake.com
+  password: 1375439398
+  signature: ATLYvfZQdtwgtIFCaLNeHC8HL5gXA424GcQqwwMVfkCJDAfe8Z-VwuMU
+  # # With Certificate
+  # cert_path: "config/cert_key.pem"
+  sandbox_email_address: pgupta@enbake.com
+
+  # # IP Address
+  # ip_address: 127.0.0.1
+  # # HTTP Proxy
+  # http_proxy: http://proxy-ipaddress:3129/
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+  mode: live
