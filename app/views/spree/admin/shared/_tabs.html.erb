@@ -28,3 +28,6 @@
 <% if can? :admin, Spree::Admin::NavigationsController %>
   <%= tab(:Navigation, :url => admin_navigations_path, :icon => 'icon-file') %>
 <%end%>
+<% if can? :admin, Spree::Admin::CustomEmailContentsController %>
+  <%= tab(:Custom_email, :url => admin_custom_email_contents_path, :icon => 'icon-file') %>
+<%end%>
