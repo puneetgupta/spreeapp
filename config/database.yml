@@ -9,8 +9,8 @@ development:
   pool: 5
   timeout: 5000
   host: localhost
-  username: root
-  password: enbake
+  username: admin
+  password: admin
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -20,9 +20,9 @@ test:
   database: spree_test
   pool: 5
   timeout: 5000
-  username: root
+  username: admin
   host: localhost
-  password: enbake
+  password: admin
 
 production:
   adapter: postgresql
@@ -30,5 +30,5 @@ production:
   pool: 5
   host: localhost
   timeout: 5000
-  username: root
-  password: enbake
+  username: admin
+  password: admin
