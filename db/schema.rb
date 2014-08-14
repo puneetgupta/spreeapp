@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140705114316) do
+ActiveRecord::Schema.define(:version => 20140814111407) do
+
   create_table "products_categories", :id => false, :force => true do |t|
     t.integer "product_id"
     t.integer "category_id"
@@ -240,8 +241,9 @@ ActiveRecord::Schema.define(:version => 20140705114316) do
     t.string   "name"
     t.string   "url"
     t.boolean  "private"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "custom_url", :default => false
   end
 
   create_table "spree_option_type_translations", :force => true do |t|
