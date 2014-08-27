@@ -36,6 +36,7 @@ gem 'jquery-rails'
 
 # To use debugger
 #gem 'debugger'
+gem 'spree_static_content', :github => 'spree/spree_static_content', :branch => '2-0-stable'
 gem 'spree', github: 'spree/spree', branch: '2-0-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-0-stable'
 gem 'spree_fancy', :github => 'spree/spree_fancy', :branch => '2-0-stable'

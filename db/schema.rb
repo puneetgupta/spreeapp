@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140705114316) do
+ActiveRecord::Schema.define(:version => 20140826070647) do
+
   create_table "products_categories", :id => false, :force => true do |t|
     t.integer "product_id"
     t.integer "category_id"
@@ -172,6 +173,14 @@ ActiveRecord::Schema.define(:version => 20140705114316) do
     t.string   "paypal_payer_id"
   end
 
+  create_table "spree_custom_email_contents", :force => true do |t|
+    t.string   "name"
+    t.text     "body"
+    t.string   "language"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "spree_followers", :force => true do |t|
     t.integer  "user_id"
     t.integer  "product_id"
@@ -320,6 +329,27 @@ ActiveRecord::Schema.define(:version => 20140705114316) do
   end
 
   add_index "spree_orders", ["number"], :name => "index_spree_orders_on_number"
+
+  create_table "spree_pages", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "slug"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.boolean  "show_in_header",           :default => false, :null => false
+    t.boolean  "show_in_footer",           :default => false, :null => false
+    t.string   "foreign_link"
+    t.integer  "position",                 :default => 1,     :null => false
+    t.boolean  "visible",                  :default => true
+    t.string   "meta_keywords"
+    t.string   "meta_description"
+    t.string   "layout"
+    t.boolean  "show_in_sidebar",          :default => false, :null => false
+    t.string   "meta_title"
+    t.boolean  "render_layout_as_partial", :default => false
+  end
+
+  add_index "spree_pages", ["slug"], :name => "index_spree_pages_on_slug"
 
   create_table "spree_payment_methods", :force => true do |t|
     t.string   "type"
