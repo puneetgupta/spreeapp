@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140826070647) do
+ActiveRecord::Schema.define(:version => 20140906112724) do
 
   create_table "products_categories", :id => false, :force => true do |t|
     t.integer "product_id"
@@ -864,8 +864,18 @@ ActiveRecord::Schema.define(:version => 20140826070647) do
     t.string   "land_line_no"
     t.string   "mobile_no"
     t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.string   "com_street",       :default => ""
+    t.string   "com_street_no",    :default => ""
+    t.string   "com_house_no",     :default => ""
+    t.string   "com_apartment_no", :default => ""
+    t.string   "com_city",         :default => ""
+    t.string   "com_land_line_no", :default => ""
+    t.string   "com_mobile_no",    :default => ""
+    t.string   "com_state",        :default => ""
+    t.string   "com_zip_code",     :default => ""
+    t.string   "com_country",      :default => ""
   end
 
   create_table "spree_users", :force => true do |t|
