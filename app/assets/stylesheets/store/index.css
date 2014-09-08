@@ -627,4 +627,7 @@
         box-shadow:none;
     }
 }
+.ui-dialog-titlebar-close { 
+	content: url('/assets/close_pop.png');
+}
 
