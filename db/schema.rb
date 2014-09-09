@@ -245,6 +245,17 @@ ActiveRecord::Schema.define(:version => 20140826070647) do
     t.datetime "updated_at",                    :null => false
   end
 
+  create_table "spree_navigation_translations", :force => true do |t|
+    t.integer  "spree_navigation_id"
+    t.string   "locale",              :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "name"
+  end
+
+  add_index "spree_navigation_translations", ["locale"], :name => "index_spree_navigation_translations_on_locale"
+  add_index "spree_navigation_translations", ["spree_navigation_id"], :name => "index_spree_navigation_translations_on_spree_navigation_id"
+
   create_table "spree_navigations", :force => true do |t|
     t.string   "name"
     t.string   "url"
