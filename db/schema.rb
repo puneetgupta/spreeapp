@@ -888,8 +888,18 @@ ActiveRecord::Schema.define(:version => 20140909164448) do
     t.string   "land_line_no"
     t.string   "mobile_no"
     t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.string   "com_street",       :default => ""
+    t.string   "com_street_no",    :default => ""
+    t.string   "com_house_no",     :default => ""
+    t.string   "com_apartment_no", :default => ""
+    t.string   "com_city",         :default => ""
+    t.string   "com_land_line_no", :default => ""
+    t.string   "com_mobile_no",    :default => ""
+    t.string   "com_state",        :default => ""
+    t.string   "com_zip_code",     :default => ""
+    t.string   "com_country",      :default => ""
   end
 
   create_table "spree_users", :force => true do |t|

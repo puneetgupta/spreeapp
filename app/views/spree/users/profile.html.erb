@@ -92,8 +92,8 @@
 						<%= form.text_field :mobile_no, :class => 'required' %>
 					</p>
 					<p class="field" id="company">
-						<%= form.label :company, Spree.t(:is_company) %><br />
-						<%= form.check_box :company, :class => 'required is-company' %>
+						<span><%= form.label :company, Spree.t(:is_company) %></span>
+						<span><%= form.check_box :company, :class => 'required is-company' %></span>
 					</p>
 					<div class = "hidden company_fields">
 						<p class="field" id="country_name">
@@ -104,6 +104,48 @@
 							<%= form.label :nip, Spree.t(:nip) %><br />
 							<%= form.text_field :nip, :class => 'required nip', :disabled => "disabled" %>
 						</p>
+						<p class="field" id="com_street">
+            <%= form.label :com_street, Spree.t(:street) %><br />
+            <%= form.text_field :com_street, :class => 'required' %>
+          </p>
+          <p class="field" id="com_street_no">
+            <%= form.label :com_street_no, Spree.t(:street_no) %><br />
+            <%= form.text_field :com_street_no, :class => 'required' %>
+          </p>
+          <p class="field" id="com_house_no">
+            <%= form.label :com_house_no, Spree.t(:house_no) %><br />
+            <%= form.text_field :com_house_no, :class => 'required' %>
+          </p>
+          <p class="field" id="com_apartment_no">
+            <%= form.label :com_apartment_no, Spree.t(:apartment_no) %><br />
+            <%= form.text_field :com_apartment_no, :class => 'required' %>
+          </p>
+          <p class="field" id="com_city">
+            <%= form.label :com_city, Spree.t(:city) %><br />
+            <%= form.text_field :com_city, :class => 'required' %>
+          </p>
+          <p class="field" id="com_state">
+            <%= form.label :com_state, Spree.t(:state) %><br />
+            <%= form.text_field :com_state, :class => 'required' %>
+          </p>
+          <p class="field" id="com_zip_code">
+            <%= form.label :com_zip_code, Spree.t(:zip_code) %><br />
+            <%= form.text_field :com_zip_code, :class => 'required' %>
+          </p>
+          <p class="field" id="com_country">
+            <%= form.label :com_country_id, Spree.t(:country) %><span class="required">*</span><br />
+              <span id="country-selection">
+            <%= form.collection_select :com_country, available_countries, :id, :name, {}, {:class => 'required address_form'} %>
+            </span>
+          </p>
+          <p class="field" id="com_land_line_no">
+            <%= form.label :com_land_line_no, Spree.t(:land_line) %><br />
+            <%= form.text_field :com_land_line_no, :class => 'required' %>
+          </p>
+          <p class="field" id="com_mobile_no">
+            <%= form.label :com_mobile_no, Spree.t(:mobile) %><br />
+            <%= form.text_field :com_mobile_no, :class => 'required' %>
+          </p>
 					</div>
 				</div>
 			<% end %>
