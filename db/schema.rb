@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140826070647) do
+ActiveRecord::Schema.define(:version => 20140909164448) do
 
   create_table "products_categories", :id => false, :force => true do |t|
     t.integer "product_id"
@@ -260,8 +260,9 @@ ActiveRecord::Schema.define(:version => 20140826070647) do
     t.string   "name"
     t.string   "url"
     t.boolean  "private"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "custom_url", :default => false
   end
 
   create_table "spree_option_type_translations", :force => true do |t|
@@ -340,6 +341,18 @@ ActiveRecord::Schema.define(:version => 20140826070647) do
   end
 
   add_index "spree_orders", ["number"], :name => "index_spree_orders_on_number"
+
+  create_table "spree_page_translations", :force => true do |t|
+    t.integer  "spree_page_id"
+    t.string   "locale",        :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "title"
+    t.text     "body"
+  end
+
+  add_index "spree_page_translations", ["locale"], :name => "index_spree_page_translations_on_locale"
+  add_index "spree_page_translations", ["spree_page_id"], :name => "index_spree_page_translations_on_spree_page_id"
 
   create_table "spree_pages", :force => true do |t|
     t.string   "title"
