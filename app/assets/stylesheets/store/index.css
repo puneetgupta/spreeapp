@@ -627,6 +627,9 @@
         box-shadow:none;
     }
 }
+.ui-dialog-titlebar-close { 
+	content: url('/assets/close_pop.png');
+}
 
 #content {
 	margin-top:25px;
