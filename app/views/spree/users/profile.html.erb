@@ -158,17 +158,17 @@
 		<%#= render :partial => 'spree/checkout/payment/gateway', :locals => { :payment_method => Spree::PaymentMethod.first } %>
 	</div> -->
 <legend align="center"><h3><%= Spree.t(:followed_products) %></h3></legend>
-<% if @products_followed.any? %>
+<% if @products_followed.compact.any? %>
   <div id="showcase">
     <div class="features_op1_row">
       <ul class="thumbnails">
-        <% @products_followed.each do |product| %>
+        <% @products_followed.compact.each do |product| %>
           <li class="span3 feature" itemscope itemtype="http://schema.org/Product">
             <div class="img_box">
               <a href="<%= url_for product %>">
-              	<% unless product.images.empty? %>
+              	<% unless product.images.empty?  %>
                 	<%= image_tag(product.images.first.attachment.url) %>
-				        <% end %>
+				 <% end %>
                 <span class="circle"> 
                     <span class="plus">+</span>
                 </span>
