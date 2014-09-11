@@ -6,7 +6,7 @@ common: &common
     account : "pgupta@enbake.com"
     success_url : "/"
   mailchimp:
-    merchant_id: "14b2beddd47e086d798ea9276beef9df-us8"
+    merchant_id: "4d0c40b6cb0e7f401f397898f7983d48-us9"
 
 development:
   <<: *common

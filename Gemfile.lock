@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: git://github.com/enbake/spree_auctions_enbake.git
-  revision: e507fe392b7603a8269d186fbbf5c3c9f2e3cddb
+  revision: 19a295e6652d0b58b1021dbd42caabb2e1934da3
   specs:
-    spree_auctions (2.0.29)
+    spree_auctions (2.0.32)
       spree_core (~> 2.0.3)
 
 GIT
@@ -373,7 +373,7 @@ DEPENDENCIES
   rails (= 3.2.14)
   sass-rails (~> 3.2.3)
   spree!
-  spree_auctions (= 2.0.29)!
+  spree_auctions (= 2.0.32)!
   spree_auth_devise!
   spree_editor!
   spree_fancy!
