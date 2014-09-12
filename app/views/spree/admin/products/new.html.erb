@@ -15,6 +15,11 @@
       <% end %>
     </div>
 
+      <div class="alpha twelve columns">
+         <%= f.label :description, Spree.t(:auction_description) %>
+         <%= f.text_area :description, {:class => 'fullwidth', id: "prod_desc"} %>
+     </div>
+
     <div class="alpha two columns">
       <div class="date-range-filter field">
         <%= f.label :available_on, Spree.t(:auction_start) %>
