@@ -91,9 +91,9 @@
 						<%= form.label :mobile_no, Spree.t(:mobile) %><br />
 						<%= form.text_field :mobile_no, :class => 'required' %>
 					</p>
-					<p class="field" id="company">
-						<span><%= form.label :company, Spree.t(:is_company) %></span>
+					<p class="field form-inline" id="company">
 						<span><%= form.check_box :company, :class => 'required is-company' %></span>
+						<span><%= form.label :company, Spree.t(:is_company) %></span>
 					</p>
 					<div class = "hidden company_fields">
 						<p class="field" id="country_name">
@@ -111,14 +111,6 @@
           <p class="field" id="com_street_no">
             <%= form.label :com_street_no, Spree.t(:street_no) %><br />
             <%= form.text_field :com_street_no, :class => 'required' %>
-          </p>
-          <p class="field" id="com_house_no">
-            <%= form.label :com_house_no, Spree.t(:house_no) %><br />
-            <%= form.text_field :com_house_no, :class => 'required' %>
-          </p>
-          <p class="field" id="com_apartment_no">
-            <%= form.label :com_apartment_no, Spree.t(:apartment_no) %><br />
-            <%= form.text_field :com_apartment_no, :class => 'required' %>
           </p>
           <p class="field" id="com_city">
             <%= form.label :com_city, Spree.t(:city) %><br />
