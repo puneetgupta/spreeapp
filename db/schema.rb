@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140909164448) do
+ActiveRecord::Schema.define(:version => 20141010072235) do
 
   create_table "products_categories", :id => false, :force => true do |t|
     t.integer "product_id"
@@ -260,9 +260,9 @@ ActiveRecord::Schema.define(:version => 20140909164448) do
     t.string   "name"
     t.string   "url"
     t.boolean  "private"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "custom_url", :default => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "position"
   end
 
   create_table "spree_option_type_translations", :force => true do |t|
@@ -934,10 +934,11 @@ ActiveRecord::Schema.define(:version => 20140909164448) do
     t.string   "unconfirmed_email"
     t.string   "first_name"
     t.string   "last_name"
+    t.boolean  "subscribed",                            :default => false
+    t.boolean  "can_bid",                               :default => false
     t.integer  "frequency",                             :default => 0
     t.integer  "day_of_week",                           :default => 1
     t.integer  "day_of_month",                          :default => 1
-    t.boolean  "can_bid",                               :default => false
   end
 
   add_index "spree_users", ["confirmation_token"], :name => "index_spree_users_on_confirmation_token", :unique => true
@@ -978,7 +979,7 @@ ActiveRecord::Schema.define(:version => 20140909164448) do
     t.datetime "updated_at",                            :null => false
   end
 
-  create_table "static_pages", :force => true do |t|
+  create_table "static_content_pages", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",  :null => false
