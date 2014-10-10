@@ -2,6 +2,7 @@
   #paginated_products = @searcher.retrieve_products if params.key?(:keywords)
   #paginated_products ||= products
 %> -->
+<div id="blog_post">
 <% if @products.empty? %>
   <%= Spree.t(:no_products_found) %>
 <% elsif params.key?(:keywords) %>
@@ -15,7 +16,7 @@
           <div class='sidebar' style='float: none;'>
             <div class='sidebar_header'><h4>Kategorie</h4></div>
             <ul class='sidebar_menu'>
-              <% Spree::Category.all.each do |category| %>
+              <% Spree::Category.all.reject{|i| i.products.empty?}.each do |category| %>
                 <li><%= link_to category.name, view_category_path(category) %></li>
               <% end %>
             </ul>
@@ -55,5 +56,6 @@
     </div>
   </div>
   <% end %>
+</div>
 </div>
 </div>
