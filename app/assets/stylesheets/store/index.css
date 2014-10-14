@@ -635,3 +635,18 @@
 	margin-top:25px;
 }
 
+#footer_products{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.home_catalog_link{
+    background: lightgray;
+    padding: 8px;
+    text-align: center;
+}
+
+#catalog_sec{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
