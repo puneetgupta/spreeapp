@@ -22,6 +22,9 @@
               <a href="<%= url_for product %>">
               	<% unless product.images.empty? %>
                 	<%= image_tag(product.images.first.attachment.url) %>
+                <% else %>
+                    <%= image_tag("no_image.png")%>
+
 				        <% end %>
                 <span class="circle"> 
                     <span class="plus">+</span>
@@ -45,3 +48,7 @@
 <!--<% if paginated_products.respond_to?(:num_pages) %>
   <%= paginate paginated_products %>
 <% end %> -->
+
+<div id ='catalog_sec'>
+  <a href="/catalog" class="home_catalog_link">Go To Catalog</a>
+</div>
