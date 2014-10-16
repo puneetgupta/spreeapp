@@ -652,6 +652,9 @@
     text-align: center;
     padding: 17px;
     font-size: large;
+    border: 1px solid #333333;
+    border-radius: 5px;
+    color :#000000;
 }
 
 #catalog_sec{
