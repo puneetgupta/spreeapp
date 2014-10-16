@@ -34,7 +34,9 @@
               <a href="<%= url_for product %>">
               	<% unless product.images.empty? %>
                 	<%= image_tag(product.images.first.attachment.url) %>
-				        <% end %>
+                <% else %>
+                    <%= image_tag("no_image.png")%>
+              <% end %>
                 <span class="circle"> 
                     <span class="plus">+</span>
                 </span>

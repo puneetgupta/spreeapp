@@ -2,16 +2,4 @@
   <div id="footer-left" class="container" data-hook>
     <p><%= Spree.t :powered_by  %></p>
   </div>
-
-  <% if current_page?('/')%>
-      <div id = 'footer_products'>
-          <div data-hook="homepage_products">
-            <%= render :partial => 'spree/shared/products', :locals => { :products => @footer_products } %>
-          </div>
-              <div id ='catalog_sec'>
-                 <a href="/catalog" class="home_catalog_link">Go To Catalog</a>
-              </div>
-      </div>
-  <% end %>
-
 </footer>

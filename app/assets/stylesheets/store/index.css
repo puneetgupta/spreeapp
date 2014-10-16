@@ -227,6 +227,7 @@
 .features_op1_row .feature .text{
     margin: 32px auto 0;
     width: 87%;
+    text-align: center;
 }
 .features_op1_row .feature .text h6{
     margin: 0 0 14px 0;
@@ -249,6 +250,8 @@
     max-width: 95%;
     margin: 0 auto;
     display: block;
+    width: 200px;
+    height: 200px;
 }
 .features_op1_row .feature .img_box span.circle{
     background: rgba(17, 137, 217, 0.8);
@@ -283,6 +286,9 @@
 
 /* Features
 -------------------------------------------------- */
+.feature{
+    background: #FDFDFD;
+}
 #features {
     margin-top: 70px;
     margin-bottom: -20px;
@@ -290,6 +296,7 @@
 #features .feature {
     border-bottom: 1px solid #e0e0e0;
     margin-bottom: 65px;
+    background: #ff0000;
 }
 #features .feature .info h3 {
     font-size: 21px;
@@ -643,10 +650,15 @@
     background: lightgray;
     padding: 8px;
     text-align: center;
+    padding: 17px;
+    font-size: large;
 }
 
 #catalog_sec{
     text-align: center;
     margin-top: 10px;
     margin-bottom: 25px;
+}
+.thumbnails span2 {
+    background: lightgray;
 }
