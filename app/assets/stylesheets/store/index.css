@@ -202,7 +202,7 @@
 /* Showcase services
 -------------------------------------------------- */
 #showcase {
-    margin-top: 70px;
+    margin-top: 53px;
 }
 #showcase .container {
     /*width: 980px;*/
@@ -225,10 +225,21 @@
     margin-right: 0;
 }
 .features_op1_row .feature .text{
-    margin: 32px auto 0;
+    margin: 20px auto 0;
     width: 87%;
     text-align: center;
 }
+
+.features_op1_row .feature .text .price{
+    margin: 10px;
+
+}
+
+.features_op1_row .feature .text a{
+    margin: 10px;
+
+}
+
 .features_op1_row .feature .text h6{
     margin: 0 0 14px 0;
     font-size: 20px;
@@ -239,7 +250,8 @@
 .features_op1_row .feature .text p{
     margin: 0;
     font-size: 14px;
-    line-height: 23px;
+    line-height: 35px;
+    margin-bottom: 25px
 }
 .features_op1_row .feature .img_box{
     position: relative;
