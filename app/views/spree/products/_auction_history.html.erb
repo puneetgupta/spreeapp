@@ -1,6 +1,6 @@
 <div class="add-on hero-unit">
 <h3>Auction History</h3>
-<% unless @orders.present? %>
+<% unless @bids.present? %>
 	<h5>No Auctions Yet</h5>
 <%else%>
 	<table class="table table-striped table-hover">
@@ -18,16 +18,16 @@
 			</tr>
 		</thead>
 		<body>
-			<% @orders.each do |order| %>
+			<% @bids.each do |bid| %>
 				<tr>
 					<td align="center">
-						<%= pretty_id(order.user) %>
+						<%= bid.user_id %>
 					</td>
 					<td align="center">
-						<%= order.line_items.first.bid_price %>
+						<%= bid.price %>
 					</td>
 					<td align="center">
-						<%= order.created_at.strftime("%F") %>
+						<%= bid.created_at.strftime("%F") %>
 					</td>
 				</tr>
 			<% end %>
@@ -35,6 +35,6 @@
 	</table>
 <%end%>
 </div>
-<div class="hide" id="max-bid-price" value=<%= @orders.blank? ? @product.try(:minimal_price).to_i : @orders.last.line_items.first.bid_price%>></div>
-<div class="hide" id="min-bid-hike" value=<%= @orders.blank? ? min_bid_hike(@product.try(:minimal_price).to_i) : min_bid_hike(@orders.last.line_items.first.bid_price)%>></div>
-<div class="hide" id="last_bid_present" value=<%= @orders.blank? ? 'false' : 'true'%>></div>
+<div class="hide" id="max-bid-price" value=<%= @bids.blank? ? @product.try(:minimal_price).to_i : @bids.last.price%>></div>
+<div class="hide" id="min-bid-hike" value=<%= @bids.blank? ? min_bid_hike(@product.try(:minimal_price).to_i) : min_bid_hike(@bids.last.price.to_i)%>></div>
+<div class="hide" id="last_bid_present" value=<%= @bids.blank? ? 'false' : 'true'%>></div>
