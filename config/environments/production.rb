@@ -64,5 +64,13 @@ SpreeStore::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'example.com',
+      user_name:            'auctionshouse2@gmail.com',
+      password:             'enbake123',
+      authentication:       'plain'}
+
   config.action_mailer.default_url_options = { :host => 'ec2-54-213-14-119.us-west-2.compute.amazonaws.com' }
 end
