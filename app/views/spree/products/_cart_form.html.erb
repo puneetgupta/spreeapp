@@ -1,4 +1,4 @@
-<%= form_for :order, :url => bids_path do |f| %>
+<%= form_for :bid, :url => spree.bids_path do |f| %>
    <%= hidden_field_tag "start_price", @product.price.to_f, Id:"price_field"%>
   <div id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
     <% if @product.variants_and_option_values(current_currency).any? %>
@@ -24,7 +24,7 @@
 
     <% if @product.price_in(current_currency) and !@product.price.nil? %>
       <div data-hook="product_price" class="columns five <% if !@product.has_variants? %> alpha <% else %> omega <% end %>">
-        
+
         <div id="product-price">
           <h6 class="product-section-title"><%= Spree.t(:price) %></h6>
           <div>
@@ -48,6 +48,6 @@
           <br>
           <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
         </div>
-    <% end %>    
+    <% end %>
   </div>
 <% end %>
