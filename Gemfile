@@ -41,7 +41,7 @@ gem 'spree', github: 'spree/spree', branch: '2-0-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-0-stable'
 gem 'spree_fancy', :github => 'spree/spree_fancy', :branch => '2-0-stable'
 gem 'spree_paypal_website_standard', github: 'enbake/spree-pp-website-standard'
-gem 'spree_auctions', '2.0.41', github: 'enbake/spree_auctions_enbake'
+gem 'spree_auctions', '2.0.42', github: 'enbake/spree_auctions_enbake',:branch => 'select_winner'
 gem 'spree_editor', :github => 'spree/spree_editor'
 gem 'tinymce-rails-langs'
 
@@ -50,3 +50,4 @@ gem 'easy_globalize3_accessors', :git => "git://github.com/reinkcar/easy_globali
 gem 'globalize', '3.0.4'
 gem 'gibbon'
 gem 'paypal-sdk-rest'
+gem 'whenever', '~> 0.9.0'
