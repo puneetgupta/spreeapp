@@ -3,5 +3,5 @@ You are winner for auction
 Please complete your order by clicking on the following link
 
 
->> http://localhost:3000/complete_order?id=<%=@bid.id %>
+>> <%=request.current_host%>/orders/complete_order?id=<%=@bid.id %>
 

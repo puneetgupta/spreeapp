@@ -7,7 +7,16 @@ class ApplicationController < ActionController::Base
       session[:bid] = nil
       products_path
     else
-      products_path
+      #in sign in page if session has stored, delete that and send on order  page
+     if session[:winning_bid].present?
+       bid = session[:winning_bid]
+       session[:winning_bid] = nil
+       complete_order_path(:id => bid)
+     else
+       products_path
+      end
     end
+
   end
+
 end
