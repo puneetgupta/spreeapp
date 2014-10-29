@@ -3,5 +3,5 @@ You are winner for auction
 Please complete your order by clicking on the following link
 
 
->> <%=request.current_host%>/orders/complete_order?id=<%=@bid.id %>
+>> <%= ActionMailer::Base.default_url_options[:host] %>/orders/complete_order?id=<%=@bid.id %>
 

@@ -1,20 +1,20 @@
 test: &default
 
   # Credentials for REST APIs
-  client_id: Aap8VRCGz6RIW4NPy2xJ2L-4qQ13BpPdwnIdT8dsDtfKUDoguFSDMvGr2BCz
-  client_secret: EOg4HxC4hgaQxxqDRQml5BMwuZf81hc-UxJsIHDTvzyyP-jDGTP5JJDAQ1X6
+  client_id: AU3FGRB0azOVE-SGVtqnTMk8OJY4yXh1JCwP6B9209fQzs0QVprY1gTwlEZ7
+  client_secret: ECrZIhDld4JG-q8dI3KESDZa2JrYWoGHIoIbfUyfnThl1JXsCT1kjTffolXs
 
   # Mode can be 'live' or 'sandbox'
   mode: sandbox
 
   # Credentials for Classic APIs
-  app_id: APP-80W284485P519543T
-  username: pgupta_api1.enbake.com
-  password: 1375439398
-  signature: ATLYvfZQdtwgtIFCaLNeHC8HL5gXA424GcQqwwMVfkCJDAfe8Z-VwuMU
-  # # With Certificate
-  # cert_path: "config/cert_key.pem"
-  sandbox_email_address: pgupta@enbake.com
+#  app_id: APP-80W284485P519543T
+#  username: pgupta_api1.enbake.com
+#  password: 1375439398
+#  signature: ATLYvfZQdtwgtIFCaLNeHC8HL5gXA424GcQqwwMVfkCJDAfe8Z-VwuMU
+#  # # With Certificate
+#  # cert_path: "config/cert_key.pem"
+  sandbox_email_address: memayank2007-facilitator@gmail.com
 
   # # IP Address
   # ip_address: 127.0.0.1
