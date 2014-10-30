@@ -1,7 +1,15 @@
-You are winner for auction
+Hello,
+<br>
+You are selected as Winner for the bid which you have done earlier on Auction House for Product # .
+<br>
+Proceed for payment checkout via below link.
+<br>
+Checkout link : <%= ActionMailer::Base.default_url_options[:host] %>/orders/complete_order?id=<%=@bid.id %>
+<br>
+Note : Link will expire in 48hrs, Once link is expired you will no longer be winner for this Bid.
+<br/>
+Thanks<br/>
+Auction House
 
-Please complete your order by clicking on the following link
 
-
->> <%= ActionMailer::Base.default_url_options[:host] %>/orders/complete_order?id=<%=@bid.id %>
 
