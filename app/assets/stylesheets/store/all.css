@@ -16,4 +16,5 @@
  *= require store/gallery
  *= require store/pretty-photo
  *= require store/pretty-loader
+ *= require store/spree_paypal_express
 */

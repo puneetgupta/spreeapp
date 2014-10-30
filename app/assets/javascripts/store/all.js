@@ -16,3 +16,4 @@
 //= require_tree .
 //= require store/spree_auctions
 //= require store/spree_multi_lingual
+//= require store/spree_paypal_express

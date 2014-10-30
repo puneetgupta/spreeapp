@@ -14,3 +14,4 @@
 //= require admin/spree_editor
 //= require admin/spree_multi_lingual
 //= require admin/spree_multi_lingual_class
+//= require admin/spree_paypal_express
