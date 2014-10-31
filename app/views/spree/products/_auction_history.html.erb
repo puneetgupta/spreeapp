@@ -7,7 +7,7 @@
 		<thead>
 			<tr class="dang">
 				<th align="center">
-					User Id
+					User Name
 				</th>
 				<th align="center">
 					Bid Price
@@ -21,7 +21,7 @@
 			<% @bids.each do |bid| %>
 				<tr>
 					<td align="center">
-						<%= bid.user_id %>
+						<%= bid.try(:user).first_name %>
 					</td>
 					<td align="center">
 						<%= bid.price %>
