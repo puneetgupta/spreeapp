@@ -293,3 +293,27 @@
 		width: 420px;
 	}
 }
+#cart-detail
+{
+    width:100%;
+    border-top: 15px solid #0088cc;
+
+}
+.cart-item-description-header
+{
+    padding-top: 10px;
+    padding-left: 27px;
+}
+.cart-item-price-header
+{
+    text-align:left;
+}
+.payment-method-selector input[type="radio"]
+{
+    float:left;
+}
+.steps-data
+{
+    width:90%;
+    margin:0 auto;
+}
