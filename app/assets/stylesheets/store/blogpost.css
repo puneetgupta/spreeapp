@@ -317,3 +317,12 @@
     width:90%;
     margin:0 auto;
 }
+.payment-method-selector{
+display: none;
+}
+#payment-methods {
+    list-style-type: none;
+}
+#checkout-link{
+    margin-top: 10px;
+}
