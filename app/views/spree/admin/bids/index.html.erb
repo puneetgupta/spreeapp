@@ -1,0 +1,48 @@
+<% content_for :page_title do %>
+    <%= Spree.t(:listing_bids) %>
+<% end %>
+
+<div id="new_product_wrapper" data-hook></div>
+
+<%= paginate @bids %>
+
+<% if @bids.any? %>
+    <table class="index" id="listing_products">
+      <colgroup>
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+      </colgroup>
+      <thead>
+      <tr data-hook="admin_products_index_headers">
+        <th>Name</th>
+        <th>Email</th>
+        <th>Bid Date</th>
+        <th>Bid Price</th>
+        <th>Bid Status</th>
+        <th data-hook="admin_products_index_header_actions" class="actions"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @bids.each do |bid|%>
+      <tr>
+        <td class="align-center"><%= "#{bid.user.first_name}"+ " "+"#{bid.user.last_name}"  %> </td>
+        <td class="align-center"><%= bid.user.email%></td>
+        <td class="align-center"><%= bid.created_at %></td>
+        <td class="align-center"><%= bid.price %></td>
+        <td class="align-center"><%= bid.status %></td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <div class="no-objects-found">
+      <%= Spree.t(:no_results) %>
+    </div>
+<% end %>
+
+
+<%= paginate @bids %>
+

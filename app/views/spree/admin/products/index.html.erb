@@ -82,6 +82,8 @@
             <td><%= link_to product.try(:name), edit_admin_product_path(product) %></td>
             <td class="align-center"><%= product.display_price.to_html rescue '' %></td>
             <td class="actions" data-hook="admin_products_index_row_actions">
+              <%= link_to 'Bids' ,admin_product_bids_path(product.id) %>
+              &nbsp;
               <%= link_to_edit product, :no_text => true, :class => 'edit' unless product.deleted? %>
               &nbsp;
               <%= link_to_clone product, :no_text => true, :class => 'clone' %>
