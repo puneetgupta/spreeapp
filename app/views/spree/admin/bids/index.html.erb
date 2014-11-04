@@ -1,7 +1,12 @@
 <% content_for :page_title do %>
-    <%= Spree.t(:listing_bids) %>
+    <%= @bids.first.product.name %> <%= Spree.t(:bid_listing) %>
 <% end %>
 
+<% content_for :page_actions do %>
+    <li id="new_product_link">
+      <%= button_link_to Spree.t(:back_to_products), admin_products_path  %>
+    </li>
+<% end %>
 <div id="new_product_wrapper" data-hook></div>
 
 <%= paginate @bids %>
