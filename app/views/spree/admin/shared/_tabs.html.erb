@@ -31,3 +31,7 @@
 <% if can? :admin, Spree::Admin::CustomEmailContentsController %>
   <%= tab(:Custom_email, :url => admin_custom_email_contents_path, :icon => 'icon-file') %>
 <%end%>
+
+<% if can? :admin, Spree::Product %>
+    <%= tab(:Pendding_order, :url => admin_pendding_order_path, :icon => 'icon-file') %>
+<%end%>

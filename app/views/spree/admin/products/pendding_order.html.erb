@@ -1,0 +1,46 @@
+<% content_for :page_title do %>
+     <%= Spree.t(:pendding_order) %>
+<% end %>
+
+<% content_for :page_actions do %>
+    <li id="new_product_link">
+      <%= button_link_to Spree.t(:back_to_products), admin_products_path  %>
+    </li>
+<% end %>
+<div id="new_product_wrapper" data-hook></div>
+
+
+
+<% if @products.any? %>
+    <table class="index" id="listing_products">
+      <colgroup>
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+
+      </colgroup>
+      <thead>
+      <tr data-hook="admin_products_index_headers">
+        <th>Name</th>
+        <th>Winner Email</th>
+
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @products.each do |product|%>
+          <tr>
+            <td class="align-center"><%= product.name%></td>
+            <td class="align-center"><%= product.bids.where(:status => 'pending_confirmation').first.user.email%></td>
+            <td><%= link_to 'Process Order' ,process_order_path(:id => product.bids.where(:status => 'pending_confirmation').first.id)  %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <div class="no-objects-found">
+      <%= Spree.t(:no_results) %>
+    </div>
+<% end %>
+
+
+
