@@ -15,13 +15,17 @@
     <table class="index" id="listing_products">
       <colgroup>
         <col style="width: 25%;">
-        <col style="width: 25%;">
+        <col style="width: 20%;">
+        <col style="width: 20%;">
+        <col style="width: 20%;">
 
       </colgroup>
       <thead>
       <tr data-hook="admin_products_index_headers">
         <th>Name</th>
         <th>Winner Email</th>
+        <th>Winner Choose date</th>
+        <th>Order Expire date</th>
 
         <th></th>
       </tr>
@@ -31,6 +35,8 @@
           <tr>
             <td class="align-center"><%= product.name%></td>
             <td class="align-center"><%= product.bids.where(:status => 'pending_confirmation').first.user.email%></td>
+            <td class="align-center"><%= product.winner_choose_date%></td>
+            <td class="align-center"><%= product.winner_choose_date + 3.day%></td>
             <td><%= link_to 'Process Order' ,process_order_path(:id => product.bids.where(:status => 'pending_confirmation').first.id)  %></td>
           </tr>
       <% end %>
