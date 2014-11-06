@@ -3,68 +3,68 @@
 <table>
 	<% if @product.author_bio%>
 		<tr>
-			<td>Author Name</td>
+			<td><%= Spree.t(:author_name)%></td>
 			<td style="padding: 0 10px 0 10px;">:</td>
-			<td><%= @product.author_bio.name%></td>
+			<td><%= Spree.t(@product.author_bio.name)%></td>
 		</tr>
 		<tr>
-			<td>Bio</td>
+			<td><%= Spree.t(:bio)%></td>
 			<td style="padding: 0 10px 0 10px;">:</td>
 			<td><%= @product.author_bio.biography.html_safe%></td>
 		</tr>
 	<% end %>
 	<% if @product.created_date.present?%>
 		<tr>
-			<td>Date of art created</td>
+			<td><%= Spree.t(:date_of_art_created)%></td>
 			<td style="padding: 0 10px 0 10px;">:</td>
 			<td><%= @product.created_date.strftime("%m/%d/%Y")%></td>
 		</tr>
 	<% end %>
 	<% if @product.art_topics.present?%>
 		<tr>
-			<td>Art Topics</td>
+			<td><%= Spree.t(:art_topics)%></td>
 			<td style="padding: 0 10px 0 10px;">:</td>
 			<td><%= @product.art_topics%></td>
 		</tr>
 	<% end %>
 	<% if @product.techniques.present?%>
 		<tr>
-			<td>Techniques</td>
+			<td><%= Spree.t(:techniques)%></td>
 			<td style="padding: 0 10px 0 10px;">:</td>
 			<td><%= @product.techniques%></td>
 		</tr>
 	<% end %>
 	<% if @product.auction_end.present?%>
 	    <tr>
-	    	<td>Auction Ending Date</td>
+	    	<td><%= Spree.t(:auction_ending_date)%></td>
 	    	<td style="padding: 0 10px 0 10px;"></td>
 	    	<td><%= @product.auction_end.strftime("%m/%d/%Y")  %></td>
 	    </tr>
 	<%end%>
 	<% if @product.signature.present?%>
 		<tr>
-			<td>Signature</td>
+			<td><%= Spree.t(:signature)%></td>
 			<td style="padding: 0 10px 0 10px;">:</td>
 			<td><%= @product.signature%></td>
 		</tr>
 	<% end %>
 	<% if @product.art_height.present?%>
 		<tr>
-			<td>Height</td>
+			<td><%= Spree.t(:height)%></td>
 			<td style="padding: 0 10px 0 10px;">:</td>
 			<td><%= @product.art_height%></td>
 		</tr>
 	<% end %>
 	<% if @product.art_width.present?%>
 		<tr>
-			<td>Width</td>
+			<td><%= Spree.t(:width)%></td>
 			<td style="padding: 0 10px 0 10px;">:</td>
 			<td><%= @product.art_width%></td>
 		</tr>
 	<% end %>
 	<% if @product.art_depth.present?%>
 		<tr>
-			<td>Depth</td>
+			<td><%= Spree.t(:depth)%></td>
 			<td style="padding: 0 10px 0 10px;">:</td>
 			<td><%= @product.art_depth%></td>
 		</tr>

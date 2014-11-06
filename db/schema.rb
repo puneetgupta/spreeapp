@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141010072235) do
+ActiveRecord::Schema.define(:version => 20141106142640) do
 
   create_table "products_categories", :id => false, :force => true do |t|
     t.integer "product_id"
@@ -114,11 +114,33 @@ ActiveRecord::Schema.define(:version => 20141010072235) do
   add_index "spree_assets", ["viewable_id"], :name => "index_assets_on_viewable_id"
   add_index "spree_assets", ["viewable_type", "type"], :name => "index_assets_on_viewable_type_and_type"
 
+  create_table "spree_author_bio_translations", :force => true do |t|
+    t.integer  "spree_author_bio_id"
+    t.string   "locale",              :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "name"
+    t.text     "biography"
+  end
+
+  add_index "spree_author_bio_translations", ["locale"], :name => "index_spree_author_bio_translations_on_locale"
+  add_index "spree_author_bio_translations", ["spree_author_bio_id"], :name => "index_spree_author_bio_translations_on_spree_author_bio_id"
+
   create_table "spree_author_bios", :force => true do |t|
     t.string   "name"
     t.text     "biography"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "spree_bids", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "price"
+    t.integer  "variant_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "product_id"
+    t.text     "status",     :default => "bid"
   end
 
   create_table "spree_calculators", :force => true do |t|
@@ -134,6 +156,17 @@ ActiveRecord::Schema.define(:version => 20141010072235) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "spree_category_translations", :force => true do |t|
+    t.integer  "spree_category_id"
+    t.string   "locale",            :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "name"
+  end
+
+  add_index "spree_category_translations", ["locale"], :name => "index_spree_category_translations_on_locale"
+  add_index "spree_category_translations", ["spree_category_id"], :name => "index_spree_category_translations_on_spree_category_id"
 
   create_table "spree_configurations", :force => true do |t|
     t.string   "name"
@@ -414,6 +447,19 @@ ActiveRecord::Schema.define(:version => 20141010072235) do
 
   add_index "spree_payments", ["order_id"], :name => "index_spree_payments_on_order_id"
 
+  create_table "spree_paypal_express_checkouts", :force => true do |t|
+    t.string   "token"
+    t.string   "payer_id"
+    t.string   "transaction_id"
+    t.string   "state",                 :default => "complete"
+    t.string   "refund_transaction_id"
+    t.datetime "refunded_at"
+    t.string   "refund_type"
+    t.datetime "created_at"
+  end
+
+  add_index "spree_paypal_express_checkouts", ["transaction_id"], :name => "index_spree_paypal_express_checkouts_on_transaction_id"
+
   create_table "spree_photos", :force => true do |t|
     t.string   "file_file_name"
     t.string   "file_content_type"
@@ -484,7 +530,7 @@ ActiveRecord::Schema.define(:version => 20141010072235) do
   add_index "spree_product_translations", ["spree_product_id"], :name => "index_spree_product_translations_on_spree_product_id"
 
   create_table "spree_products", :force => true do |t|
-    t.string   "name",                 :default => "", :null => false
+    t.string   "name",                 :default => "",    :null => false
     t.text     "description"
     t.datetime "available_on"
     t.datetime "deleted_at"
@@ -493,8 +539,8 @@ ActiveRecord::Schema.define(:version => 20141010072235) do
     t.string   "meta_keywords"
     t.integer  "tax_category_id"
     t.integer  "shipping_category_id"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.datetime "auction_end"
     t.decimal  "minimal_price"
     t.datetime "created_date"
@@ -507,6 +553,10 @@ ActiveRecord::Schema.define(:version => 20141010072235) do
     t.integer  "author_bio_id"
     t.string   "unframed_width"
     t.string   "unframed_height"
+    t.text     "status",               :default => "bid"
+    t.datetime "winner_choose_date"
+    t.datetime "confirmation_date"
+    t.integer  "order_id"
   end
 
   add_index "spree_products", ["available_on"], :name => "index_spree_products_on_available_on"

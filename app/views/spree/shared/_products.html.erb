@@ -9,7 +9,7 @@
 <% end %>
 
   <div class="section_header">
-    <h3>Najnowsze aukcje</h3>
+    <h3><%= Spree.t(:title)%></h3>
   </div>
 
   <% if products.any? %>
@@ -50,5 +50,5 @@
 <% end %> -->
 
 <div id ='catalog_sec'>
-  <a href="/catalog" class="btn btn-large">Go To Catalog</a>
+  <a href="/catalog" class="btn btn-large"><%= Spree.t('title')%></a>
 </div>

@@ -1,19 +1,19 @@
 <div class="add-on hero-unit">
-<h3>Auction History</h3>
+<h3><%= Spree.t(:auction_history)%></h3>
 <% unless @bids.present? %>
-	<h5>No Auctions Yet</h5>
+	<h5><%= Spree.t(:no_auctions_yet)%></h5>
 <%else%>
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr class="dang">
 				<th align="center">
-					User Name
+					<%= Spree.t(:user_name)%>
 				</th>
 				<th align="center">
-					Bid Price
+					<%= Spree.t(:bid_price)%>
 				</th>
 				<th align="center">
-					Bid Date
+                  <%= Spree.t(:bid_date)%>
 				</th>
 			</tr>
 		</thead>
