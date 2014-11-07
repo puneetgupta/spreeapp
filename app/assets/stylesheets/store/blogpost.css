@@ -323,18 +323,7 @@ display: none;
 #payment-methods {
     list-style-type: none;
 }
-#checkout-link{
+#checkout-link {
     margin-top: 10px;
-}
-.qtrans_flag_en {
-    background: url('https://wiki-pr.com/wp-content/plugins/qtranslate/flags/us.png') no-repeat scroll 0% 0% transparent;
-}
 
-.qtrans_flag {
-    height: 12px;
-    width: 18px;
-    display: block;
-}
-.qtrans_flag_pl {
-    background: url('https://wiki-pr.com/wp-content/plugins/qtranslate/flags/pl.png') no-repeat scroll 0% 0% transparent;
 }
