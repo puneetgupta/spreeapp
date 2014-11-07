@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if session[:bid].present?
       Spree::Bid.place_bid(session[:bid], resource_or_scope)
       session[:bid] = nil
-      flash.notice = Spree.t(:Your_bid_has_been_placed_successfully)
+      flash.notice = Spree.t(:bid_place)
       products_path
     else
       #in sign in page if session has stored, delete that and send on order  page
