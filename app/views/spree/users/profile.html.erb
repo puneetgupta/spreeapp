@@ -29,8 +29,8 @@
 				<%= f.error_message_on :password_confirmation %>
 			<% end %>
 			<%= f.field_container :frequency do %>
-				<%= f.label :frequency, "Email frequency for followed products" %>
-				<%= f.select:frequency, options_for_select([["Daily", 0],["Weekly", 1],["Monthly", 2]], [@user.frequency]), :id =>"mail_frequency"%>
+				<%= f.label :frequency, "#{Spree.t(:email_frequency_followed_products)}" %>
+				<%= f.select:frequency, options_for_select([["#{Spree.t(:daily)}", 0],["#{Spree.t(:weekly)}", 1],["#{Spree.t(:monthly)}", 2]], [@user.frequency]), :id =>"mail_frequency"%>
 			<% end %>
 			<%= f.field_container :day_of_week do %>
 				<%= f.label :frequency, "Day of week" %>
@@ -145,7 +145,7 @@
 		</fieldset>
 	</div>
 	<div class="form-buttons" data-hook="buttons">
-		<%= submit_tag "Update Profile", :class => 'button primary' %>
+		<%= submit_tag "#{Spree.t(:update_profile)}", :class => 'button primary' %>
 	</div>
 	<!--<div>
 		<%#= render :partial => 'spree/checkout/payment/gateway', :locals => { :payment_method => Spree::PaymentMethod.first } %>
@@ -181,30 +181,30 @@
     </div>
   </div>
   <%else%>
-  No product followed yet
+  <%= Spree.t(:no_product_followed)%>
   <% end %>
 <% end %>
 <div class="columns alpha six" data-hook="">
     <fieldset id="user_address" data-hook="">
-        <legend align="center"><%= Spree.t(:Credit_card) %></legend>
+        <legend align="center"><%= Spree.t(:credit_card) %></legend>
         <div class="inner" data-hook="">
             <p class="field" id="street">
-                <%= label_tag 'first_name', "First Name: #{@user.credit_card.try(:first_name)}" %>
+                <%= label_tag 'first_name', "#{Spree.t(:firstname)}: #{@user.credit_card.try(:first_name)}" %>
                 <%#= card.text_field :first_name, :class => 'required' %>
             </p>
             <p class="field" id="street_no">
-               <%= label_tag 'last_name', "Last Name: #{@user.credit_card.try(:last_name)}" %>
+               <%= label_tag 'last_name', "#{Spree.t(:lastname)}: #{@user.credit_card.try(:last_name)}" %>
                 <%#= card.text_field :last_name, :class => 'required' %>
             </p>
             <p class="field" id="house_no">
-               <%= label_tag 'number', "Number: ************ #{@user.credit_card.try(:last_digits)}" %>
+               <%= label_tag 'number', "#{Spree.t(:number)}: ************ #{@user.credit_card.try(:last_digits)}" %>
                 <%#= card.text_field :last_digits, :class => 'required' %>
             </p>
             <p class="field" id="house_no">
-               <%= label_tag 'type', "Card Type: #{@user.credit_card.try(:cc_type)}" %>
+               <%= label_tag 'type', "#{Spree.t(:card_type)}: #{@user.credit_card.try(:cc_type)}" %>
                 <%#= card.text_field :last_digits, :class => 'required' %>
             </p>
-            <p><%=link_to "Add/Update Credit Card", add_credit_card_path, :class => "btn btn-primary"%></p>
+            <p><%=link_to "#{Spree.t(:add_Update_credit_card)}", add_credit_card_path, :class => "btn btn-primary"%></p>
         </div>
     </fieldset>
 </div>

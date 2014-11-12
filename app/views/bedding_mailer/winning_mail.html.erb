@@ -1,15 +1,12 @@
-Hello,
+<%= Spree.t(:hello)%>,
 <br>
-You are selected as Winner for the bid which you have done earlier on Auction House for Product # .
+<%= Spree.t(:winner_for_the_bid)%>
 <br>
-Proceed for payment checkout via below link.
+<%= Spree.t(:payment_checkout_via_below_link)%>
 <br>
-Checkout link : <%= ActionMailer::Base.default_url_options[:host] %>/orders/complete_order?id=<%=@bid.id %>
+<%= Spree.t(:checkout_link)%> : <%= ActionMailer::Base.default_url_options[:host] %>/orders/complete_order?id=<%=@bid.id %>
 <br>
-Note : Link will expire in 48hrs, Once link is expired you will no longer be winner for this Bid.
+<%= Spree.t(:expire_in_48hrs)%>
 <br/>
-Thanks<br/>
+<%= Spree.t(:thanks)%><br/>
 Auction House
-
-
-

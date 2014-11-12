@@ -1,9 +1,8 @@
-Hello,
+<%= Spree.t(:hello)%>,
+<br><%= Spree.t(:thanks_message)%>
+<br><%= Spree.t(:check)%> <%= @bid.product.name %> <a href="<%= ActionMailer::Base.default_url_options[:host] %>/products/<%= @bid.product.permalink%>"><%= Spree.t(:here)%></a>.
 <br>
-Thanks for you showing your interest in Product. Your Bid has been placed successfully.
-<br>You can check <%= @bid.product.name %> <a href="<%= ActionMailer::Base.default_url_options[:host] %>/products/<%= @bid.product.permalink%>">here</a>.
+<%= Spree.t(:touch_soon)%>
 <br>
-Will touch base soon once winner is selected.
-<br>
-Thanks<br/>
+<%= Spree.t(:thanks)%><br/>
 Auction House
