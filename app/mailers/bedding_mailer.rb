@@ -3,13 +3,13 @@ class BeddingMailer < ActionMailer::Base
 
   def bedding_mail user,bid
     @bid = bid
-    mail(to: user.email, subject: 'Bid Placed Successfully @AuctionHouse')
+    mail(to: user.email, subject: "#{Spree.t(:bid_placed_successfully)}")
   end
 
   def winning_mail bid
     @bid = bid
     user = Spree::User.find bid.user_id
-    mail(to: user.email, subject: 'Congrats ! Bid Winner at AuctionHouse')
+    mail(to: user.email, subject: "#{Spree.t(:congrats_bid_winner)}")
   end
 
 
