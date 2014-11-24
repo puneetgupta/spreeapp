@@ -10,6 +10,20 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
+//= require jquery.min.js
+//= require jquery-migrate.min.js
+//= require bootstrap.min.js
+//= require back-to-top.js
+//= require jquery.slimscroll.min.js
+//= require jquery.fancybox.pack.js
+//= require owl.carousel.min.js
+//= require jquery.zoom.min.js
+//= require bootstrap.touchspin.js
+//= require greensock.js
+//= require layerslider.transitions.js
+//= require layerslider.kreaturamedia.jquery.js
+//= require layerslider-init.js
+//= require layout.js
+
+
+
