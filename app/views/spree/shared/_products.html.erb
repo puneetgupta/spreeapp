@@ -12,43 +12,31 @@
     <h3><%= Spree.t(:title)%></h3>
   </div>
 
-  <% if products.any? %>
-  <div id="showcase">
-    <div class="features_op1_row">
-      <ul class="thumbnails">
-        <% products.each do |product| %>
-          <li class="span3 feature" itemscope itemtype="http://schema.org/Product">
-            <div class="img_box">
-              <a href="<%= url_for product %>">
-              	<% unless product.images.empty? %>
-                	<%= image_tag(product.images.first.attachment.url) %>
-                <% else %>
-                    <%= image_tag("no_image.png")%>
-
-				        <% end %>
-                <span class="circle">
-                    <span class="plus">+</span>
-                </span>
-              </a>
+<% if products.any? %>
+  <div class="row margin-bottom-40">
+    <div class="col-md-12 sale-product">
+      <div class="owl-carousel owl-carousel5">
+      <% products.each do |product| %>
+        <div>
+          <div class="product-item">
+            <div class="pi-img-wrapper">
+            <% unless product.images.empty? %>
+              <%= image_tag(product.images.first.attachment.url, :class => "img-responsive") %>
+            <% else %>
+              <%= image_tag("no_image.png", :class => "img-responsive")%>
+            <% end %>
+              <div>
+                <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+              </div>
             </div>
-            <div class="text">
-              <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
-              <% bidder_count = bidder_count(product) %>
-              <%= bidder_count.to_i > 1 ? "( #{bidder_count} Bidders)" : "( #{bidder_count} Bidder)"%>
-              <div class="price selling" itemprop="price"><%= display_price(product) %></div>
-            </div>
-          </li>
-        <% end %>
-        <% reset_cycle("classes") %>
-      </ul>
+            <h3><a href="shop-item.html"><%= link_to truncate(product.name), :title => product.name %></a></h3>
+            <div class="pi-price"><%= display_price(product) %></div>
+            <div class="sticker sticker-sale"></div>
+          </div>
+        </div>
+      <% end %>
+      </div>
     </div>
   </div>
-  <% end %>
-
-<!--<% if paginated_products.respond_to?(:num_pages) %>
-  <%= paginate paginated_products %>
-<% end %> -->
-
-<div id ='catalog_sec'>
-  <a href="/catalog" class="btn btn-large"><%= Spree.t('title')%></a>
-</div>
+<% reset_cycle("classes") %>
+<% end %>
