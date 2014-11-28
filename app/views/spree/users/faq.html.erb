@@ -1,18 +1,48 @@
-<%= render :partial => 'spree/shared/main_nav_bar.html.erb' %>
+<div class="main">
+  <div class="container">
+    <ul class="breadcrumb">
+        <li class="active">Quick links</li>
+    </ul>
+    <!-- BEGIN SIDEBAR & CONTENT -->
+    <div class="row margin-bottom-40">
+      <!-- BEGIN SIDEBAR -->
+      <div class="sidebar col-md-3 col-sm-3">
+        <ul class="list-group margin-bottom-25 sidebar-menu">
+          <%Spree::Navigation.order("position").each do |nav|%>
+            <% unless ((nav.url == "/auctions" or nav.url == "/payment" or nav.url == "/profile") and !spree_current_user) %>
+              <li class="list-group-item clearfix"><i class="fa fa-angle-right"></i> <%= link_to nav.name.upcase, nav.url ,{ :class => "dropdown-toggle"}%></li>
+            <%end%>
+          <%end%>
+        </ul>
+      </div>
+      <!-- END SIDEBAR -->
 
-<div>
-    <% count = 1%>
-    <% @data.each do |staticpage| %>
-    <div id="static_question_<%= count %>">
-        <h3><%= count%>. <%= staticpage.title %></h3>
+      <!-- BEGIN CONTENT -->
+      <div class="col-md-9 col-sm-9">
+        <h1>Frequently Asked Questions</h1>
+        <div class="faq-page">
+          <% count = 1%>
+          <% @data.each do |staticpage| %>
+            <div class="panel panel-success">
+               <div class="panel-heading">
+                  <h4 class="panel-title">
+                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_<%= count%>">
+                     <%= count%>. <%= staticpage.title %>
+                     </a>
+                  </h4>
+               </div>
+               <div id="accordion1_<%= count%>" class="panel-collapse collapse ">
+                  <div class="panel-body">
+                     <%= raw staticpage.description %>
+                  </div>
+               </div>
+            </div>
+            <% count+=1%>
+          <% end %>
+        </div>
+      </div>
+      <!-- END CONTENT -->
     </div>
-    <div>
-        <h5><%= raw staticpage.description %></h5>
-    </div>
-    <br/>
-    <br/>
-    <% count+=1%>
-    <% end %>
-    <br/>
-<%= button_to "BACK", :back, :method => 'get' %>
+    <!-- END SIDEBAR & CONTENT -->
+  </div>
 </div>
