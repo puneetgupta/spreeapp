@@ -31,7 +31,7 @@
                       <%= image_tag("no_image.png", :class => "img-responsive", :width => 600, :height => 800)%>
                     <% end %>
                     <div>
-                      <a href="#" class="btn btn-default">View</a>
+                      <a href="<%= url_for product %>" class="btn btn-default">View</a>
                     </div>
                   </div>
                   <h3><%= link_to truncate(product.name), :title => product.name %></h3>
