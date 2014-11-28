@@ -34,7 +34,7 @@
                       <a href="<%= url_for product %>" class="btn btn-default">View</a>
                     </div>
                   </div>
-                  <h3><%= link_to truncate(product.name), :title => product.name %></h3>
+                  <h3><%= link_to truncate(product.name), product, :title => product.name %></h3>
                   <div class="pi-price"><%= display_price(product) %></div>
                 </div>
               </div>

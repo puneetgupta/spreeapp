@@ -6,8 +6,8 @@
             <div class="col-md-6 col-sm-6 additional-shop-info">
                 <ul class="list-unstyled list-inline">
                     <!-- <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li> -->
-                    <li><i class="fa "></i><a href="#"><span>English</span></a></li>
-                    <li><i class="fa "></i><a href="#"><span>Polish</span></a></li>
+                    <li><i class="fa "></i><span>English  </span><%= link_to image_tag("us.png"), locale: "en" %></li>
+                    <li><i class="fa "></i><span>Polish  </span><%= link_to image_tag("pl.png"), locale: "pl" %></li>
                     <!-- BEGIN CURRENCIES -->
                     <!-- <li class="shop-currencies">
                         <a href="javascript:void(0);">€</a>
@@ -34,9 +34,12 @@
                     <!-- <li><a href="#">My Account</a></li> -->
                     <!-- <li><a href="#">My Wishlist</a></li>
                     <li><a href="#">Checkout</a></li> -->
-                    <li><%= link_to Spree.t(:Signup), new_spree_user_registration_path unless spree_current_user %></li>
-                    <li><%= link_to Spree.t(:sign_in), spree_user_session_path unless spree_current_user %></li>
-                    <li><%= link_to Spree.t(:sign_out), destroy_spree_user_session_path if spree_current_user %></li>
+                    <% if spree_current_user %>
+                    <li><%= link_to Spree.t(:sign_out), destroy_spree_user_session_path%></li>
+                    <% else %>
+                        <li><%= link_to Spree.t(:Signup), new_spree_user_registration_path %></li>
+                        <li><%= link_to Spree.t(:sign_in), spree_user_session_path %></li>
+                    <% end %>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->
