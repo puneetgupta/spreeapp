@@ -1,213 +1,290 @@
-<h1><%= Spree.t(:Profile) %></h1>
+<!-- Page level plugin styles START -->
+<link href="../../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+<!-- Page level plugin styles END -->
 
-<%= form_for @user, :url =>user_path(@user), :method => :put do |f| %>
-	<div class="columns alpha six" data-hook="">
-		<fieldset id="user_details" data-hook>
-			<%= f.field_container :email do %>
-				<%= f.label :email, raw(Spree.t(:email)) %>
-				<%= f.text_field :email, :class => 'fullwidth title', :disabled => true %>
-				<%= f.error_message_on :email %>
-			<% end %>
-			<%= f.field_container :first_name do %>
-				<%= f.label :first_name, raw(Spree.t(:first_name)) %>
-				<%= f.text_field :first_name, :class => 'fullwidth title' %>
-				<%= f.error_message_on :first_name %>
-			<% end %>
-			<%= f.field_container :last_name do %>
-				<%= f.label :last_name, raw(Spree.t(:last_name)) %>
-				<%= f.text_field :last_name, :class => 'fullwidth title ' %>
-				<%= f.error_message_on :last_name %>
-			<% end %>
-			<%= f.field_container :password do %>
-				<%= f.label :password, raw(Spree.t(:change_password)) %>
-				<%= f.text_field :password, :class => 'fullwidth title', :type => "password", :placeholder => "New Password"  %>
-				<%= f.error_message_on :password %>
-			<% end %>
-			<%= f.field_container :password_confirmation do %>
-				<%= f.label :password_confirmation, raw(Spree.t(:password_confirmation)) %>
-				<%= f.text_field :password_confirmation, :class => 'fullwidth title', :type => "password", :placeholder => "Retype Password" %>
-				<%= f.error_message_on :password_confirmation %>
-			<% end %>
-			<%= f.field_container :frequency do %>
-				<%= f.label :frequency, "#{Spree.t(:email_frequency_followed_products)}" %>
-				<%= f.select:frequency, options_for_select([["#{Spree.t(:daily)}", 0],["#{Spree.t(:weekly)}", 1],["#{Spree.t(:monthly)}", 2]], [@user.frequency]), :id =>"mail_frequency"%>
-			<% end %>
-			<%= f.field_container :day_of_week do %>
-				<%= f.label :frequency, "Day of week" %>
-				<%= f.select :day_of_week, options_for_select([["Monday", 1],["Tuesday", 2],["Wednesday", 3], ["Thursday", 4], ["Friday", 5], ["Saturday", 6], ["Sunday", 7]],[@user.day_of_week])%>
-			<% end %>
-			<%= f.field_container :day_of_month do %>
-				<%= f.label :day_of_month, "Day of month" %>
-				
-				<%= f.select :day_of_month, options_for_select((1..31).each{|i| [i]}, [@user.day_of_month])%>
-			<% end %>
-			
-		</fieldset>
-	</div>
-	<div class="columns alpha six" data-hook="">
-		<fieldset id="user_address" data-hook="">
-			<%= f.fields_for :user_address do |form| %>
-				<legend align="center"><%= Spree.t(:user_address) %></legend>
-				<div class="inner" data-hook="">
-					<p class="field" id="street">
-						<%= form.label :street, Spree.t(:street) %><br />
-						<%= form.text_field :street, :class => 'required' %>
-					</p>
-					<p class="field" id="street_no">
-						<%= form.label :street_no, Spree.t(:street_no) %><br />
-						<%= form.text_field :street_no, :class => 'required' %>
-					</p>
-					<p class="field" id="house_no">
-						<%= form.label :house_no, Spree.t(:house_no) %><br />
-						<%= form.text_field :house_no, :class => 'required' %>
-					</p>
-					<p class="field" id="apartment_no">
-						<%= form.label :apartment_no, Spree.t(:apartment_no) %><br />
-						<%= form.text_field :apartment_no, :class => 'required' %>
-					</p>
-					<p class="field" id="city">
-						<%= form.label :city, Spree.t(:city) %><br />
-						<%= form.text_field :city, :class => 'required' %>
-					</p>
-					<p class="field" id="state">
-						<%= form.label :state, Spree.t(:state) %><br />
-						<%= form.text_field :state, :class => 'required' %>
-					</p>
-					<p class="field" id="zip_code">
-						<%= form.label :zip_code, Spree.t(:zip_code) %><br />
-						<%= form.text_field :zip_code, :class => 'required' %>
-					</p>
-					<p class="field" id="country">
-						<%= form.label :country_id, Spree.t(:country) %><span class="required">*</span><br />
-							<span id="country-selection">
-						<%= form.collection_select :country, available_countries, :id, :name, {}, {:class => 'required address_form'} %>
-						</span>
-					</p>
-					<p class="field" id="land_line_no">
-						<%= form.label :land_line_no, Spree.t(:land_line) %><br />
-						<%= form.text_field :land_line_no, :class => 'required' %>
-					</p>
-					<p class="field" id="mobile_no">
-						<%= form.label :mobile_no, Spree.t(:mobile) %><br />
-						<%= form.text_field :mobile_no, :class => 'required' %>
-					</p>
-					<p class="field form-inline" id="company">
-						<span><%= form.check_box :company, :class => 'required is-company' %></span>
-						<span><%= form.label :company, Spree.t(:is_company) %></span>
-					</p>
-					<div class = "hidden company_fields">
-						<p class="field" id="country_name">
-							<%= form.label :company_name, Spree.t(:company_name) %><br />
-							<%= form.text_field :company_name, :class => 'required company_name', :disabled => "disabled" %>
-						</p>
-						<p class="field" id="nip">
-							<%= form.label :nip, Spree.t(:nip) %><br />
-							<%= form.text_field :nip, :class => 'required nip', :disabled => "disabled" %>
-						</p>
-						<p class="field" id="com_street">
-            <%= form.label :com_street, Spree.t(:street) %><br />
-            <%= form.text_field :com_street, :class => 'required' %>
-          </p>
-          <p class="field" id="com_street_no">
-            <%= form.label :com_street_no, Spree.t(:street_no) %><br />
-            <%= form.text_field :com_street_no, :class => 'required' %>
-          </p>
+<!-- Page level plugin javascript START -->
+<script src="../../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="../../assets/frontend/pages/scripts/checkout.js" type="text/javascript"></script>
+<!-- Page level plugin javascript START -->
 
-          <p class="field" id="com_city">
-            <%= form.label :com_city, Spree.t(:city) %><br />
-            <%= form.text_field :com_city, :class => 'required' %>
-          </p>
-          <p class="field" id="com_state">
-            <%= form.label :com_state, Spree.t(:state) %><br />
-            <%= form.text_field :com_state, :class => 'required' %>
-          </p>
-          <p class="field" id="com_zip_code">
-            <%= form.label :com_zip_code, Spree.t(:zip_code) %><br />
-            <%= form.text_field :com_zip_code, :class => 'required' %>
-          </p>
-          <p class="field" id="com_country">
-            <%= form.label :com_country_id, Spree.t(:country) %><span class="required">*</span><br />
-              <span id="country-selection">
-            <%= form.collection_select :com_country, available_countries, :id, :name, {}, {:class => 'required address_form'} %>
-            </span>
-          </p>
-          <p class="field" id="com_land_line_no">
-            <%= form.label :com_land_line_no, Spree.t(:land_line) %><br />
-            <%= form.text_field :com_land_line_no, :class => 'required' %>
-          </p>
-          <p class="field" id="com_mobile_no">
-            <%= form.label :com_mobile_no, Spree.t(:mobile) %><br />
-            <%= form.text_field :com_mobile_no, :class => 'required' %>
-          </p>
-					</div>
-				</div>
-			<% end %>
-		</fieldset>
-	</div>
-	<div class="form-buttons" data-hook="buttons">
-		<%= submit_tag "#{Spree.t(:update_profile)}", :class => 'button primary' %>
-	</div>
-	<!--<div>
-		<%#= render :partial => 'spree/checkout/payment/gateway', :locals => { :payment_method => Spree::PaymentMethod.first } %>
-	</div> -->
-<legend align="center"><h3><%= Spree.t(:followed_products) %></h3></legend>
-<% if @products_followed.compact.any? %>
-  <div id="showcase">
-    <div class="features_op1_row">
-      <ul class="thumbnails">
-        <% @products_followed.compact.each do |product| %>
-          <li class="span3 feature" itemscope itemtype="http://schema.org/Product">
-            <div class="img_box">
-              <a href="<%= url_for product %>">
-              	<% unless product.images.empty?  %>
-                	<%= image_tag(product.images.first.attachment.url) %>
-				 <% end %>
-                <span class="circle"> 
-                    <span class="plus">+</span>
-                </span>
-              </a>
+<div class="main">
+  <div class="container">
+    <%= form_for @user, :url =>user_path(@user), :method => :put do |f| %>
+    <!-- BEGIN SIDEBAR & CONTENT -->
+    <div class="row margin-bottom-40">
+      <!-- BEGIN CONTENT -->
+      <div class="col-md-12 col-sm-12">
+        <h1><%= Spree.t(:Profile) %></h1>
+        <!-- BEGIN CHECKOUT PAGE -->
+        <div class="panel-group checkout-page accordion scrollable" id="checkout-page">
+          <!-- Profile dropdown -->
+					<div id="checkout" class="panel panel-default">
+					  <div class="panel-heading">
+					    <h2 class="panel-title">
+					      <a data-toggle="collapse" data-parent="#checkout-page" href="#checkout-content" class="accordion-toggle">
+                   User Address
+                </a>
+              </h2>
             </div>
-            <div class="text">
-              <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
-              <% bidder_count = bidder_count(product) %>
-              <%= bidder_count.to_i > 1 ? "( #{bidder_count} Bidders)" : "( #{bidder_count} Bidder)"%>
-              <div class="price selling" itemprop="price"><%= display_price(product) %></div>
-              <%= link_to "UnFollow", follow_product_follows_path(id: product.id)%>
+				    <div id="checkout-content" class="panel-collapse collapse in">
+				      <div class="panel-body row">
+				        <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+  										<%= f.field_container :email do %>
+  										  <%= f.label :email, raw(Spree.t(:email)) %>
+  										  <%= f.text_field :email, :class => 'form-control', :disabled => true %>
+  										  <%= f.error_message_on :email %>
+  										<% end %>
+                   </div>
+                   <div class="form-group">
+                   	<%= f.field_container :first_name do %>
+    									<%= f.label :first_name, raw(Spree.t(:first_name)) %>
+    									<%= f.text_field :first_name, :class => 'form-control' %>
+    									<%= f.error_message_on :first_name %>
+  									<% end %>
+                   </div>
+                   <div class="form-group">
+							      <%= f.field_container :last_name do %>
+							        <%= f.label :last_name, raw(Spree.t(:last_name)) %>
+							        <%= f.text_field :last_name, :class => 'form-control ' %>
+							        <%= f.error_message_on :last_name %>
+							      <% end %>                       
+                   </div>
+                   <div class="form-group">
+							      <%= f.field_container :password do %>
+							        <%= f.label :password, raw(Spree.t(:change_password)) %>
+							        <%= f.text_field :password, :class => 'form-control', :type => "password", :placeholder => "New Password"  %>
+							        <%= f.error_message_on :password %>
+							      <% end %>
+                   </div>
+                   <div class="form-group">
+								    <%= f.field_container :password_confirmation do %>
+								      <%= f.label :password_confirmation, raw(Spree.t(:password_confirmation)) %>
+								      <%= f.text_field :password_confirmation, :class => 'form-control', :type => "password", :placeholder => "Retype Password" %>
+								      <%= f.error_message_on :password_confirmation %>
+								    <% end %>
+                   </div>
+                   <div class="form-group">
+							      <%= f.field_container :frequency do %>
+							        <%= f.label :frequency, "#{Spree.t(:email_frequency_followed_products)}" %>
+							        <%= f.select:frequency, options_for_select([["#{Spree.t(:daily)}", 0],["#{Spree.t(:weekly)}", 1],["#{Spree.t(:monthly)}", 2]], [@user.frequency]), :id =>"mail_frequency"%>
+							      <% end %>
+                   </div>
+                   <div class="form-group">
+							      <%= f.field_container :day_of_week do %>
+							        <%= f.label :frequency, "Day of week" %>
+							        <%= f.select :day_of_week, options_for_select([["Monday", 1],["Tuesday", 2],["Wednesday", 3], ["Thursday", 4], ["Friday", 5], ["Saturday", 6], ["Sunday", 7]],[@user.day_of_week])%>
+							      <% end %>
+                   </div>
+                   <div class="form-group">
+							      <%= f.field_container :day_of_month do %>
+							        <%= f.label :day_of_month, "Day of month" %>
+							        
+							        <%= f.select :day_of_month, options_for_select((1..31).each{|i| [i]}, [@user.day_of_month])%>
+							      <% end %>
+                   </div>
+                </div>
+              	<div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+							      <%= f.fields_for :user_address do |form| %>
+							          <p class="field" id="street">
+							            <%= form.label :street, Spree.t(:street) %><br />
+							            <%= form.text_field :street, :class => 'form-control required' %>
+							          </p>
+							          <p class="field" id="street_no">
+							            <%= form.label :street_no, Spree.t(:street_no) %><br />
+							            <%= form.text_field :street_no, :class => 'form-control required' %>
+							          </p>
+							          <p class="field" id="house_no">
+							            <%= form.label :house_no, Spree.t(:house_no) %><br />
+							            <%= form.text_field :house_no, :class => 'form-control required' %>
+							          </p>
+							          <p class="field" id="apartment_no">
+							            <%= form.label :apartment_no, Spree.t(:apartment_no) %><br />
+							            <%= form.text_field :apartment_no, :class => 'form-control required' %>
+							          </p>
+							          <p class="field" id="city">
+							            <%= form.label :city, Spree.t(:city) %><br />
+							            <%= form.text_field :city, :class => 'form-control required' %>
+							          </p>
+							          <p class="field" id="state">
+							            <%= form.label :state, Spree.t(:state) %><br />
+							            <%= form.text_field :state, :class => 'form-control required' %>
+							          </p>
+							          <p class="field" id="zip_code">
+							            <%= form.label :zip_code, Spree.t(:zip_code) %><br />
+							            <%= form.text_field :zip_code, :class => 'form-control required' %>
+							          </p>
+							          <p class="field" id="country">
+							            <%= form.label :country_id, Spree.t(:country) %><span class="required">*</span><br />
+							              <span id="country-selection">
+							            <%= form.collection_select :country, available_countries, :id, :name, {}, {:class => 'form-control required address_form'} %>
+							            </span>
+							          </p>
+							          <p class="field" id="land_line_no">
+							            <%= form.label :land_line_no, Spree.t(:land_line) %><br />
+							            <%= form.text_field :land_line_no, :class => 'form-control required' %>
+							          </p>
+							          <p class="field" id="mobile_no">
+							            <%= form.label :mobile_no, Spree.t(:mobile) %><br />
+							            <%= form.text_field :mobile_no, :class => 'form-control required' %>
+							          </p>
+							          <p class="field form-inline" id="company">
+							            <span><%= form.check_box :company, :class => 'form-control required is-company' %></span>
+							            <span><%= form.label :company, Spree.t(:is_company) %></span>
+							          </p>
+							          <div class = "hidden company_fields">
+							            <p class="field" id="country_name">
+							              <%= form.label :company_name, Spree.t(:company_name) %><br />
+							              <%= form.text_field :company_name, :class => 'form-control required company_name', :disabled => "disabled" %>
+							            </p>
+							            <p class="field" id="nip">
+							              <%= form.label :nip, Spree.t(:nip) %><br />
+							              <%= form.text_field :nip, :class => 'form-controlrequired nip', :disabled => "disabled" %>
+							            </p>
+							            <p class="field" id="com_street">
+							            <%= form.label :com_street, Spree.t(:street) %><br />
+							            <%= form.text_field :com_street, :class => 'form-controlrequired' %>
+							          </p>
+							          <p class="field" id="com_street_no">
+							            <%= form.label :com_street_no, Spree.t(:street_no) %><br />
+							            <%= form.text_field :com_street_no, :class => 'form-controlrequired' %>
+							          </p>
+
+							          <p class="field" id="com_city">
+							            <%= form.label :com_city, Spree.t(:city) %><br />
+							            <%= form.text_field :com_city, :class => 'form-controlrequired' %>
+							          </p>
+							          <p class="field" id="com_state">
+							            <%= form.label :com_state, Spree.t(:state) %><br />
+							            <%= form.text_field :com_state, :class => 'form-controlrequired' %>
+							          </p>
+							          <p class="field" id="com_zip_code">
+							            <%= form.label :com_zip_code, Spree.t(:zip_code) %><br />
+							            <%= form.text_field :com_zip_code, :class => 'form-controlrequired' %>
+							          </p>
+							          <p class="field" id="com_country">
+							            <%= form.label :com_country_id, Spree.t(:country) %><span class="form-controlrequired">*</span><br />
+							              <span id="country-selection">
+							            <%= form.collection_select :com_country, available_countries, :id, :name, {}, {:class => 'required address_form'} %>
+							            </span>
+							          </p>
+							          <p class="field" id="com_land_line_no">
+							            <%= form.label :com_land_line_no, Spree.t(:land_line) %><br />
+							            <%= form.text_field :com_land_line_no, :class => 'form-controlrequired' %>
+							          </p>
+							          <p class="field" id="com_mobile_no">
+							            <%= form.label :com_mobile_no, Spree.t(:mobile) %><br />
+							            <%= form.text_field :com_mobile_no, :class => 'form-controlrequired' %>
+							          </p>
+							          </div>
+							      <% end %>
+                  </div>
+                    <div class="form-buttons" data-hook="buttons">
+											 <%= submit_tag "#{Spree.t(:update_profile)}", :class => 'btn btn-primary' %>
+										</div>
+                </div>
+              </div>
             </div>
-          </li>
-        <% end %>
-        <% reset_cycle("classes") %>
-      </ul>
-    </div>
-  </div>
-  <%else%>
-  <%= Spree.t(:no_product_followed)%>
-  <% end %>
-<% end %>
-<div class="columns alpha six" data-hook="">
-    <fieldset id="user_address" data-hook="">
-        <legend align="center"><%= Spree.t(:credit_card) %></legend>
-        <div class="inner" data-hook="">
-            <p class="field" id="street">
-                <%= label_tag 'first_name', "#{Spree.t(:firstname)}: #{@user.credit_card.try(:first_name)}" %>
-                <%#= card.text_field :first_name, :class => 'required' %>
-            </p>
-            <p class="field" id="street_no">
-               <%= label_tag 'last_name', "#{Spree.t(:lastname)}: #{@user.credit_card.try(:last_name)}" %>
-                <%#= card.text_field :last_name, :class => 'required' %>
-            </p>
-            <p class="field" id="house_no">
-               <%= label_tag 'number', "#{Spree.t(:number)}: ************ #{@user.credit_card.try(:last_digits)}" %>
-                <%#= card.text_field :last_digits, :class => 'required' %>
-            </p>
-            <p class="field" id="house_no">
-               <%= label_tag 'type', "#{Spree.t(:card_type)}: #{@user.credit_card.try(:cc_type)}" %>
-                <%#= card.text_field :last_digits, :class => 'required' %>
-            </p>
-            <p><%=link_to "#{Spree.t(:add_Update_credit_card)}", add_credit_card_path, :class => "btn btn-primary"%></p>
+          </div>
+          <!-- Profile dropdown -->
+          <!-- Followed Products dropdown -->
+				  <div id="payment-address" class="panel panel-default">
+				    <div class="panel-heading">
+				      <h2 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#checkout-page" href="#payment-address-content" class="accordion-toggle">
+                   <%= Spree.t(:followed_products) %>
+                </a>
+              </h2>
+            </div>
+				    <div id="payment-address-content" class="panel-collapse collapse">
+				      <div class="panel-body row">
+						    <!-- followed_products -->
+						    <div class="row margin-bottom-40">
+						          <% @products_followed.compact.each_slice(5) do |slice| %>
+						          <div class="col-md-12 sale-product">
+						            <div class="owl-carousel owl-carousel5">
+						            <!-- product start -->
+						            <% slice.each do |product| %>
+						              <div>
+						                <div class="product-item">
+						                  <div class="pi-img-wrapper">
+						                    <% unless product.images.empty? %>
+						                      <%= image_tag(product.images.first.attachment.url, :class => "img-responsive") %>
+						                    <% else %>
+						                      <%= image_tag("no_image.png", :class => "img-responsive")%>
+						                    <% end %>
+						                    <div>
+						                      <a href="#" class="btn btn-default">View</a>
+						                    </div>
+						                  </div>
+																<h3><%= link_to truncate(product.name), :title => product.name %>
+																  <% bidder_count = bidder_count(product) %>
+																  <%= bidder_count.to_i > 1 ? "( #{bidder_count} #{Spree.t(:bidders)})" : "( #{bidder_count} #{Spree.t(:bidders)})"%>
+																</h3>
+																<div class="pi-price"><%= display_price(product) %></div>
+									              <% if spree_current_user %>
+									                <%= link_to "#{ product.followers.where(:user_id => spree_current_user.id).first ? 'UnFollow' : 'Follow'}", follow_product_follows_path(id: product.id),  :class => "btn btn-default add2cart"%>
+									              <% end %>
+						                </div>
+						              </div>
+						              <% end %>
+						            <!-- product end -->
+						            </div>
+						          </div>
+						          <% end %>
+						    </div>
+						    <!-- END followed_products -->                		
+              </div>
+            </div>
+          </div>
+          <!-- Followed Products dropdown -->
+          <!--  Credit Card  -->
+				  <div id="shipping-address" class="panel panel-default">
+				    <div class="panel-heading">
+				      <h2 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#checkout-page" href="#shipping-address-content" class="accordion-toggle">
+                  <%= Spree.t(:credit_card) %>
+                </a>
+              </h2>
+            </div>
+				    <div id="shipping-address-content" class="panel-collapse collapse">
+				      <div class="panel-body row">
+                <div class="col-md-12 clearfix">
+						        <div class="inner" data-hook="">
+						            <p class="field" id="street">
+						                <%= label_tag 'first_name', "#{Spree.t(:firstname)}: #{@user.credit_card.try(:first_name)}" %>
+						                <%#= card.text_field :first_name, :class => 'required' %>
+						            </p>
+						            <p class="field" id="street_no">
+						               <%= label_tag 'last_name', "#{Spree.t(:lastname)}: #{@user.credit_card.try(:last_name)}" %>
+						                <%#= card.text_field :last_name, :class => 'required' %>
+						            </p>
+						            <p class="field" id="house_no">
+						               <%= label_tag 'number', "#{Spree.t(:number)}: ************ #{@user.credit_card.try(:last_digits)}" %>
+						                <%#= card.text_field :last_digits, :class => 'required' %>
+						            </p>
+						            <p class="field" id="house_no">
+						               <%= label_tag 'type', "#{Spree.t(:card_type)}: #{@user.credit_card.try(:cc_type)}" %>
+						                <%#= card.text_field :last_digits, :class => 'required' %>
+						            </p>
+						            <p><%=link_to "#{Spree.t(:add_Update_credit_card)}", add_credit_card_path, :class => "btn btn-primary"%></p>
+						        </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Credit Card  -->
         </div>
-    </fieldset>
+        <!-- END CHECKOUT PAGE -->
+      </div>
+      <!-- END CONTENT -->
+    </div>
+    <!-- END SIDEBAR & CONTENT -->
+    <% end %>
+  </div>
 </div>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		if ($(".is-company").is(":checked")){
@@ -271,5 +348,4 @@
 			}
 		} 
 	});
-	
 </script>
