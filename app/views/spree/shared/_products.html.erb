@@ -9,8 +9,8 @@
       paginated_products ||= products
     %>
     <% if products.empty? %>
-      <%= Spree.t(:no_products_found) %>
-    <% elsif params.key?(:keywords) %>
+      <h2><%= Spree.t(:no_products_found) %>
+    <% elsif params.key?(:keywords) %></h2>
       <h6 class="search-results-title"><%= Spree.t(:search_results, :keywords => h(params[:keywords])) %></h6>
     <% end %>
     <!-- BEGIN SALE PRODUCT & NEW ARRIVALS -->
@@ -26,9 +26,9 @@
                 <div class="product-item">
                   <div class="pi-img-wrapper">
                     <% unless product.images.empty? %>
-                      <%= image_tag(product.images.first.attachment.url, :class => "img-responsive") %>
+                      <%= image_tag(product.images.first.attachment.url, :class => "img-responsive", :width => 600, :height => 800) %>
                     <% else %>
-                      <%= image_tag("no_image.png", :class => "img-responsive")%>
+                      <%= image_tag("no_image.png", :class => "img-responsive", :width => 600, :height => 800)%>
                     <% end %>
                     <div>
                       <a href="#" class="btn btn-default">View</a>

@@ -9,26 +9,23 @@
         <p>Duis autem vel eum iriure dolor vulputate velit esse molestie at dolore.</p>
       </div>
       <!-- END BOTTOM ABOUT BLOCK -->
+
+      <div class="col-md-2 col-sm-3 pre-footer-col">
+      </div>
       <!-- BEGIN BOTTOM INFO BLOCK -->
       <div class="col-md-3 col-sm-6 pre-footer-col">
         <h2>Information</h2>
         <ul class="list-unstyled">
-          <li><i class="fa fa-angle-right"></i> <a href="#">Delivery Information</a></li>
-          <li><i class="fa fa-angle-right"></i> <a href="#">Customer Service</a></li>
-          <li><i class="fa fa-angle-right"></i> <a href="#">Order Tracking</a></li>
-          <li><i class="fa fa-angle-right"></i> <a href="#">Shipping &amp; Returns</a></li>
-          <li><i class="fa fa-angle-right"></i> <a href="contacts.html">Contact Us</a></li>
-          <li><i class="fa fa-angle-right"></i> <a href="#">Careers</a></li>
-          <li><i class="fa fa-angle-right"></i> <a href="#">Payment Methods</a></li>
+          <%Spree::Navigation.order("position").each do |nav|%>
+            <% unless ((nav.url == "/auctions" or nav.url == "/payment" or nav.url == "/profile") and !spree_current_user) %>
+              <li><i class="fa fa-angle-right"></i> <%= link_to nav.name.upcase, nav.url ,{ :class => "dropdown-toggle"}%></li>
+            <%end%>
+          <%end%>
         </ul>
       </div>
       <!-- END INFO BLOCK -->
-      <div class="col-md-3 col-sm-6 pre-footer-col">
-      <%# <!-- BEGIN TWITTER BLOCK --> 
-        <h2 class="margin-bottom-0">Latest Tweets</h2>
-        <a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @keenthemes...</a>      
-      <!-- END TWITTER BLOCK --> %>
-      </div>
+
+
 
       <!-- BEGIN BOTTOM CONTACTS -->
       <div class="col-md-3 col-sm-6 pre-footer-col">
