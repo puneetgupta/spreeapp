@@ -1,17 +1,32 @@
-<p>
-  <%= f.label :email, Spree.t(:email) %><br />
-  <%= f.email_field :email, :class => 'title' %>
-</p>
-<div id="password-credentials">
-  <p>
-    <%= f.label :password, Spree.t(:password) %><br />
-    <%= f.password_field :password, :class => 'title' %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, Spree.t(:confirm_password) %><br />
-    <%= f.password_field :password_confirmation, :class => 'title' %>
-  </p>
-</div>
-<input type="checkbox" name="spree_user[subscribed]" value=true>Subscribe Here<br>
-
-<div data-hook="signup_below_password_fields"></div>
+<fieldset>
+  <legend>Your Email</legend>
+  <div class="form-group">
+    <label for="email" class="col-lg-4 control-label"><%= Spree.t(:email) %> <span class="require">*</span></label>
+    <div class="col-lg-8">
+      <%= f.email_field :email, :class => 'form-control' ,:id => "email"%>
+    </div>
+  </div>
+</fieldset>
+<fieldset>
+  <legend>Your password</legend>
+  <div class="form-group">
+    <label for="password" class="col-lg-4 control-label"><%= Spree.t(:password) %> <span class="require">*</span></label>
+    <div class="col-lg-8">
+      <%= f.password_field :password, :class => 'form-control', :id =>"password" %>
+    </div>
+  </div><hr>
+  <div class="form-group">
+    <label for="confirm-password" class="col-lg-4 control-label"><%= Spree.t(:confirm_password) %><span class="require">*</span></label>
+    <div class="col-lg-8">
+      <%= f.password_field :password_confirmation, :class => 'form-control', :id=>"confirm-password" %>
+    </div>
+  </div>
+</fieldset>
+<fieldset>
+  <legend>Newsletter</legend>
+  <div class="checker ">
+    <label >
+        <input type="checkbox" name="spree_user[subscribed]" value=true>Subscribe Here<br>
+    </label>
+  </div>
+</fieldset>
