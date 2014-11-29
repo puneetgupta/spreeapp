@@ -4,7 +4,7 @@
     <div class="row">
       <!-- BEGIN BOTTOM ABOUT BLOCK -->
       <div class="col-md-3 col-sm-6 pre-footer-col">
-        <h2>About us</h2>
+        <h2><%= Spree.t(:about_us) %></h2>
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo consequat. </p>
         <p>Duis autem vel eum iriure dolor vulputate velit esse molestie at dolore.</p>
       </div>
@@ -14,7 +14,7 @@
       </div>
       <!-- BEGIN BOTTOM INFO BLOCK -->
       <div class="col-md-3 col-sm-6 pre-footer-col">
-        <h2>Information</h2>
+        <h2><%= Spree.t(:info) %></h2>
         <ul class="list-unstyled">
           <%Spree::Navigation.order("position").each do |nav|%>
             <% unless ((nav.url == "/auctions" or nav.url == "/payment" or nav.url == "/profile") and !spree_current_user) %>
@@ -29,7 +29,7 @@
 
       <!-- BEGIN BOTTOM CONTACTS -->
       <div class="col-md-3 col-sm-6 pre-footer-col">
-        <h2>Our Contacts</h2>
+        <h2><%= Spree.t(:our_contact) %></h2>
         <address class="margin-bottom-40">
           35, Lorem Lis Street, Park Ave<br>
           California, US<br>

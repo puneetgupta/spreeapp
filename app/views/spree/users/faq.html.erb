@@ -1,7 +1,7 @@
 <div class="main">
   <div class="container">
     <ul class="breadcrumb">
-        <li class="active">Quick links</li>
+        <li class="active"><%= Spree.t(:quick_link)%></li>
     </ul>
     <!-- BEGIN SIDEBAR & CONTENT -->
     <div class="row margin-bottom-40">
@@ -19,7 +19,7 @@
 
       <!-- BEGIN CONTENT -->
       <div class="col-md-9 col-sm-9">
-        <h1>Frequently Asked Questions</h1>
+        <h1><%= Spree.t(:f_a_q) %></h1>
         <div class="faq-page">
           <% count = 1%>
           <% @data.each do |staticpage| %>

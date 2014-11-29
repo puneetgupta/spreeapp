@@ -1,5 +1,5 @@
 <fieldset>
-  <legend>Your Email</legend>
+  <legend><%= Spree.t(:your_email) %></legend>
   <div class="form-group">
     <label for="email" class="col-lg-4 control-label"><%= Spree.t(:email) %> <span class="require">*</span></label>
     <div class="col-lg-8">
@@ -8,7 +8,7 @@
   </div>
 </fieldset>
 <fieldset>
-  <legend>Your password</legend>
+  <legend><%= Spree.t(:your_password) %></legend>
   <div class="form-group">
     <label for="password" class="col-lg-4 control-label"><%= Spree.t(:password) %> <span class="require">*</span></label>
     <div class="col-lg-8">
@@ -23,10 +23,10 @@
   </div>
 </fieldset>
 <fieldset>
-  <legend>Newsletter</legend>
+  <legend><%= Spree.t(:news_letter) %></legend>
   <div class="checker ">
     <label >
-        <input type="checkbox" name="spree_user[subscribed]" value=true>Subscribe Here<br>
+        <input type="checkbox" name="spree_user[subscribed]" value=true><%= Spree.t(:sub_here) %><br>
     </label>
   </div>
 </fieldset>
