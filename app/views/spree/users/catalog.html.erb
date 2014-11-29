@@ -37,9 +37,9 @@
               <div class="product-item">
                 <div class="pi-img-wrapper">
                   <% unless product.images.empty? %>
-                    <%= image_tag(product.images.first.attachment.url, :class => "img-responsive") %>
+                    <%= image_tag(product.images.first.attachment.url, {height: 150, width: 150}) %>
                   <% else %>
-                    <%= image_tag("no_image.png", :class => "img-responsive")%>
+                    <%= image_tag("no_image.png", {height: 150, width: 150})%>
                   <% end %>
                   <div>
                     <a href="<%= url_for product %>" class="btn btn-default">View</a>

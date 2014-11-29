@@ -37,7 +37,7 @@
                     <% if spree_current_user %>
                     <li><%= link_to Spree.t(:sign_out), destroy_spree_user_session_path%></li>
                     <% else %>
-                        <li><%= link_to Spree.t(:Signup), new_spree_user_registration_path %></li>
+                        <li><%= link_to Spree.t(:sign_up), new_spree_user_registration_path %></li>
                         <li><%= link_to Spree.t(:sign_in), spree_user_session_path %></li>
                     <% end %>
                 </ul>
