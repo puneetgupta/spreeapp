@@ -46,6 +46,7 @@
       <div class="col-md-9 col-sm-7">
         <div class="product-page">
           <div class="row">
+          <% if @product.images.present? %>
             <div class="col-md-6 col-sm-6">
               <div class="product-main-image" style="position: relative; overflow: hidden;">
                     <img src="<%= @product.images.first.attachment.url(:large)%>" class="img-responsive" data-bigimgsrc="<%= @product.images.first.attachment.url(:large)%>">
@@ -67,6 +68,7 @@
                 <% end %>
               </div>
             </div>
+            <% end %>
 
             <div class="col-md-6 col-sm-6">
               <h1><%= accurate_title %></h1>
@@ -100,28 +102,28 @@
               <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade" id="Description">
                   <% if @product.author_bio.present? %>
-                  <div class="review-item clearfix">
-                    <div class="review-item-submitted">
-                      <strong>Author name</strong>
+                    <div class="review-item clearfix">
+                      <div class="review-item-submitted">
+                        <strong>Author name</strong>
+                      </div>
+                      <div class="review-item-content">
+                        <p>
+                          <%= @product.author_bio.name.capitalize %>
+                        </p>
+                      </div>
                     </div>
-                    <div class="review-item-content">
-                      <p>
-                        <%= @product.author_bio.name.capitalize %>
-                      </p>
-                    </div>
-                  </div>
                   <% end %>
                   <% if @product.author_bio.present? %>
-                  <div class="review-item clearfix" style="margin-bottom: 0px;">
-                    <div class="review-item-submitted">
-                      <strong>Author Bio</strong>
+                    <div class="review-item clearfix" style="margin-bottom: 0px;">
+                      <div class="review-item-submitted">
+                        <strong>Author Bio</strong>
+                      </div>
+                      <div class="review-item-content">
+                        <p>
+                          <%= @product.author_bio.biography.html_safe %>
+                        </p>
+                      </div>
                     </div>
-                    <div class="review-item-content">
-                      <p>
-                        <%= @product.author_bio.biography.html_safe %>
-                      </p>
-                    </div>
-                  </div>
                   <% end %>
                   <table class="datasheet">
                     <tbody>
