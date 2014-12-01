@@ -4,43 +4,15 @@
       <div class="sidebar col-md-3 col-sm-5">
         <div class="class="product-page-cart"">
           <%= link_to Spree.t(:do_katalogu), catalog_path ,:class =>'btn btn-primary', :style => 'color: white;width: 100%;margin-bottom: 10px;'%>
-      </div>
-        <ul class="list-group margin-bottom-25 sidebar-menu">
-          <% if !@categories.blank? %>
-          <% @categories.each do |category| %>
-          <li class="list-group-item clearfix dropdown">
-            <a href="<%= view_category_path(category) %>" class="collapsed">
-              <i class="fa fa-angle-right">
-              </i>
-              <%= category.name %>
-            </a>
-          </li>
-          <% end %>
-          <% end %>
-          <li class="list-group-item clearfix dropdown active">
-            <a href=" " class="collapsed">
-              <i class="fa fa-angle-right">
-              </i>
-              FAQ
-            </a>
-            <ul class="dropdown-menu" style="display:block;">
-              <li class="collapsed">
-                <a href=" ">
-                  <i class="fa fa-angle-right">
-                  </i>
-                  How to place a bid?
-                </a>  
-              </li>
-              <li class="collapsed">
-                <a href=" ">
-                  <i class="fa fa-angle-right">
-                  </i>
-                  How bid winner will be selected?
-                </a>  
-              </li>
+          <ul class="list-group margin-bottom-25 sidebar-menu">
+            <ul class="breadcrumb">
+              <li class="active"><%= Spree.t(:categories) %></li>
             </ul>
-          </li>
-        </ul>
+            <% Spree::Category.all.reject{|i| i.products.active_products.empty?}.each do |category| %>
+              <li class="list-group-item clearfix"><i class="fa fa-angle-right"></i><%= link_to category.name, view_category_path(category) %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
 
       <div class="col-md-9 col-sm-7">

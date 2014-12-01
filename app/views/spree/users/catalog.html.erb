@@ -4,20 +4,22 @@
   <link href="../../assets/global/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
   <!-- Page level plugin styles END -->
 
-<% if @products.empty? %>
-  <%= Spree.t(:no_products_found) %>
-<% elsif params.key?(:keywords) %>
-  <h6 class="search-results-title"><%= Spree.t(:search_results, :keywords => h(params[:keywords])) %></h6>
-<% end %>
 <div class="main">
   <div class="container">
-    <ul class="breadcrumb">
-        <li class="active"><%= Spree.t(:categories) %></li>
-    </ul>
+    <% if @products.empty? %>
+      <h2><%= Spree.t(:no_products_found) %></h2>
+    <% elsif params.key?(:keywords) %>
+      <h6 class="search-results-title"><%= Spree.t(:search_results, :keywords => h(params[:keywords])) %></h6>
+    <% end %>
+
     <div class="row margin-bottom-40">
       <!-- SIDE NAVIGATION -->
       <div class="sidebar col-md-3 col-sm-5">
+        <%= link_to Spree.t(:do_katalogu), catalog_path ,:class =>'btn btn-primary', :style => 'color: white;width: 100%;margin-bottom: 10px;'%>
         <ul class="list-group margin-bottom-25 sidebar-menu">
+         <ul class="breadcrumb">
+            <li class="active"><%= Spree.t(:categories) if !@products.empty? %></li>
+         </ul>
           <% Spree::Category.all.reject{|i| i.products.active_products.empty?}.each do |category| %>
             <li class="list-group-item clearfix"><i class="fa fa-angle-right"></i><%= link_to category.name, view_category_path(category) %></li>
           <% end %>
@@ -37,9 +39,9 @@
               <div class="product-item">
                 <div class="pi-img-wrapper">
                   <% unless product.images.empty? %>
-                    <%= image_tag(product.images.first.attachment.url, {height: 150, width: 150}) %>
+                    <%= image_tag(product.images.first.attachment.url, {height: 150, width: 240}) %>
                   <% else %>
-                    <%= image_tag("no_image.png", {height: 150, width: 150})%>
+                    <%= image_tag("no_image.png", {height: 150, width: 240})%>
                   <% end %>
                   <div>
                     <a href="<%= url_for product %>" class="btn btn-default">View</a>
@@ -49,7 +51,7 @@
               <% bidder_count = bidder_count(product) %>
               <%= bidder_count.to_i > 1 ? "( #{bidder_count} #{Spree.t(:bidders)})" : "( #{bidder_count} #{Spree.t(:bidders)})"%></h3>
               <div class="pi-price"><%= display_price(product) %></div>
-<!--               <% if spree_current_user %>
+                <!-- <% if spree_current_user %>
                 <%= link_to "#{ product.followers.where(:user_id => spree_current_user.id).first ? 'UnFollow' : 'Follow'}", follow_product_follows_path(id: product.id),  :class => "btn btn-default add2cart"%>
               <% end %> -->
               </div>

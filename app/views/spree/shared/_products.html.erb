@@ -15,9 +15,9 @@
     <% end %>
     <!-- BEGIN SALE PRODUCT & NEW ARRIVALS -->
     <div class="row margin-bottom-40">
-          <h2><%= Spree.t(:title)%></h2>
+          <h2><%= Spree.t(:title) if !products.empty? %></h2>
           <!-- BEGIN SALE PRODUCT -->
-          <% @products.each_slice(5) do |slice| %>
+          <% products.limit(10).each_slice(5) do |slice| %>
           <div class="col-md-12 sale-product">
             <div class="owl-carousel owl-carousel5">
             <!-- product stast -->
@@ -26,9 +26,9 @@
                 <div class="product-item">
                   <div class="pi-img-wrapper">
                     <% unless product.images.empty? %>
-                      <%= image_tag(product.images.first.attachment.url , {height: 150, width: 150}) %>
+                      <%= image_tag(product.images.first.attachment.url , {height: 150, width: 195}) %>
                     <% else %>
-                      <%= image_tag("no_image.png", {height: 150, width: 150})%>
+                      <%= image_tag("no_image.png", {height: 150, width: 195})%>
                     <% end %>
                     <div>
                       <a href="<%= url_for product %>" class="btn btn-default">View</a>
@@ -37,8 +37,10 @@
                   <h3><%= link_to truncate(product.name), product, :title => product.name %></h3>
                   <div class="pi-price"><%= display_price(product) %></div>
                 </div>
+                <br><br><br>
               </div>
-              <% end %>
+            <% end %>
+
             <!-- product end -->
             </div>
           </div>
