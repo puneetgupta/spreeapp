@@ -1,6 +1,199 @@
-<div id="blog_post">
+<div class="main">
+  <div class="container">
+    <div class="row margin-bottom-40">
+      <div class="sidebar col-md-3 col-sm-5">
+        <div class="class="product-page-cart"">
+          <%= link_to Spree.t(:do_katalogu), catalog_path ,:class =>'btn btn-primary', :style => 'color: white;width: 100%;margin-bottom: 10px;'%>
+      </div>
+        <ul class="list-group margin-bottom-25 sidebar-menu">
+          <% if !@categories.blank? %>
+          <% @categories.each do |category| %>
+          <li class="list-group-item clearfix dropdown">
+            <a href="<%= view_category_path(category) %>" class="collapsed">
+              <i class="fa fa-angle-right">
+              </i>
+              <%= category.name %>
+            </a>
+          </li>
+          <% end %>
+          <% end %>
+          <li class="list-group-item clearfix dropdown active">
+            <a href=" " class="collapsed">
+              <i class="fa fa-angle-right">
+              </i>
+              FAQ
+            </a>
+            <ul class="dropdown-menu" style="display:block;">
+              <li class="collapsed">
+                <a href=" ">
+                  <i class="fa fa-angle-right">
+                  </i>
+                  How to place a bid?
+                </a>  
+              </li>
+              <li class="collapsed">
+                <a href=" ">
+                  <i class="fa fa-angle-right">
+                  </i>
+                  How bid winner will be selected?
+                </a>  
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-9 col-sm-7">
+        <div class="product-page">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="product-main-image" style="position: relative; overflow: hidden;">
+                    <img src="<%= @product.images.first.attachment.url(:large)%>" class="img-responsive" data-bigimgsrc="<%= @product.images.first.attachment.url(:large)%>">
+
+                
+                <!-- LIGHTBOX - PRETTYPHOTO STUFF -->
+                    <img src="<%= @product.images.first.attachment.url(:large)%>" class="zoomImg" style="position: absolute; top: -0.571709233791749px; left: -23.6832460732984px; opacity: 0; width: 600px; height: 800px; border: none; max-width: none;">
+              </div>
+              <div class="product-other-images">
+                <!-- For other images-->
+                <% cnt = 0 %>
+                <% @product.images.each do |image| %>
+                  <% if cnt > 0 %>
+                    <a href="<%= image.attachment.url(:large)%>" class="fancybox-button" rel="photos-lib">
+                      <img src="<%= image.attachment.url(:mini)%>">
+                    </a>
+                  <% end %>
+                  <% cnt = cnt + 1 %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+              <h1><%= accurate_title %></h1>
+              <div class="price-availability-block clearfix">
+                <div class="price">
+                  <strong>
+                    <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
+                      <%= display_price(@product.master) %>
+                  </strong>
+                </div>
+                <div class="availability">
+                  Minimum Bid      
+                </div>
+
+              </div>
+              <div class="description">
+                <p>
+                  <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
+                </p>
+              </div>
+              <!-- Product form start -->
+              <%= render :partial => 'cart_form' %>
+              <!-- Product form end -->
+            </div>
+
+            <div class="product-page-content">
+              <ul id="myTab" class="nav nav-tabs">
+                <li><a href="#Description" data-toggle="tab">Description</a></li>
+                <li class="active"><a href="#Auction_History" data-toggle="tab">Auction History</a></li>
+              </ul>
+              <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade" id="Description">
+                  <% if @product.author_bio.present? %>
+                  <div class="review-item clearfix">
+                    <div class="review-item-submitted">
+                      <strong>Author name</strong>
+                    </div>
+                    <div class="review-item-content">
+                      <p>
+                        <%= @product.author_bio.name.capitalize %>
+                      </p>
+                    </div>
+                  </div>
+                  <% end %>
+                  <% if @product.author_bio.present? %>
+                  <div class="review-item clearfix" style="margin-bottom: 0px;">
+                    <div class="review-item-submitted">
+                      <strong>Author Bio</strong>
+                    </div>
+                    <div class="review-item-content">
+                      <p>
+                        <%= @product.author_bio.biography.html_safe %>
+                      </p>
+                    </div>
+                  </div>
+                  <% end %>
+                  <table class="datasheet">
+                    <tbody>
+                      <% if @product.auction_end.present?%>
+                        <tr>
+                          <td><%= Spree.t(:auction_ending_date)%></td>
+                          <td style="padding: 0 10px 0 10px;"></td>
+                          <td><%= @product.auction_end.strftime("%m/%d/%Y")  %></td>
+                        </tr>
+                      <%end%>
+                      <% if @product.art_topics.present?%>
+                        <tr>
+                          <td><%= Spree.t(:art_topics)%></td>
+                          <td style="padding: 0 10px 0 10px;"></td>
+                          <td><%= @product.art_topics  %></td>
+                        </tr>
+                      <%end%>
+                      <% if @product.techniques.present?%>
+                        <tr>
+                          <td><%= Spree.t(:techniques)%></td>
+                          <td style="padding: 0 10px 0 10px;"></td>
+                          <td><%= @product.techniques  %></td>
+                        </tr>
+                      <%end%>
+                      <% if @product.signature.present?%>
+                        <tr>
+                          <td><%= Spree.t(:signature)%></td>
+                          <td style="padding: 0 10px 0 10px;"></td>
+                          <td><%= @product.signature  %></td>
+                        </tr>
+                      <%end%>
+                    </tbody>
+                  </table>  
+                </div>
+                <div class="tab-pane fade in active" id="Auction_History">
+                  <% unless @bids.present? %>
+                    <h5><%= Spree.t(:no_auctions_yet)%></h5>
+                  <%else%>
+                    <table class="datasheet">
+                      <tbody>
+                        <tr>
+                          <th>Username</th>
+                          <th>Bid Price</th>
+                          <th>Bid Date</th>
+                        </tr>
+                        <% @bids.each do |bid| %>
+                          <tr>
+                            <td class="datasheet-features-type">
+                              <%= bid.try(:user).first_name %>
+                            </td>
+                            <td>
+                              <%= bid.price %>
+                            </td>
+                            <td>
+                              <%= bid.updated_at.strftime("%F") %>
+                            </td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+<!-- <div id="blog_post">
   <div class="container" data-hook="product_show" itemscope itemtype="http://schema.org/Product">
-    <% @body_id = 'product-details' %>
+    <%# @body_id = 'product-details' %>
   
     <div class="section_header">
       <h3><%= accurate_title %></h3>
@@ -14,19 +207,19 @@
       
           <div id="product-images" data-hook="product_images">
             <div id="main-image" data-hook>
-              <%= render :partial => 'image' %>
+              <%#= render :partial => 'image' %>
             </div>
             <div id="thumbnails" data-hook>
-              <%= render :partial => 'thumbnails' %>
+              <%#= render :partial => 'thumbnails' %>
             </div>
           </div>
 
           <div id="product-description" data-hook="product_description">
             <div itemprop="description" data-hook="description">
-              <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
+              <%#= product_description(@product) rescue Spree.t(:product_has_no_description) %>
             </div>
           </div>
-          <%= render :partial => 'taxons' %>
+          <%#= render :partial => 'taxons' %>
 
         </div>
         
@@ -35,12 +228,14 @@
       <div class="span3 offset1 sidebar">
 
         <div id="cart-form" data-hook="cart_form">
-          <%= render :partial => 'cart_form' %>
+          <%#= render :partial => 'cart_form' %>
         </div>
 
       </div>
         
-    </div><!-- /.row -->
+    </div>
   
   </div>
+</div> -->
+</div>
 </div>
