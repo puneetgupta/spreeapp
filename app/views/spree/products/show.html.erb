@@ -5,12 +5,27 @@
         <div class="class="product-page-cart"">
           <%= link_to Spree.t(:do_katalogu), catalog_path ,:class =>'btn btn-primary', :style => 'color: white;width: 100%;margin-bottom: 10px;'%>
           <ul class="list-group margin-bottom-25 sidebar-menu">
-            <ul class="breadcrumb">
+            <br>
+            <!-- Cargoties section -->
+            <ul class="breadcrumb active">
               <li class="active"><%= Spree.t(:categories) %></li>
             </ul>
             <% Spree::Category.all.reject{|i| i.products.active_products.empty?}.each do |category| %>
               <li class="list-group-item clearfix"><i class="fa fa-angle-right"></i><%= link_to category.name, view_category_path(category) %></li>
             <% end %>
+            <!-- Cargoties section -->
+
+            <br>
+            <!-- FAQ section -->
+            <ul class="breadcrumb active">
+              <li class="active"><%= Spree::t(:faq)%></li>
+            </ul>
+            <% StaticContentPage.all.each_with_index do |sp, count|%>
+              <li class="list-group-item clearfix"><i class="fa fa-angle-right"></i><%= link_to sp.title, faq_path(anchor: 'static_question_' + (count+1).to_s)%></li>
+            <% end %>
+            <!-- FAQ section -->
+
+
           </ul>
         </div>
       </div>
