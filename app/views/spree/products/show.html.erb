@@ -3,7 +3,7 @@
     <div class="row margin-bottom-40">
       <div class="sidebar col-md-3 col-sm-5">
         <div class="class="product-page-cart"">
-          <%= link_to Spree.t(:do_katalogu), catalog_path ,:class =>'btn btn-primary', :style => 'color: white;width: 100%;margin-bottom: 10px;'%>
+          <%= link_to Spree.t(:go_catalog), catalog_path ,:class =>'btn btn-primary', :style => 'color: white;width: 100%;margin-bottom: 10px;'%>
           <ul class="list-group margin-bottom-25 sidebar-menu">
             <br>
             <!-- Cargoties section -->
@@ -67,7 +67,7 @@
                   </strong>
                 </div>
                 <div class="availability">
-                  Minimum Bid      
+                 <%= Spree.t(:minimum_bid) %>      
                 </div>
 
               </div>
@@ -83,15 +83,15 @@
 
             <div class="product-page-content">
               <ul id="myTab" class="nav nav-tabs">
-                <li><a href="#Description" data-toggle="tab">Description</a></li>
-                <li class="active"><a href="#Auction_History" data-toggle="tab">Auction History</a></li>
+                <li><a href="#Description" data-toggle="tab"><%= Spree.t(:desc) %></a></li>
+                <li class="active"><a href="#Auction_History" data-toggle="tab"><%= Spree.t(:auction_history) %></a></li>
               </ul>
               <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade" id="Description">
                   <% if @product.author_bio.present? %>
                     <div class="review-item clearfix">
                       <div class="review-item-submitted">
-                        <strong>Author name</strong>
+                        <strong><%= Spree.t(:author_name)%></strong>
                       </div>
                       <div class="review-item-content">
                         <p>
@@ -103,7 +103,7 @@
                   <% if @product.author_bio.present? %>
                     <div class="review-item clearfix" style="margin-bottom: 0px;">
                       <div class="review-item-submitted">
-                        <strong>Author Bio</strong>
+                        <strong><%= Spree.t(:bio)%></strong>
                       </div>
                       <div class="review-item-content">
                         <p>
@@ -152,9 +152,9 @@
                     <table class="datasheet">
                       <tbody>
                         <tr>
-                          <th>Username</th>
-                          <th>Bid Price</th>
-                          <th>Bid Date</th>
+                          <th><%= Spree.t(:user_name) %></th>
+                          <th><%= Spree.t(:bid_price) %></th>
+                          <th><%= Spree.t(:bid_date) %></th>
                         </tr>
                         <% @bids.each do |bid| %>
                           <tr>
