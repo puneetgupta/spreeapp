@@ -199,6 +199,11 @@
             </div>
 				    <div id="payment-address-content" class="panel-collapse collapse">
 				      <div class="panel-body row">
+				      <% if !@products_followed.compact.any? %>
+				        <div class="review-item-submitted">
+                  <strong><%= Spree.t(:no_product_followed)%></strong>
+                </div>
+				      <% end %>
 						    <!-- followed_products -->
 						    <div class="row margin-bottom-40">
 						          <% @products_followed.compact.each_slice(5) do |slice| %>
@@ -210,18 +215,15 @@
 						                <div class="product-item">
 						                  <div class="pi-img-wrapper">
 						                    <% unless product.images.empty? %>
-						                      <%= image_tag(product.images.first.attachment.url, {height: 150, width: 150}) %>
+						                      <%= image_tag(product.images.first.attachment.url, {height: 150, width: 195}) %>
 						                    <% else %>
-						                      <%= image_tag("no_image.png", {height: 150, width: 150})%>
+						                      <%= image_tag("no_image.png", {height: 150, width: 195})%>
 						                    <% end %>
 						                    <div>
 						                      <a href="<%= url_for product %>" class="btn btn-default">View</a>
 						                    </div>
 						                  </div>
-																<h3><%= link_to truncate(product.name), product, :title => product.name %>
-																  <% bidder_count = bidder_count(product) %>
-																  <%= bidder_count.to_i > 1 ? "( #{bidder_count} #{Spree.t(:bidders)})" : "( #{bidder_count} #{Spree.t(:bidders)})"%>
-																</h3>
+																<h3><%= link_to truncate(product.name), product, :title => product.name %></h3>
 																<div class="pi-price"><%= display_price(product) %></div>
 									             <!--  <% if spree_current_user %>
 									                <%= link_to "#{ product.followers.where(:user_id => spree_current_user.id).first ? 'UnFollow' : 'Follow'}", follow_product_follows_path(id: product.id),  :class => "btn btn-default add2cart"%>

@@ -71,56 +71,46 @@
                 </div>
 
               </div>
-              <div class="description">
-                <p>
-                  <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
-                </p>
-              </div>
+
               <!-- Product form start -->
               <%= render :partial => 'cart_form' %>
               <!-- Product form end -->
             </div>
-
             <div class="product-page-content">
               <ul id="myTab" class="nav nav-tabs">
-                <li><a href="#Description" data-toggle="tab"><%= Spree.t(:desc) %></a></li>
-                <li class="active"><a href="#Auction_History" data-toggle="tab"><%= Spree.t(:auction_history) %></a></li>
+                <li class="active"><a href="#Description" data-toggle="tab"><%= Spree.t(:desc) %></a></li>
+                <li><a href="#Auction_History" data-toggle="tab"><%= Spree.t(:auction_history) %></a></li>
               </ul>
               <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade" id="Description">
-                  <% if @product.author_bio.present? %>
-                    <div class="review-item clearfix">
-                      <div class="review-item-submitted">
-                        <strong><%= Spree.t(:author_name)%></strong>
-                      </div>
-                      <div class="review-item-content">
-                        <p>
-                          <%= @product.author_bio.name.capitalize %>
-                        </p>
-                      </div>
-                    </div>
-                  <% end %>
-                  <% if @product.author_bio.present? %>
-                    <div class="review-item clearfix" style="margin-bottom: 0px;">
-                      <div class="review-item-submitted">
-                        <strong><%= Spree.t(:bio)%></strong>
-                      </div>
-                      <div class="review-item-content">
-                        <p>
-                          <%= @product.author_bio.biography.html_safe %>
-                        </p>
-                      </div>
-                    </div>
-                  <% end %>
+                <div class="tab-pane fade in active" id="Description">
+                  <div class="description">
+                    <p>
+                      <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
+                    </p>
+                  </div><br>
+                  <div class="review-item-content"><h3><strong><%= Spree.t(:details)%></strong></h3></div>
                   <table class="datasheet">
                     <tbody>
-                      <% if @product.auction_end.present?%>
+                      <% if @product.author_bio.present? %>
+                        <div class="review-item clearfix">
+                          <div class="review-item-submitted">
+                            <strong><%= Spree.t(:author_name)%></strong>
+                          </div>
+                          <div class="review-item-content">
+                            <p>
+                              <%= @product.author_bio.name.capitalize %>
+                            </p>
+                          </div>
+                        </div>
+                      <% end %>
+                      <% if @product.author_bio.present? %>
                         <tr>
-                          <td><%= Spree.t(:auction_ending_date)%></td>
-                          <td style="padding: 0 10px 0 10px;"></td>
-                          <td><%= @product.auction_end.strftime("%m/%d/%Y")  %></td>
+                        <div class="review-item clearfix" style="margin-bottom: 0px;">
+                          <div class="review-item-submitted"><strong><%= Spree.t(:bio)%></strong></div>
+                          <div class="review-item-content"><p><%= @product.author_bio.biography.html_safe %></p></div>
+                        </div>
                         </tr>
-                      <%end%>
+                      <% end %>
                       <% if @product.art_topics.present?%>
                         <tr>
                           <td><%= Spree.t(:art_topics)%></td>
@@ -145,7 +135,7 @@
                     </tbody>
                   </table>  
                 </div>
-                <div class="tab-pane fade in active" id="Auction_History">
+                <div class="tab-pane fade " id="Auction_History">
                   <% unless @bids.present? %>
                     <h5><%= Spree.t(:no_auctions_yet)%></h5>
                   <%else%>

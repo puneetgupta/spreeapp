@@ -24,17 +24,6 @@
 
                   <% if @product.price_in(current_currency) and !@product.price.nil? %>
                     <div data-hook="product_price" class="columns five <% if !@product.has_variants? %> alpha <% else %> omega <% end %>">
-<!-- 
-                      <div id="product-price">
-                        <h6 class="product-section-title"><%#= Spree.t(:price) %></h6>
-                        <div>
-                          <span class="price selling" itemprop="price">
-                            <%= display_price(@product.master) %>
-                          </span>
-                          <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
-                        </div>
-                      </div> -->
-
                       <div class="add-to-cart" style="padding-top: 10px;">
                         <%= number_field_tag (@product.variants_and_option_values.any? ? :quantity : "variants[#{@product.master.id}]"),
                           1, :class => 'form-control', :min => 1 %>
@@ -50,5 +39,13 @@
                         <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
                       </div>
                   <% end %>
+                  <br>
+                  <% if @product.auction_end.present?%>
+                    <tr>
+                      <td><%= Spree.t(:auction_ending_date)%></td>
+                      <td style="padding: 0 10px 0 10px;"></td>
+                      <td><%= @product.auction_end.strftime("%m/%d/%Y")  %></td>
+                    </tr>
+                  <%end%>
                 </div>
               <% end %>
