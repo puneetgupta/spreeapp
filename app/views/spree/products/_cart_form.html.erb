@@ -24,14 +24,17 @@
 
                   <% if @product.price_in(current_currency) and !@product.price.nil? %>
                     <div data-hook="product_price" class="columns five <% if !@product.has_variants? %> alpha <% else %> omega <% end %>">
-                      <div class="add-to-cart" style="padding-top: 10px;">
-                        <%= number_field_tag (@product.variants_and_option_values.any? ? :quantity : "variants[#{@product.master.id}]"),
-                          1, :class => 'form-control', :min => 1 %>
-                          <br>
-                        <%= button_tag :class => 'btn btn-primary', :id => 'add-to-cart-button', :type => :submit do %>
-                          <%= Spree.t(:add_to_cart) %>
-                        <% end %>
-                      </div>
+                        <div class="add-to-cart" style="padding-top: 10px;">
+                          <%= button_tag :class => "btn btn-primary",:disabled => false, :id => "add-to-cart-button", :type => :submit do %>
+                          <%= Spree.t(:place_bid) %>
+                          <% end %>
+                        </div>
+                        <div id="dialog" title="Warning" style="display:none">
+                          <p><%= Spree.t(:greater_than_the_minimun_bid)%></p>
+                       </div>
+                       <div id="biddialog" title="Warning" style="display:none">
+                          <p><%= Spree.t(:greater_than_the_last_bid)%></p>
+                       </div>
                     </div>
                   <% else %>
                       <div id="product-price">
