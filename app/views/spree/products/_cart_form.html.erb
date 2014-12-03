@@ -42,9 +42,9 @@
                   <br>
                   <% if @product.auction_end.present?%>
                     <tr>
-                      <td><%= Spree.t(:auction_ending_date)%></td>
+                      <td><strong><%= Spree.t(:auction_ending_date)%> </strong>:</td>
                       <td style="padding: 0 10px 0 10px;"></td>
-                      <td><%= @product.auction_end.strftime("%m/%d/%Y")  %></td>
+                      <td><strong><%= @product.auction_end.strftime("%m/%d/%Y")  %></strong></td>
                     </tr>
                   <%end%>
                 </div>
