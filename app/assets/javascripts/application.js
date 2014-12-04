@@ -24,6 +24,5 @@
 //= require layerslider.kreaturamedia.jquery.js
 //= require layerslider-init.js
 //= require layout.js
-
-
-
+//= require store/all.js
+//= require store/bidding.js

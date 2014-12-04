@@ -4,16 +4,8 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require store/jquery-1.7
-//= require jquery_ujs
-//= require store/jquery-ui
+ 
 
-//= require store/pretty-loader
-//= require store/pretty-photo
-//= require store/zoomer
-//= require store/spree_frontend
+ 
 
-//= require_tree .
-//= require store/spree_auctions
-//= require store/spree_multi_lingual
-//= require store/spree_paypal_express
+ 

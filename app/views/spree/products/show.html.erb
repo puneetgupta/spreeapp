@@ -63,7 +63,7 @@
                 <div class="price">
                   <strong>
                     <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
-                      <%= display_price(@product.master) %>
+                      <div class="min_bid" id="bd_pz"><%= display_price(@product.master) %></div>  
                   </strong>
                 </div>
                 <div class="availability">
@@ -162,6 +162,11 @@
                       </tbody>
                     </table>
                   <% end %>
+
+                  <div class="hide" id="max-bid-price" value=<%= @bids.blank? ? @product.try(:minimal_price).to_i : @bids.last.price%>></div>
+                  <div class="hide" id="min-bid-hike" value=<%= @bids.blank? ? min_bid_hike(@product.try(:minimal_price).to_i) : min_bid_hike(@bids.last.price.to_i)%>></div>
+                  <div class="hide" id="last_bid_present" value=<%= @bids.blank? ? 'false' : 'true'%>></div>
+
                 </div>
               </div>
             </div>
