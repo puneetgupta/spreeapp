@@ -1,24 +1,20 @@
 test: &default
 
   # Credentials for REST APIs
- # client_id: AU3FGRB0azOVE-SGVtqnTMk8OJY4yXh1JCwP6B9209fQzs0QVprY1gTwlEZ7
-  #client_secret: ECrZIhDld4JG-q8dI3KESDZa2JrYWoGHIoIbfUyfnThl1JXsCT1kjTffolXs
-
-  client_id: AUDhVRDzEs0hO9wvQw7QDRSju9RZee5ePS4-VBzhgDZqs3JlWFJ2bijHpUT9
-  client_secret: EPgVChBTlJS8VV_FWMJlAylXc4rrcAO4tc2TkK2luGN4hsTnkoP06vBD5eVj
-
+  client_id: EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM
+  client_secret: EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM
 
   # Mode can be 'live' or 'sandbox'
   mode: sandbox
 
   # Credentials for Classic APIs
-#  app_id: APP-80W284485P519543T
-#  username: pgupta_api1.enbake.com
-#  password: 1375439398
-#  signature: ATLYvfZQdtwgtIFCaLNeHC8HL5gXA424GcQqwwMVfkCJDAfe8Z-VwuMU
-#  # # With Certificate
-#  # cert_path: "config/cert_key.pem"
-  sandbox_email_address: memayank2007-facilitator@gmail.com
+  app_id: APP-80W284485P519543T
+  username: jb-us-seller_api1.paypal.com
+  password: WX4WTU3S8MY44S7F
+  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+  # # With Certificate
+  # cert_path: "config/cert_key.pem"
+  sandbox_email_address: Platform.sdk.seller@gmail.com
 
   # # IP Address
   # ip_address: 127.0.0.1
@@ -30,4 +26,4 @@ development:
 
 production:
   <<: *default
-  mode: live
+  # mode: live
