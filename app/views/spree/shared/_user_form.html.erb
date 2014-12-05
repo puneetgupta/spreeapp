@@ -3,7 +3,7 @@
   <div class="form-group">
     <label for="email" class="col-lg-4 control-label"><%= Spree.t(:email) %> <span class="require">*</span></label>
     <div class="col-lg-8">
-      <%= f.email_field :email, :class => 'form-control' ,:id => "email"%>
+      <%= f.email_field :email, :class => 'form-control' ,:id => "email", :required => true%>
     </div>
   </div>
 </fieldset>
@@ -12,13 +12,13 @@
   <div class="form-group">
     <label for="password" class="col-lg-4 control-label"><%= Spree.t(:password) %> <span class="require">*</span></label>
     <div class="col-lg-8">
-      <%= f.password_field :password, :class => 'form-control', :id =>"password" %>
+      <%= f.password_field :password, :class => 'form-control', :id =>"password", :required => true %>
     </div>
   </div><hr>
   <div class="form-group">
     <label for="confirm-password" class="col-lg-4 control-label"><%= Spree.t(:confirm_password) %><span class="require">*</span></label>
     <div class="col-lg-8">
-      <%= f.password_field :password_confirmation, :class => 'form-control', :id=>"confirm-password" %>
+      <%= f.password_field :password_confirmation, :class => 'form-control', :id=>"confirm-password" , :required => true%>
     </div>
   </div>
 </fieldset>

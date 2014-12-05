@@ -2,13 +2,13 @@
   <div class="form-group">
     <label for="email" class="col-lg-4 control-label"><%= Spree.t(:email) %> <span class="require">*</span></label>
     <div class="col-lg-8">
-      <%= f.email_field :email, :class => 'form-control', :tabindex => 1, :id =>"email" %>
+      <%= f.email_field :email, :class => 'form-control', :tabindex => 1, :id =>"email" , :required => true%>
     </div>
   </div>
   <div class="form-group">
     <label for="password" class="col-lg-4 control-label"><%= Spree.t(:password) %> <span class="require">*</span></label>
     <div class="col-lg-8">
-      <%= f.password_field :password, :class => 'form-control', :tabindex => 2, :id=>"password" %>
+      <%= f.password_field :password, :class => 'form-control', :tabindex => 2, :id=>"password", :required => true %>
     </div>
   </div>
   <div class="row">
