@@ -36,12 +36,11 @@
           <% if @product.images.present? %>
             <div class="col-md-6 col-sm-6">
               <div class="product-main-image" style="position: relative; overflow: hidden;">
-                    <img src="<%= @product.images.first.attachment.url(:large)%>" class="img-responsive" data-bigimgsrc="<%= @product.images.first.attachment.url(:large)%>">
-
-                
+                <img src="<%= @product.images.first.attachment.url(:large) %>" class="img-responsive" data-bigimgsrc="<%= @product.images.first.attachment.url(:large)%>" style="width: 400px; height: 300px;">
                 <!-- LIGHTBOX - PRETTYPHOTO STUFF -->
-                    <img src="<%= @product.images.first.attachment.url(:large)%>" class="zoomImg" style="position: absolute; top: -0.571709233791749px; left: -23.6832460732984px; opacity: 0; width: 600px; height: 800px; border: none; max-width: none;">
+                <img src="<%= @product.images.first.attachment.url(:large)%>" class="zoomImg" style="position: absolute; top: -0.571709233791749px; left: -23.6832460732984px; opacity: 0; width: 600px; height: 800px; border: none; max-width: none;">
               </div>
+
               <div class="product-other-images">
                 <!-- For other images-->
                 <% cnt = 0 %>
@@ -55,7 +54,16 @@
                 <% end %>
               </div>
             </div>
-            <% end %>
+          <% else %>
+            
+            <div class="col-md-6 col-sm-6">
+              <div class="product-main-image" style="position: relative; overflow: hidden;">
+                <%= image_tag("no_image.png", {height: 300, width: 400})%>
+              </div>
+
+            </div>
+
+          <% end %>
 
             <div class="col-md-6 col-sm-6">
               <h1><%= accurate_title %></h1>

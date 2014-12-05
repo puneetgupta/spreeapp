@@ -3,37 +3,26 @@
     <div class="container">
         <div class="row">
             <!-- BEGIN TOP BAR LEFT PART -->
-            <div class="col-md-6 col-sm-6 additional-shop-info">
+            <div class="col-md-3 col-sm-6 additional-shop-info">
                 <ul class="list-unstyled list-inline">
                     <!-- <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li> -->
                     <li><i class="fa "></i><span>English  </span><%= link_to image_tag("us.png"), locale: "en" %></li>
                     <li><i class="fa "></i><span>Polish  </span><%= link_to image_tag("pl.png"), locale: "pl" %></li>
-                    <!-- BEGIN CURRENCIES -->
-                    <!-- <li class="shop-currencies">
-                        <a href="javascript:void(0);">€</a>
-                        <a href="javascript:void(0);">£</a>
-                        <a href="javascript:void(0);" class="current">$</a>
-                    </li> -->
-                    <!-- END CURRENCIES -->
-                    <!-- BEGIN LANGS -->
-                    <!-- <li class="langs-block">
-                        <a href="javascript:void(0);" class="current">English </a>
-                        <div class="langs-block-others-wrapper"><div class="langs-block-others">
-                          <a href="javascript:void(0);">French</a>
-                          <a href="javascript:void(0);">Germany</a>
-                          <a href="javascript:void(0);">Turkish</a>
-                        </div></div>
-                    </li> -->
-                    <!-- END LANGS -->
                 </ul>
             </div>
             <!-- END TOP BAR LEFT PART -->
+
+            <!-- Begin flash message -->
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+                <% flash.each do |key, value| %>
+                    <%= content_tag :div, value, :align => "center", :style => 'color: #e84d1c; font-weight: 600;'%>
+                <% end %>
+            </div>
+            <!-- End of flash message -->
+
             <!-- BEGIN TOP BAR MENU -->
-            <div class="col-md-6 col-sm-6 additional-nav">
+            <div class="col-md-2 col-sm-6 additional-nav  pull-right">
                 <ul class="list-unstyled list-inline pull-right">
-                    <!-- <li><a href="#">My Account</a></li> -->
-                    <!-- <li><a href="#">My Wishlist</a></li>
-                    <li><a href="#">Checkout</a></li> -->
                     <% if spree_current_user %>
                     <li><%= link_to Spree.t(:sign_out), destroy_spree_user_session_path%></li>
                     <% else %>
