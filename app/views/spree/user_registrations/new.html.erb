@@ -24,9 +24,9 @@
           <div class="row">
             <div class="col-md-7 col-sm-7">
                 <% @body_id = 'signup' %>
-                <%= render :partial => 'spree/shared/flashes', :locals => { :target => @user } %>
                 <div id="new-customer">
                   <div data-hook="signup">
+                    <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
                     <%= form_for resource, :as => :spree_user, :url => spree.registration_path(@user) do |f| %>
                       <div data-hook="signup_inside_form">
                         <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
