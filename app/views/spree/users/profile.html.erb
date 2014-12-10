@@ -165,7 +165,7 @@
 							            <%= form.text_field :com_zip_code, :class => 'form-control required' %>
 							          </p>
 							          <p class="field" id="com_country">
-							            <%= form.label :com_country_id, Spree.t(:country) %><span class="form-control required">*</span><br />
+							            <%= form.label :com_country_id, Spree.t(:country) %><span class="required">*</span><br />
 							              <span id="country-selection">
 							            <%= form.collection_select :com_country, available_countries, :id, :name, {}, {:class => 'form-control required address_form'} %>
 							            </span>
