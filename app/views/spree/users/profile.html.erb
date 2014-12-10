@@ -83,6 +83,7 @@
 							        <%= f.select :day_of_month, options_for_select((1..31).each{|i| [i]}, [@user.day_of_month])%>
 							      <% end %>
                    </div>
+
                 </div>
               	<div class="col-md-6 col-sm-6">
                   <div class="form-group">
@@ -140,42 +141,42 @@
 							            </p>
 							            <p class="field" id="nip">
 							              <%= form.label :nip, Spree.t(:nip) %><br />
-							              <%= form.text_field :nip, :class => 'form-controlrequired nip', :disabled => "disabled" %>
+							              <%= form.text_field :nip, :class => 'form-control required nip', :disabled => "disabled" %>
 							            </p>
 							            <p class="field" id="com_street">
 							            <%= form.label :com_street, Spree.t(:street) %><br />
-							            <%= form.text_field :com_street, :class => 'form-controlrequired' %>
+							            <%= form.text_field :com_street, :class => 'form-control required' %>
 							          </p>
 							          <p class="field" id="com_street_no">
 							            <%= form.label :com_street_no, Spree.t(:street_no) %><br />
-							            <%= form.text_field :com_street_no, :class => 'form-controlrequired' %>
+							            <%= form.text_field :com_street_no, :class => 'form-control required' %>
 							          </p>
 
 							          <p class="field" id="com_city">
 							            <%= form.label :com_city, Spree.t(:city) %><br />
-							            <%= form.text_field :com_city, :class => 'form-controlrequired' %>
+							            <%= form.text_field :com_city, :class => 'form-control required' %>
 							          </p>
 							          <p class="field" id="com_state">
 							            <%= form.label :com_state, Spree.t(:state) %><br />
-							            <%= form.text_field :com_state, :class => 'form-controlrequired' %>
+							            <%= form.text_field :com_state, :class => 'form-control required' %>
 							          </p>
 							          <p class="field" id="com_zip_code">
 							            <%= form.label :com_zip_code, Spree.t(:zip_code) %><br />
-							            <%= form.text_field :com_zip_code, :class => 'form-controlrequired' %>
+							            <%= form.text_field :com_zip_code, :class => 'form-control required' %>
 							          </p>
 							          <p class="field" id="com_country">
-							            <%= form.label :com_country_id, Spree.t(:country) %><span class="form-controlrequired">*</span><br />
+							            <%= form.label :com_country_id, Spree.t(:country) %><span class="form-control required">*</span><br />
 							              <span id="country-selection">
-							            <%= form.collection_select :com_country, available_countries, :id, :name, {}, {:class => 'required address_form'} %>
+							            <%= form.collection_select :com_country, available_countries, :id, :name, {}, {:class => 'form-control required address_form'} %>
 							            </span>
 							          </p>
 							          <p class="field" id="com_land_line_no">
 							            <%= form.label :com_land_line_no, Spree.t(:land_line) %><br />
-							            <%= form.text_field :com_land_line_no, :class => 'form-controlrequired' %>
+							            <%= form.text_field :com_land_line_no, :class => 'form-control required' %>
 							          </p>
 							          <p class="field" id="com_mobile_no">
 							            <%= form.label :com_mobile_no, Spree.t(:mobile) %><br />
-							            <%= form.text_field :com_mobile_no, :class => 'form-controlrequired' %>
+							            <%= form.text_field :com_mobile_no, :class => 'form-control required' %>
 							          </p>
 							          </div>
 							      <% end %>
@@ -287,6 +288,7 @@
   </div>
 </div>
 
+<script src="/assets/store/jquery-1.7.js?body=1" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		if ($(".is-company").is(":checked")){

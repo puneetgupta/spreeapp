@@ -26,3 +26,4 @@
 //= require layout.js
 //= require store/all.js
 //= require store/bidding.js
+//= require store/spree_auctions.js
