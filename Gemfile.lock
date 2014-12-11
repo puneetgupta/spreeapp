@@ -6,13 +6,6 @@ GIT
       spree_core (~> 2.0.3)
 
 GIT
-  remote: git://github.com/enbake/spree_auctions_enbake.git
-  revision: 5e3ad722ecc0a016cd531e78e502591e5fd8027b
-  specs:
-    spree_auctions (2.0.34)
-      spree_core (~> 2.0.3)
-
-GIT
   remote: git://github.com/puneetgupta/spree_multi_lingual.git
   revision: 968d05cede8bbd6e20845451bbb7a0241d4afa3b
   specs:
@@ -33,6 +26,15 @@ GIT
   specs:
     easy_globalize3_accessors (1.2.0)
       globalize3 (~> 0.2.0.beta1)
+
+GIT
+  remote: git://github.com/spree-contrib/better_spree_paypal_express.git
+  revision: 1206925d1c85bdc4b68b728d6676150ab0785486
+  branch: 2-0-stable
+  specs:
+    spree_paypal_express (2.0.3)
+      paypal-sdk-merchant (= 1.106.1)
+      spree_core (~> 2.0.3)
 
 GIT
   remote: git://github.com/spree/spree.git
@@ -132,6 +134,12 @@ GIT
     spree_static_content (2.0.7.beta)
       spree_core (~> 2.0.0)
 
+PATH
+  remote: spree_auctions_enbake
+  specs:
+    spree_auctions (2.0.75)
+      spree_core (~> 2.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -188,6 +196,7 @@ GEM
     cancan (1.6.10)
     canonical-rails (0.0.3)
       rails (>= 3.1, < 5.0)
+    chronic (0.10.2)
     chunky_png (1.2.8)
     ckeditor (4.0.8)
       mime-types
@@ -273,11 +282,13 @@ GEM
       mime-types
     paranoia (1.3.1)
       activerecord (~> 3.2)
-    paypal-sdk-core (0.3.0)
+    paypal-sdk-core (0.2.10)
       multi_json (~> 1.0)
       xml-simple
-    paypal-sdk-rest (0.7.0)
-      paypal-sdk-core (~> 0.3.0)
+    paypal-sdk-merchant (1.106.1)
+      paypal-sdk-core (~> 0.2.3)
+    paypal-sdk-rest (0.6.1)
+      paypal-sdk-core (~> 0.2.8)
       uuidtools (~> 2.1)
     pg (0.16.0)
     polyamorous (0.5.0)
@@ -357,6 +368,8 @@ GEM
       railties (>= 3.0)
     warden (1.2.3)
       rack (>= 1.0)
+    whenever (0.9.4)
+      chronic (>= 0.6.3)
     xml-simple (1.1.4)
 
 PLATFORMS
@@ -373,13 +386,15 @@ DEPENDENCIES
   rails (= 3.2.14)
   sass-rails (~> 3.2.3)
   spree!
-  spree_auctions (= 2.0.34)!
+  spree_auctions (= 2.0.75)!
   spree_auth_devise!
   spree_editor!
   spree_fancy!
   spree_multi_lingual!
+  spree_paypal_express!
   spree_paypal_website_standard!
   spree_static_content!
   therubyracer
   tinymce-rails-langs
   uglifier (>= 1.0.3)
+  whenever (~> 0.9.0)
