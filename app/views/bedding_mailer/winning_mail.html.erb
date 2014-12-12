@@ -1,12 +1,21 @@
-<%= Spree.t(:hello)%>,
-<br>
-<%= Spree.t(:winner_for_the_bid)%>
-<br>
-<%= Spree.t(:payment_checkout_via_below_link)%>
-<br>
-<%= Spree.t(:checkout_link)%> : <%= ActionMailer::Base.default_url_options[:host] %>/orders/complete_order?id=<%=@bid.id %>
-<br>
-<%= Spree.t(:expire_in_48hrs)%>
-<br/>
-<%= Spree.t(:thanks)%><br/>
-Auction House
+<%if Spree::CustomEmailContent.where("lower(name) = ?", 'winner_chosen_email').first.nil? %>
+	<%= Spree.t(:hello)%>,
+	<br>
+	<%= Spree.t(:winner_for_the_bid)%>
+	<br>
+	<%= Spree.t(:payment_checkout_via_below_link)%>
+	<br>
+	<%= Spree.t(:checkout_link)%> : <%= ActionMailer::Base.default_url_options[:host] %>/orders/complete_order?id=<%=@bid.id %>
+	<br>
+	<%= Spree.t(:expire_in_48hrs)%>
+	<br/>
+	<%= Spree.t(:thanks)%><br/>
+	Auction House
+
+<%else%>
+    <% body = Spree::CustomEmailContent.where("lower(name) = ?", 'winner_chosen_email').first.body%>
+    <% content = body[I18n.locale] || body.values.first || "" %>
+    <% @content = raw content %>
+    <% @content = @content.gsub('#product', @bid.product.name).gsub('#payment', (link_to "#{Spree.t(:checkout_link)}", "http://#{ActionMailer::Base.default_url_options[:host]}/orders/complete_order?id=#{@bid.id}")) %>
+    <%= @content.html_safe%>
+<%end%>
