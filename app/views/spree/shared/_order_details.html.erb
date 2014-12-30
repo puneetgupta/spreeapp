@@ -1,18 +1,17 @@
 <div class="row steps-data">
-
   <% if order.has_step?("address") %>
-    <div class="columns alpha four" data-hook="order-ship-address">
+    <div class="columns col-md-4" data-hook="order-ship-address">
       <h6><%= Spree.t(:shipping_address) %> <%= link_to "(#{Spree.t(:edit)})", checkout_state_path(:address) unless @order.completed? %></h6>
       <%= render :partial => 'spree/shared/address', :locals => { :address => order.ship_address } %>
     </div>
 
-    <div class="columns alpha four" data-hook="order-bill-address">
+    <div class="columns col-md-4" data-hook="order-bill-address">
       <h6><%= Spree.t(:billing_address) %> <%= link_to "(#{Spree.t(:edit)})", checkout_state_path(:address) unless @order.completed? %></h6>
       <%= render :partial => 'spree/shared/address', :locals => { :address => order.bill_address } %>
     </div>
 
     <% if @order.has_step?("delivery") %>
-      <div class="columns alpha four">
+      <div class="columns col-md-4">
         <h6><%= Spree.t(:shipments) %> <%= link_to "(#{Spree.t(:edit)})", checkout_state_path(:delivery) unless @order.completed? %></h6>
         <div class="delivery">
           <% order.shipments.each do |shipment| %>
@@ -28,59 +27,62 @@
 
 </div>
 
-<hr />
-
-<table id='line-items' class="index columns alpha omega sixteen" data-hook="order_details">
-  <col width="15%" valign="middle" halign="center">
-  <col width="70%" valign="middle">
-  <col width="5%" valign="middle" halign="center">
-  <col width="5%" valign="middle" halign="center">
-  <col width="5%" valign="middle" halign="center">
-
-  <thead data-hook>
-    <tr data-hook="order_details_line_items_headers">
-      <th colspan="2"><%= Spree.t(:item) %></th>
-      <th class="price"><%= Spree.t(:total_price) %></th>
-    </tr>
-  </thead>
-
-  <tbody data-hook>
-	 <% item =@order.line_items.first %>
-      <tr data-hook="order_details_line_item_row">
-        <td data-hook="order_item_image">
-          <% if item.variant.images.length == 0 %>
-            <%= link_to small_image(item.variant.product), item.variant.product %>
-          <% else %>
-            <%= link_to image_tag(item.variant.images.first.attachment.url(:small)), item.variant.product %>
+<!-- BEGIN CONTENT -->
+<div class="col-md-9 col-sm-7">
+  <div class="goods-page">
+    <div class="goods-data clearfix">
+      <div class="table-wrapper-responsive">
+        <table summary="Shopping cart" data-hook="order_details">
+          <thead data-hook>
+          <tr data-hook="order_details_line_items_headers">
+            <th class="goods-page-image"><%= Spree.t(:item) %></th>
+            <th class="goods-page-description"></th>
+            <th class="goods-page-price" colspan="2"><%= Spree.t(:total_price) %></th>
+          </tr>
+          </thead>
+          <tbody data-hook>
+          <tr>
+            <% item =@order.line_items.first %>
+            <td class="goods-page-image" data-hook="order_item_image">
+              <% if item.variant.images.length == 0 %>
+                  <%= link_to small_image(item.variant.product), item.variant.product %>
+              <% else %>
+                  <%= link_to image_tag(item.variant.images.first.attachment.url(:small)), item.variant.product %>
+              <% end %>
+            </td>
+            <td class="goods-page-description" data-hook="order_item_description">
+              <strong><%= item.variant.product.name %></strong>
+              <p><%= truncated_product_description(item.variant.product) %>
+                <%= "(" + item.variant.options_text + ")" unless item.variant.option_values.empty? %></p>
+            </td>
+            <td class="goods-page-price" data-hook="order_item_price">
+              <strong><%= item.single_money.to_html %></strong>
+            </td>
+          </tr>
+          </tbody>
+          <% if order.price_adjustment_totals.present? %>
+              <tfoot id="price-adjustments" data-hook="order_details_price_adjustments">
+              <% @order.price_adjustment_totals.each do |key, total| %>
+                  <tr class="total">
+                    <td colspan="4"><strong><%= key %></strong></td>
+                    <td class="total"><span><%= total %></span></td>
+                  </tr>
+              <% end %>
+              </tfoot>
           <% end %>
-        </td>
-        <td data-hook="order_item_description">
-          <h4><%= item.variant.product.name %></h4>
-          <%= truncated_product_description(item.variant.product) %>
-          <%= "(" + item.variant.options_text + ")" unless item.variant.option_values.empty? %>
-        </td>
-        <td data-hook="order_item_price" class="price"><span><%= item.single_money.to_html %></span></td>
-      </tr>
-  </tbody>
 
-  <% if order.price_adjustment_totals.present? %>
-    <tfoot id="price-adjustments" data-hook="order_details_price_adjustments">
-      <% @order.price_adjustment_totals.each do |key, total| %>
-        <tr class="total">
-          <td colspan="4"><strong><%= key %></strong></td>
-          <td class="total"><span><%= total %></span></td>
-        </tr>
-      <% end %>
-    </tfoot>
-  <% end %>
-  
-  <tfoot id="order-charges" data-hook="order_details_adjustments">
-    <% @order.adjustments.eligible.each do |adjustment| %>
-    <% next if (adjustment.originator_type == 'Spree::TaxRate') and (adjustment.amount == 0) %>
-      <tr class="total">
-        <td colspan="4"><strong><%= adjustment.label %></strong></td>
-        <td class="total"><span><%= adjustment.display_amount.to_html %></span></td>
-      </tr>
-    <% end %>
-  </tfoot>
-</table>
+          <tfoot id="order-charges" data-hook="order_details_adjustments">
+          <% @order.adjustments.eligible.each do |adjustment| %>
+              <% next if (adjustment.originator_type == 'Spree::TaxRate') and (adjustment.amount == 0) %>
+              <tr class="total">
+                <td colspan="4"><strong><%= adjustment.label %></strong></td>
+                <td class="total"><span><%= adjustment.display_amount.to_html %></span></td>
+              </tr>
+          <% end %>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END CONTENT -->

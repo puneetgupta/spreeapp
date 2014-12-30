@@ -4,8 +4,9 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
- 
-
- 
-
- 
+//= require store/jquery-1.7
+//= require jquery_ujs
+//= require store/jquery-ui
+//= require jquery.validate/jquery.validate.min
+//= require spree
+//= require store/checkout

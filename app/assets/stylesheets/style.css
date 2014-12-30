@@ -3062,3 +3062,22 @@ Styler Panel
 .fancybox-opened {
   z-index: 100001;
 }
+.payment-method-selector input[type="radio"]
+{
+    float:left;
+}
+.steps-data
+{
+    width:90%;
+    margin:0 auto;
+}
+.payment-method-selector{
+    display: none;
+}
+#payment-methods {
+    list-style-type: none;
+}
+#checkout-link {
+    margin-top: 10px;
+
+}
