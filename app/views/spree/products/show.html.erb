@@ -70,8 +70,10 @@
               <div class="price-availability-block clearfix">
                 <div class="price">
                   <strong>
+                    <% max_bid_price = @bids.last.try(:price).to_f + 50%>
                     <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
-                      <div class="min_bid" id="bd_pz"><%= display_price(@product.master) %></div>  
+                      <div class="min_bid" id="bd_pz"><%= @bids.blank? ? display_max_price(@product.minimal_price.to_f) : display_max_price(max_bid_price) %></div>  
+
                   </strong>
                 </div>
                 <div class="availability">
