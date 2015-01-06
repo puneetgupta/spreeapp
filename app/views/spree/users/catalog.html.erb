@@ -48,7 +48,12 @@
                   </div>
                 </div>
               <h3><%= link_to truncate(product.name), product, :title => product.name %></h3>
-              <div class="pi-price"><%= display_price(product) %></div>
+                  <% if product.bids.last.try(:price).present? %>
+                    <% min_bid_price = product.bids.last.price.to_f + 50%>
+                    <div class="pi-price"><%= display_max_price(min_bid_price) %></div>
+                  <% else%>
+                    <div class="pi-price"><%= display_max_price(product.minimal_price.to_f) %></div>
+                  <% end %>
                 <!-- <% if spree_current_user %>
                 <%= link_to "#{ product.followers.where(:user_id => spree_current_user.id).first ? 'UnFollow' : 'Follow'}", follow_product_follows_path(id: product.id),  :class => "btn btn-default add2cart"%>
               <% end %> -->
