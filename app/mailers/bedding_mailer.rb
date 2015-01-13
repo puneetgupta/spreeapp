@@ -12,6 +12,16 @@ class BeddingMailer < ActionMailer::Base
     mail(to: user.email, subject: "#{Spree.t(:congrats_bid_winner)}")
   end
 
+  def outbid_mail bid
+    @bid = bid
+    emails = bid.outbid_users.join(",")
+    mail(to: emails, subject: "#{Spree.t(:auction_outbid)}")
+  end
 
+  def looser_mail bid
+    @bid = bid
+    emails = bid.outbid_users.join(",")
+    mail(to: emails, subject: "#{Spree.t(:auction_looser)}")
+  end
 
 end

@@ -1,0 +1,20 @@
+<%if Spree::CustomEmailContent.where("lower(name) = ?", 'outbid_email').first.nil? %>
+	
+	<%= Spree.t(:hello)%>,
+	<br><%= Spree.t(:outbid_messgae)%>
+	<br><%= Spree.t(:check)%> <%= @bid.product.name %> <a href="http://<%= ActionMailer::Base.default_url_options[:host] %>/products/<%= @bid.product.permalink%>"><%= Spree.t(:here)%></a>.
+    <br>
+	<%= Spree.t(:place_higher_bid)%><br/>
+	<br>
+	<%= Spree.t(:thanks)%><br/>
+	Team Auction House
+
+<%else%>
+
+    <% body = Spree::CustomEmailContent.where("lower(name) = ?", 'outbid_email').first.body%>
+    <% content = body[I18n.locale] || body.values.first || "" %>
+    <% @content = raw content %>
+    <% @content = @content.gsub('#product',  @bid.product.name).gsub('#url_of_product', (link_to "#{Spree.t(:here)}", "http://#{ActionMailer::Base.default_url_options[:host]}/products/#{@bid.product.permalink}")) %>
+    <%= @content.html_safe%>
+    
+<%end%>
