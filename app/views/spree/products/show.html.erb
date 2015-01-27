@@ -42,16 +42,22 @@
               </div>
 
               <div class="product-other-images">
+                <div class="my-simple-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+
                 <!-- For other images-->
                 <% cnt = 0 %>
                 <% @product.images.each do |image| %>
                   <% if cnt > 0 %>
-                    <a href="<%= image.attachment.url(:large)%>" class="fancybox-button" rel="photos-lib">
-                      <img src="<%= image.attachment.url(:mini)%>">
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" style="width: 80px;">
+                    <a href="<%= image.attachment.url(:large)%>" itemprop="contentUrl" data-size="600x450">
+                        <img src="<%= image.attachment.url(:mini)%>" itemprop="thumbnail" alt="Image description" />
                     </a>
+                  </figure>
                   <% end %>
                   <% cnt = cnt + 1 %>
+              
                 <% end %>
+                </div>
               </div>
             </div>
           <% else %>
