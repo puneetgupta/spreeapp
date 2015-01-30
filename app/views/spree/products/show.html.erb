@@ -35,22 +35,23 @@
           <div class="row">
           <% if @product.images.present? %>
             <div class="col-md-6 col-sm-6">
-              <div class="product-main-image" style="position: relative; overflow: hidden;">
-                <img src="<%= @product.images.first.attachment.url(:large) %>" class="img-responsive" data-bigimgsrc="<%= @product.images.first.attachment.url(:large)%>" style="width: 400px; height: 300px;">
-                <!-- LIGHTBOX - PRETTYPHOTO STUFF -->
-                <img src="<%= @product.images.first.attachment.url(:large)%>" class="zoomImg" style="position: absolute; top: -0.571709233791749px; left: -23.6832460732984px; opacity: 0; width: 600px; height: 800px; border: none; max-width: none;">
-              </div>
-
               <div class="product-other-images">
                 <div class="my-simple-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-
+                  
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" style="width: 600px;" >
+                      <a href="<%= @product.images.first.attachment.url(:large)%>" itemprop="contentUrl" data-size="600x450" class="large-image">
+                          <img src="<%= @product.images.first.attachment.url(:product)%>" itemprop="thumbnail" alt="Image description" class="img-responsive large-default-image"  style="width: 60%; height: 70%;"/>
+                      </a> 
+                      
+                    </figure>
+              
                 <!-- For other images-->
                 <% cnt = 0 %>
                 <% @product.images.each do |image| %>
                   <% if cnt > 0 %>
-                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" style="width: 80px;">
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" style="width: 80px;" >
                     <a href="<%= image.attachment.url(:large)%>" itemprop="contentUrl" data-size="600x450">
-                        <img src="<%= image.attachment.url(:mini)%>" itemprop="thumbnail" alt="Image description" />
+                        <img src="<%= image.attachment.url(:mini)%>" itemprop="thumbnail" alt="Image description" class = "mini-image"onmouseover="bigImg(this)" />
                     </a>
                   </figure>
                   <% end %>
@@ -191,6 +192,7 @@
       </div>
 
     </div>
+
 <!-- <div id="blog_post">
   <div class="container" data-hook="product_show" itemscope itemtype="http://schema.org/Product">
     <%# @body_id = 'product-details' %>
@@ -239,3 +241,9 @@
 </div> -->
 </div>
 </div>
+<script type="text/javascript" >
+  function bigImg(x) {
+    $('.large-image').attr('src', x.parentNode);
+    $('.large-default-image').attr('src', x.parentNode);
+}
+</script>
